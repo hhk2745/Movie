@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="category.mybatis.Account">
+
+	<select id="cate_getCategory" resultType="AdminCategoryDTO">
+		select category_title from board_category
+	</select>
+
+	<select id="cate_list" parameterType="HashMap" resultType="AdminCategoryDTO">
+		  select * from (select rownum rn, A.* from (select * from board_category order by category_num asc)A) where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<insert id="cate_insert" parameterType="String">
+		insert into board_category values(board_category_seq.nextval, #{category_title})
+	</insert> 
+	
+	<delete id="cate_delete" parameterType="int">
+		delete from board_category where category_num = #{category_num}
+	</delete>
+	
+	<select id="cate_getCount" resultType="int">
+		select count(*) from board_category
+	</select>
+	
+	<update id="cate_update" parameterType="HashMap">
+	    update board_category set category_title=#{category_title} where category_num=#{category_num}
+	</update>
+	
+	<select id="cate_get" parameterType="int" resultType="AdminCategoryDTO">
+		select * from board_category where category_num = #{category_num} 
+	</select>
+	
+</mapper>

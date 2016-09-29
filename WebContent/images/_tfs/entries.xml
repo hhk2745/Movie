@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<entry changeset="44351" id="821355" kind="folder" name=""
+		path="$/JsCalendar/images/" shadow="f11b3bcc9a76491fb05a3393ced73fe5"
+		url="https://tfs05.codeplex.com:443/" />
+	<entry changeset="44351" id="821356" kind="file" name="close.gif" />
+	<entry changeset="44351" id="821357" kind="file" name="down.gif" />
+	<entry changeset="44351" id="821358" kind="file" name="drop1.gif" />
+	<entry changeset="44351" id="821359" kind="file" name="drop2.gif" />
+	<entry changeset="44351" id="821360" kind="file" name="left1.gif" />
+	<entry changeset="44351" id="821361" kind="file" name="left2.gif" />
+	<entry changeset="44351" id="821362" kind="file" name="right1.gif" />
+	<entry changeset="44351" id="821363" kind="file" name="right2.gif" />
+</entries>

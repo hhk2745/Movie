@@ -1,0 +1,194 @@
+@CHARSET "EUC-KR";
+
+/*  container START */
+.topMainContainer {
+	display: flex;
+	flex-direction: column;
+}
+
+.topMainADContainer {
+	display: flex;
+	width: 100%;
+	background-color: white;
+}
+
+.topLoginContainer {
+	/* border-top: 1px solid gray;
+	border-bottom: 1px solid gray; */
+	background-color: rgb(253, 252, 240);
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+.topMainMenuContainer {
+	border-top: 1px solid gray;
+	border-bottom: 1px solid gray;
+	display: flex;
+	flex-direction: row;
+}
+/*  container END */
+
+/*  item START */
+.topMainMenuItem:nth-child(1) {
+	text-align: center;
+	flex-shrink: 0;
+	flex-basis: 20%;
+}
+
+.topMainMenuItem:nth-child(2) {
+	text-align: center;
+	flex-shrink: 0;
+	flex-basis: 60%;
+	padding-top: 40px;
+}
+
+.topMainMenuItem:nth-child(3) {
+	text-align: center;
+	flex-shrink: 1;
+	flex-basis: 374px;
+	height: 100px;
+	padding-right: 40px;
+}
+
+.topLoginItem:nth-child(1) {
+	text-align: center;
+	flex-shrink: 0;
+	flex-basis: 100px;
+	padding-top: 10px;
+	padding-right: 40px;
+	height: 30px;
+}
+
+.topLoginItem:nth-child(2) {
+	text-align: center;
+	flex-shrink: 0;
+	flex-basis: 100px;
+	padding-top: 10px;
+	height: 30px;
+}
+
+.topLoginItem:nth-child(3) {
+	text-align: center;
+	flex-shrink: 0;
+	flex-basis: 100px;
+	padding-top: 10px;
+	height: 30px;
+}
+
+.topLoginItem:nth-child(4) {
+	text-align: center;
+	flex-shrink: 0;
+	flex-basis: 100px;
+	padding-top: 10px;
+	height: 30px;
+}
+
+/*  item END */
+#me { /* Label */
+	background-color: black;
+	color: white;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	width: 30% height: 30px;
+	align-content: center;
+	text-align: center;
+}
+
+header {
+	width: 100%;
+	padding: 0;
+}
+
+footer {
+	border-top: 1px solid gray;
+	padding: 20px;
+	text-align: center;
+}
+
+.content {
+	display: flex;
+	height: 1000px;
+}
+
+.content nav {
+	border-right: 1px solid gray;
+}
+
+.content aside {
+	border-left: 1px solid gray;
+	padding-right: 40px;
+}
+
+nav, aside {
+	flex-basis: 150px;
+	flex-shrink: 0;
+}
+
+main {
+	padding-left: 400px;
+	padding-top: 50px;
+	height: 3000px;
+}
+
+.topLoginContainer img {
+	width: 100%;
+}
+
+/* font */
+#type1 {
+	font-size: 1rem;
+	font-family: arial, verdana, "Helvetica Neue", monospace;
+	font-weight: bold;
+	line-height: 2; /*첫문장과 두번째 문장의 간격이라 보면됨*/
+
+	/*Helvetica Neue 이렇게 띄어쓰기가 들어간 이름은 ""으로 묶어줌. arial이없으면 verdana, verdana가없으면 Helvetica Neue이 적용됨
+  		이렇듯 폰트들의 묶음이라하여 font-family라는 예약어 사용.*/
+
+	/*serif (장식이 있는 폰트)
+sans-serif
+cursive (흘림체)
+fantasy
+monospace (고정폭)*/
+}
+
+/*표준 링크 스타일*/
+a:VISITED {
+	color: black;
+	text-decoration: none;
+	font-size: 1rem;
+	font-family: arial, verdana, "Helvetica Neue", monospace;
+	font-weight: bold;
+}
+
+a:link {
+	color: black;
+	text-decoration: none;
+	font-size: 1rem;
+	font-family: arial, verdana, "Helvetica Neue", monospace;
+	font-weight: bold;
+}
+
+a:hover {
+	color: tomato;
+	text-decoration: underline;
+	font-size: 1rem;
+	font-family: arial, verdana, "Helvetica Neue", monospace;
+	font-weight: bold;
+}
+
+.topMainMenuItem:nth-child(2) a:link {
+	color: black;
+	text-decoration: none;
+	font-size: 2rem;
+	font-family: arial, verdana, "Helvetica Neue", monospace;
+	font-weight: bold;
+}
+
+.topMainMenuItem:nth-child(2) a:hover {
+	color: tomato;
+	text-decoration: none;
+	font-size: 2rem;
+	font-family: arial, verdana, "Helvetica Neue", monospace;
+	font-weight: bold;
+}

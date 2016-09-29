@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="faqboard.mybatis.Account">
+
+	<select id="FAQlistBoard" parameterType="HashMap" resultType="FAQBoardDTO">
+		select * from
+		(select rownum rn, board_category.category_title as category_title, 
+		faqboard.title as title, faqboard.readcount as readcount, faqboard.num as num
+		from faqboard, board_category where faqboard.category=board_category.category_num)a 
+		where a.rn between #{startRow} and #{endRow} order by num desc
+	</select>
+	
+	<select id="FAQgetBoard" parameterType="int" resultType="FAQBoardDTO">
+		select * from(select rownum rn, board_category.category_title as category_title, faqboard.title as title, faqboard.readcount as readcount, faqboard.num as num, faqboard.content as content
+		from faqboard, board_category where faqboard.category=board_category.category_num)a where num = #{num}
+	</select>
+	
+	<!-- <select id="FAQgetBoard" parameterType="int" resultType="FAQBoardDTO">
+		select * from faqboard where num = #{num}
+	</select> -->
+	
+	<insert id="FAQinsertBoard" parameterType="HashMap">
+		insert into faqboard values(faqboard_seq.nextval, #{category}, #{id}, #{title}, #{content}, #{fileName}, #{fileSize}, sysdate, 0, #{re_step}, #{re_level})
+	</insert>
+	
+	<delete id="FAQdeleteBoard" parameterType="int">
+		delete from faqboard where num = #{num}
+	</delete>
+	
+	<select id="FAQgetCount" resultType="int">
+		select count(*) from faqboard
+	</select>
+	
+	<update id="FAQupCount" parameterType="int">
+	    update faqboard set readCount=readCount+1 where num=#{num}
+	</update>
+	
+	<update id="FAQupdateBoard" parameterType="FAQBoardDTO">
+	    update faqboard set title=#{title}, category=#{category}, content=#{content}, reg_date=sysdate where num=#{num}
+	</update>
+	
+	<select id="FAQgetCategory" resultType="FAQCategoryDTO">
+		select * from board_category where category_num > 0
+	</select>
+	
+	<update id="FAQnewStep">
+		update faqboard set re_step = re_step+1
+	</update>
+	
+	<update id="FAQstepUpdate" parameterType="int">
+		update faqboard set re_step=re_step+1 where re_step>#{re_step}
+	</update>
+	
+</mapper>

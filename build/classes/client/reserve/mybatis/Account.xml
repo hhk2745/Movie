@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="client.reserve.mybatis.Account">
+
+ 	<insert id="insertTicket" parameterType="TicketDTO">
+		insert into ticket values
+		(ticket_seq.nextval ,#{day}, #{id} , #{theater}, #{theaternum}, (select num from SCHEDULE_TIME where time=#{time}), #{title} ,#{age}
+		, #{sitnum} , #{price} ,
+		#{point} , #{pay}, 'true'
+		)
+	</insert>
+
+	<delete id="deleteTicket" parameterType="int">
+		delete from ticket where num = #{num}
+	</delete>
+
+	<select id="listTicket_id" parameterType="String" resultType="TicketDTO">
+		select ti.num, ti.day, ti.theater, ti.theaternum, ti.title, st.time, ti.SITNUM, ti.AGE, ti.price, ti.id from ticket ti , SCHEDULE_TIME st 
+		where ti.time=st.NUM  and id=#{id} and to_date(ti.DAY,'yy/MM/dd') >to_date(sysdate,'yy/MM/dd') order by day desc
+	</select>
+
+	<select id="listTicket_idDelCant" parameterType="String" resultType="TicketDTO">
+		select ti.num, ti.day, ti.theater, ti.theaternum, ti.title, st.time, ti.SITNUM, ti.AGE, ti.price, ti.id from ticket ti , SCHEDULE_TIME st 
+		where ti.time=st.NUM  and id=#{id} and (to_date(sysdate,'yy/MM/dd') = to_date(ti.DAY,'yy/MM/dd') or to_date(sysdate,'yy/MM/dd') > to_date(ti.DAY,'yy/MM/dd')  ) order by day desc
+	</select>
+	<select id="getTicket" parameterType="String" resultType="TicketDTO">
+		select * from ticket where num=#{num}
+	</select>
+
+<!-- 	<select id="listTicket_title" parameterType="HashMap"
+		resultType="TicketDTO">
+		select * from ticket where title= #{title} and day = #{day} and time =
+		#{time}
+	</select>
+ -->
+	<select id="countReserveSit" parameterType="HashMap" resultType="int">
+		select count(*) from schedule s, ticket ti where
+		s.TIME = ti.TIME and s.THEATERNUM = ti.THEATERNUM and
+		(to_date(s.DAY,'yy/MM/dd')=to_date(ti.DAY,'yy/MM/dd'))
+		and s.Time=#{time} and s.THEATERNUM=#{theaternum} and s.DAY=(to_date(
+		#{day} ,'yy/MM/dd'))
+	</select>
+
+	<select id="movieSelected" parameterType="int" resultType="MovieSelectDTO">
+		select s.day, s.theater, s.THEATERNUM, s.TITLE, st.time, s.SITCOUNT
+		from schedule s, SCHEDULE_TIME st where 
+    ((to_date(s.DAY,'yy/MM/dd')=to_date(sysdate,'yy/MM/dd') and substr(st.TIME,1,5) > to_char(sysdate, 'hh24/mm'))   
+    or 
+    to_date(s.DAY,'yy/MM/dd') > to_date(sysdate,'yy/MM/dd'))
+		and s.time = st.num and s.title =(select title from Movies_info where num
+		= #{num})  order by s.DAY asc ,st.time asc
+	</select>
+
+	<select id="chkSitNum" parameterType="HashMap" resultType="String">
+		select SITNUM from TICKET where title = (select title from MOVIES_INFO
+		where num = #{num})
+		and to_date(DAY,'yy/MM/dd') = to_date(#{day},'yy/MM/dd')
+		and THEATERNUM = #{theaternum} and TIME = (select num from SCHEDULE_TIME
+		where SCHEDULE_TIME.TIME= #{time})
+	</select>
+
+	<select id="allSitNum" resultType="String">
+		select sitnum from theaters_num
+	</select>
+	
+	<select id="chkOne" parameterType="HashMap" resultType="TicketDTO">
+		select s.day, s.theater, s.THEATERNUM, s.TITLE from schedule s where s.title = (select title from MOVIES_INFO
+		where num = #{num})and to_date(s.DAY,'yy/MM/dd') = to_date(#{day},'yy/MM/dd')
+		and s.THEATERNUM = #{theaternum} and s.TIME = (select num from SCHEDULE_TIME
+		where SCHEDULE_TIME.TIME= #{time})
+	</select>
+	<update id="WCUp" parameterType="HashMap">
+	update Movies_info set watchCount=watchCount+#{count} where num= #{num} 
+	</update>
+	<update id="dss" parameterType="HashMap">
+		update Schedule set sitcount=sitcount-#{count} where day=#{day} and theaternum=#{theaternum} and time = (select num from schedule_time where time =#{time}) 
+	</update>
+	<select id="chkoneticket" parameterType="HashMap" resultType="String">
+	select sitnum from ticket  where title = (select title from MOVIES_INFO
+		where num = #{num})and to_date(DAY,'yy/MM/dd') = to_date(#{day},'yy/MM/dd')
+		and THEATERNUM = #{theaternum} and TIME = (select num from SCHEDULE_TIME
+		where SCHEDULE_TIME.TIME= #{time}) and sitnum = #{sitnum}
+	</select>
+	
+	<update id="uss" parameterType="HashMap">
+		update Schedule set sitcount=sitcount+1 where day=#{day} and theaternum=#{theaternum} and time = #{time} 
+	</update>
+	<update id="wcd" parameterType="String">
+	update Movies_info set watchCount=watchCount-1 where num= (select num from Movies_info where title=#{title}) 
+	</update>
+	
+	<update id="upMoney" parameterType="HashMap">
+	update Member set money=(money+#{pay}) where id= #{id} 
+	</update>
+	
+	<update id="downMoney" parameterType="HashMap">
+	update Member set money=(money-#{total}) where id=#{id} 
+	</update>
+	
+</mapper>

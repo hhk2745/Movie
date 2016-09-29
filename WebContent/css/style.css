@@ -1,0 +1,135 @@
+/*style.css
+/*표준 글꼴 서식 스타일*/
+<
+style type ="text /css">body {
+	text-align: center;
+	background-color: #fefcf0;
+}
+
+/* div {
+	background-color: fefcf0;
+} */
+ul {
+	list-style: none;
+	font-weight: bold;
+	font-size: 20px;
+	display: table;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* 이미지를 담고 있는 요소 (슬라이딩 되는 요소)*/
+div#view {
+	height: 346px;
+	/*  div#view 요소 내부의 이미지들이 position값을 absolute로 설정하여 
+        각각의 이미지들을 특정 위치로 이동시키기 때문에, 
+        부모인 div#view 요소가 위치의 기준을 잡기 위해 position:relative 값을 사용 */
+	position: relative;
+}
+
+li {
+	float: left;
+	margin: 0px 35px;
+	font-size: 20px;
+}
+
+ul a {
+	text-decoration: none;
+	color: black;
+}
+
+ul a:hover {
+	color: 132CA9;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-size: 3rem;
+	font-family: verdana;
+	color: C32D8C;
+}
+
+.pull-right {
+	font-size: 1.4rem;
+	font-family: verdana;
+}
+
+.movie-title a {
+	font-size: 1.5rem;
+	font-family: verdana;
+}
+
+td, input, select, textarea, p, th {
+	font-size: 16px;
+	font-family: fantasy;
+	color: black;
+}
+
+left
+
+
+:
+
+ 
+
+10%;
+opacity
+
+
+:
+
+ 
+
+1;
+}
+}
+@
+
+/*표준 링크 스타일*/
+a:link {
+	color: #000000;
+	text-decoration: none;
+	font-size: 20px;
+	font-family: fantasy; /* 폰트 크기 조절 */
+}
+
+a:hover {ul a {text-decoration:none;
+	color: black;
+}
+
+ul a:hover {
+	color: red;
+}
+
+}
+
+/*입력 양식 스타일 .은 class로 #은 id로*/
+.box {
+	border: 1px solid black;
+	padding-left: 8rem;
+}
+
+.outline {
+	border-top: 1px double black;
+	border-bottom: 1px double black;
+}
+
+.m1 {
+	background-color: #EAF0E8;
+	border-bottom: 1px dotted #9933CC;
+}
+
+.m2 {
+	background-color: #AFE0FF;
+	border-bottom: 1px dotted #9933CC;
+}
+
+.m3 {
+	border-bottom: 1px dotted navy;
+}
+
+.dongmin {
+	background-color: #fefcf0;
+}
+</
+style
+>

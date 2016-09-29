@@ -1,0 +1,145 @@
+@charset "utf-8";
+/* CSS Document */
+.webwidget_scroller_tab {
+	font-size: 12px;
+	font-family: Verdana, Geneva, sans-serif;
+	width: 500px
+}
+
+.tabContainer {
+	width: 100%;
+	background: url(../images/tab.gif) repeat-x bottom;
+	overflow: hidden;
+}
+
+.tabContainer li {
+	float: left;
+	margin-right: 2px;
+	background: url(../images/tabOff_right.gif) no-repeat right top;
+}
+
+.tabContainer li a {
+	display: block !important;
+	display: inline-block;
+	padding: 0 15px;
+	height: 27px;
+	line-height: 27px;
+	background: url(../images/tabOff_left.gif) no-repeat left top;
+}
+
+.webwidget_scroller_tab .tabHead {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.webwidget_scroller_tab .tabBody {
+	height: 150px;
+	border-left: #dbdbdb solid 1px;
+	border-right: #dbdbdb solid 1px;
+	background-color: white;
+	overflow: hidden;
+	width: 498px;
+	position: relative;
+}
+
+.webwidget_scroller_tab .tabBody ul, li {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+.webwidget_scroller_tab .tabBody ul {
+	width: 1500px;
+	position: absolute;
+}
+
+.webwidget_scroller_tab .tabBody ul li {
+	float: left;
+	width: 500px;
+}
+
+.webwidget_scroller_tab .tabHead li a {
+	font-weight: bold;
+	text-decoration: none;
+	color: #0099FF;
+}
+
+.webwidget_scroller_tab .tabCot {
+	float: left;
+}
+
+.webwidget_scroller_tab .tabCot p {
+	margin: 0px;
+	padding: 5px;
+}
+
+.webwidget_scroller_tab .tabContainer li.currentBtn {
+	background: url(../images/tabOn_right.gif) no-repeat right top;
+}
+
+.webwidget_scroller_tab .tabContainer li.currentBtn a {
+	height: 28px;
+	background: url(../images/tabOn_left.gif) no-repeat left top;
+	color: #434142;
+}
+
+.webwidget_scroller_tab .modA {
+	margin: 10px;
+}
+
+.webwidget_scroller_tab .modBody {
+	border-left: #dbdbdb solid 1px;
+	border-right: #dbdbdb solid 1px;
+	background-color: white;
+}
+
+.webwidget_scroller_tab .modTop h3 {
+	padding: 0px;
+	margin: 0px;
+	height: 28px;
+	background: url(../images/modAT.gif) repeat-x left top;
+	color: #2C6A78;
+	font-size: 12px;
+	line-height: 25px;
+}
+
+.modTop span.modATL, .modTop span.modATR {
+	float: left;
+	width: 4px;
+	height: 28px;
+	background: url(../images/bg.gif) no-repeat left top;
+	overflow: hidden;
+}
+
+.modTop span.modATR {
+	float: right;
+	background: url(../images/bg.gif) no-repeat -4px top;
+}
+
+.modA #sideNav dd a:hover {
+	background: url(../images/bg.gif) no-repeat left -110px;
+	color: #FFF;
+	text-decoration: none;
+}
+
+.webwidget_scroller_tab .modBottom {
+	width: 100%;
+	height: 4px;
+	background: url(../images/modAB.gif) repeat-x left top;
+	overflow: hidden;
+}
+
+.webwidget_scroller_tab .modBottom span.modABL, .modBottom span.modABR,
+	.modTopB span.modATR, .modTopB span.modATL {
+	float: left;
+	width: 4px;
+	height: 4px;
+	background: url(../images/bg.gif) no-repeat left -28px;
+	overflow: hidden;
+}
+
+.webwidget_scroller_tab .modBottom span.modABR {
+	float: right;
+	background: url(../images/bg.gif) no-repeat -4px -28px;
+}

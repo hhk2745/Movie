@@ -1,0 +1,206 @@
+@CHARSET "EUC-KR";
+
+#myPageMain {
+	background-image: url(img/bg_c_bricks.png);
+	width: 100%;
+}
+
+.bgImgContainer {
+	display: flex;
+	background-image: url(img/bg_mypage_info.gif);
+	margin-left: 280px;
+	margin-top: 80px;
+	margin-bottom: 100px;
+	width: 980px;
+	height: 450px;
+}
+
+.myPageContainer {
+	margin-left: 40px;
+	margin-top: 40px;
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.profile {
+	flex-grow: 1;
+	height: 0px;
+	display: flex;
+	flex-direction: row;
+}
+
+.profile_item1 {
+	flex-grow: 2;
+	border-right: 3px solid rgb(110, 98, 66);
+	height: 180px;
+}
+
+.profile_itemContainer {
+	flex-grow: 4;
+	display: flex;
+	flex-direction: column;
+	height: 180px;
+}
+
+.profile_item3 {
+	flex-grow: 1;
+	border-left: 3px solid rgb(110, 98, 66);
+	height: 180px;
+}
+
+.profile_itemContainer_nameId {
+	flex-grow: 1;
+	color: black;
+	flex-shrink: 0;
+}
+
+.profile_itemContainer_grade {
+	border-top: 3px solid rgb(110, 98, 66);
+	flex-grow: 1;
+	flex-shrink: 0;
+	color: white;
+}
+
+.profile_money {
+	flex-grow: 1;
+	display: flex;
+	flex-shrink: 0;
+	height: 0px;
+}
+
+.profile_money_money {
+	flex-grow: 1;
+	flex-shrink: 0;
+	height: 170px;
+	color: #fece29;
+	font-weight: bold;
+	font-size: 2rem;
+}
+
+.profile_money_point {
+	flex-grow: 1;
+	flex-shrink: 0;
+	border-left: 3px solid rgb(110, 98, 66);
+	border-right: 3px solid rgb(110, 98, 66);
+	height: 170px;
+	color: #3140fb;
+	font-weight: bold;
+	font-size: 2rem;
+}
+
+.profile_money_favorite {
+	flex-grow: 2;
+	flex-shrink: 0;
+	height: 170px;
+}
+
+strong {
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+/*mypage 2container*/
+.myPageContent {
+	display: flex;
+	flex-direction: row;
+	height: 1000px;
+	background-color: fefcf0;
+}
+
+.myPageContent nav {
+	margin-right:10px;
+	flex-grow: 1;
+}
+
+.navContainer {
+	display: flex;
+	flex-direction: column;
+	height: 1000px;
+	width:200px;
+	margin-left:200px;
+	color: white;
+}
+
+.myPageContent main {
+	flex-grow: 3;
+	
+}
+
+.myPageContent aside {
+	border-left: 1px solid gray;
+	flex-grow: 1;
+}
+
+.myPageContent nav .navContainer ul li {
+	border-top: 1px solid #bbb9b1;
+	font-size: 2rem;
+	color: fefcf0;
+}
+
+li a:link {
+	padding-left: 27px;
+	text-decoration: none;
+	color: #333333;
+}
+
+li a:visited {
+	padding-left: 27px;
+	text-decoration: none;
+	color: #333333;
+}
+
+li a:active {
+	padding-left: 27px;
+	text-decoration: none;
+	border: 2px solid powderblue;
+}
+
+li a:hover {
+	padding-left: 27px;
+	text-decoration: underline;
+	color: red;
+}
+
+/* 프로필 관리 */
+main .myProfileContainer {
+	display: flex;
+	flex-direction: column;
+	height: 900px;
+}
+
+main .myProfileItem:nth-child(1) {
+	height: 80px;
+	border-bottom: 1px solid #c0c0c0;
+}
+
+main .myProfileItemContainer {
+	height: 600px;
+	border-bottom: 1px solid #c0c0c0;
+	display: flex;
+	flex-direction: column;
+}
+
+main .myProfileItemContainer_ItemContainer {
+	display: flex;
+	flex-direction: row;
+}
+main .myProfileItemContainer_ItemContainer_Item:nth-child(1) {
+	flex-basis:100px;
+	flex-grow: 1;
+	font-size:0.9rem;
+	padding: 10px;
+	border-bottom: 1px solid #c0c0c0;
+	
+}
+main .myProfileItemContainer_ItemContainer_Item:nth-child(2) {
+	flex-grow: 5;
+	font-size:0.9rem;
+	padding: 10px;
+	border-bottom: 1px solid #c0c0c0;
+}
+
+
+main .myProfileItem:nth-child(3) {
+	height: 50px;
+}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="admin.schedule.mybatis.Account">
+
+<select id="listSchedule" resultType="ScheduleDTO">
+	select * from schedule where  to_date(day,'yy/MM/dd')>=to_date(sysdate,'yy/MM/dd') order by theaternum asc,day asc,time asc	<!-- 지난 스케쥴은 출력 X -->
+</select>
+<select id="isNull" resultType="ScheduleDTO">
+	select * from schedule where title is null order by theaternum asc,day asc,time asc
+</select>
+<select id="getSchedule" parameterType="ScheduleDTO" resultType="ScheduleDTO">
+	select * from schedule where theater=#{theater} and theaternum=#{theaternum} and 
+	day=#{day} and time=#{time}
+</select>
+<insert id="insertSchedule" parameterType="ScheduleDTO">
+	insert into schedule values
+	(#{day}, #{time},#{theater},#{theaternum},#{title},56)
+</insert> 
+
+<update id="updateSchedule" parameterType="ScheduleDTO">
+	update schedule set title=#{title} where theater=#{theater} and theaternum=#{theaternum} and time=#{time} and day = #{day}
+</update>
+
+<!-- 스케줄 최신화 -->
+<insert id="newSchedule" parameterType="Map">
+	insert into schedule(day,time,theater,theaternum,sitcount) values
+	(sysdate+#{maxTerm},#{timeNum},#{theater},#{theaternum},56)
+</insert>
+<delete id="deleteSchedule" >
+	delete from schedule where to_date(sysdate,'yy/MM/dd') > to_date(day,'yy/MM/dd')   
+</delete>
+
+
+<!-- <select id="searchSchedule" parameterType="ScheduleDTO" resultType="ScheduleDTO">
+	
+</select> -->
+<select id="maxTerm" resultType="String">
+	select max(to_date(day,'yy/MM/dd')-to_date(sysdate,'yy/MM/dd')) from schedule
+</select>
+<!-- 스케줄 Time -->
+<select id="listScheduleTime" resultType="Schedule_timeDTO">
+	select * from schedule_time
+</select>
+
+
+</mapper>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="db.properties" />
+	<typeAliases>
+		<typeAlias type="member.db.MemberDTO" alias="MemberDTO" />
+		<typeAlias type="client.reserve.db.MovieSelectDTO" alias="MovieSelectDTO"/>
+      	<typeAlias type="client.reserve.db.TicketDTO" alias="TicketDTO"/>
+		<typeAlias type="admin.movie.db.Movie_infoDTO" alias="Movie_infoDTO" />
+		<typeAlias type="admin.movie.db.Movie_memberDTO" alias="Movie_memberDTO"/>
+		<typeAlias type="admin.movie.db.Movie_urlDTO" alias="Movie_urlDTO"/>
+		<typeAlias type="admin.movie.db.Movie_info_replyDTO" alias="Movie_info_replyDTO"/>
+		<typeAlias type="admin.schedule.db.ScheduleDTO" alias="ScheduleDTO"/>
+		<typeAlias type="admin.schedule.db.Schedule_timeDTO" alias="Schedule_timeDTO"/>
+		<typeAlias type="admin.sell.db.SellDTO" alias="SellDTO"/>
+		<!-- 승주 -->
+		<typeAlias type="qnaboard.db.QNABoardDTO" alias="QNABoardDTO" />
+		<typeAlias type="qnaboard.db.QNACategoryDTO" alias="QNACategoryDTO"/>
+		<typeAlias type="admin.qnaboard.db.AdminQNABoardDTO" alias="AdminQNABoardDTO"/>
+		<typeAlias type="admin.qnaboard.db.AdminQNACategoryDTO" alias="AdminQNACategoryDTO"/>
+		<typeAlias type="faqboard.db.FAQBoardDTO" alias="FAQBoardDTO"/>
+		<typeAlias type="faqboard.db.FAQCategoryDTO" alias="FAQCategoryDTO"/>
+		<typeAlias type="admin.faqboard.db.AdminFAQBoardDTO" alias="AdminFAQBoardDTO" />
+		<typeAlias type="admin.faqboard.db.AdminFAQCategoryDTO" alias="AdminFAQCategoryDTO"/>
+		<typeAlias type="fileboard.db.FILEBoardDTO" alias="FILEBoardDTO"/>
+		<typeAlias type="admin.fileboard.db.AdminFILEBoardDTO" alias="AdminFILEBoardDTO" />
+		<typeAlias type="admin.category.db.AdminCategoryDTO" alias="AdminCategoryDTO" />
+		<!-- 승주 -->
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="member/mybatis/Account.xml" />
+		<mapper resource="client/reserve/mybatis/Account.xml" />
+		<mapper resource="admin/movie/mybatis/Account.xml" />
+		<mapper resource="admin/schedule/mybatis/Account.xml" />
+		<mapper resource="admin/sell/mybatis/Account.xml"/>
+		<!-- 승주 -->
+		<mapper resource="qnaboard/mybatis/Account.xml" />
+		<mapper resource="admin/qnaboard/mybatis/Account.xml" />
+		<mapper resource="faqboard/mybatis/Account.xml" />
+		<mapper resource="admin/faqboard/mybatis/Account.xml" />
+		<mapper resource="fileboard/mybatis/Account.xml" />
+		<mapper resource="admin/fileboard/mybatis/Account.xml" />
+		<mapper resource="admin/category/mybatis/Account.xml" />
+		<!-- 승주 -->
+	</mappers>
+</configuration>
+ 
+ 

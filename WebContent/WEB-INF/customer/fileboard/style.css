@@ -1,0 +1,48 @@
+/*style.css
+/*표준 글꼴 서식 스타일*/
+h1,h2,h3,h4,h5,h6{
+	font-family:verdana;
+	color:navy;
+}
+body, td, input, select, textarea, p, th{
+	font-size:13px;
+	font-family:verdana;
+	color:navy;
+	padding:4px;
+}
+
+/*표준 링크 스타일*/
+a:link{
+	color:#000000; text-decoration:none;
+	font-size:13px; font-family:verdana;
+}
+a:visited{
+	color:red; text-decoration:none;
+	font-size:13px; font-family:verdana;
+}
+a:hover{
+	color:orange; text-decoration:underline;
+	font-size:13px; font-family:verdana;
+}
+
+/*입력 양식 스타일 .은 class로 #은 id로*/
+.box{
+	border:1px solid navy;
+	padding-left:8px;
+}
+.outline{
+	border-top:4px double navy;
+	border-bottom:4px double navy;
+}
+.m1{
+background-color:#EAF0E8;
+border-bottom:1px dotted #9933CC;
+}
+.m2{
+background-color:#FFCC00;
+border-bottom:1px dotted #9933CC;
+}
+.m3{
+border-bottom:1px dotted navy;
+}
+

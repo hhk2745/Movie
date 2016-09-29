@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="fileboard.mybatis.Account">
+
+	<select id="admin_FILElistBoard" parameterType="HashMap" resultType="FILEBoardDTO">
+		  select * from (select rownum rn, A.* from (select * from fileboard order by num desc)A) where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<delete id="admin_FILEdeleteBoard" parameterType="int">
+		delete from fileboard where num = #{num}
+	</delete>
+	
+	<select id="admin_FILEgetCount" resultType="int">
+		select count(*) from fileboard
+	</select>
+	
+</mapper>

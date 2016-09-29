@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="faqboard.mybatis.Account">
+
+	<select id="admin_FAQlistBoard" parameterType="HashMap" resultType="AdminFAQBoardDTO">
+		select * from
+		(select rownum rn, board_category.category_title as category_title, 
+		faqboard.title as title, faqboard.readcount as readcount,
+		faqboard.num as num, faqboard.reg_date as reg_date from faqboard, 
+		board_category where faqboard.category=board_category.category_num)a 
+		where a.rn between #{startRow} and #{endRow} order by num desc
+	</select>
+	
+	<select id="admin_FAQgetBoard" parameterType="int" resultType="AdminFAQBoardDTO">
+		select * from
+		(select rownum rn, board_category.category_title as category_title, 
+		faqboard.title as title, faqboard.readcount as readcount, faqboard.num as num, 
+		faqboard.content as content
+		from faqboard, board_category where faqboard.category=board_category.category_num)a 
+		where num = #{num}
+	</select>
+	
+	<insert id="admin_FAQinsertBoard" parameterType="HashMap">
+		insert into faqboard(num, category, id, title, content, fileName, fileSize, reg_date, readCount) values(faqboard_seq.nextval, #{category}, #{id}, #{title}, #{content}, #{fileName}, #{fileSize}, sysdate, 0)
+	</insert>
+	
+	<delete id="admin_FAQdeleteBoard" parameterType="int">
+		delete from faqboard where num = #{num}
+	</delete>
+	
+	<select id="admin_FAQgetCount" resultType="int">
+		select count(*) from faqboard
+	</select>
+	
+	<update id="admin_FAQupdateBoard" parameterType="AdminFAQBoardDTO">
+	    update faqboard set title=#{title}, category=#{category}, content=#{content}, reg_date=sysdate where num=#{num}
+	</update>
+	
+	<select id="admin_FAQgetCategory" resultType="AdminFAQCategoryDTO">
+		select * from board_category where category_num > 0
+	</select>
+	
+</mapper>

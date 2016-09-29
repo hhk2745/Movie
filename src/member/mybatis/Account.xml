@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member.mybatis.Account">
+
+
+	<!-- ================ Client ================ -->
+	<select id="checkMember" parameterType="HashMap" resultType="MemberDTO">
+		select * from member where name=#{name} and ssn=#{ssn} and hp=#{hp}
+	</select>
+
+	<insert id="insertMember" parameterType="MemberDTO">
+		insert into member (NUM,
+		ID, PW, NAME, SSN, EMAIL, HP) values
+		(member_seq.nextval, #{id}, #{pw},
+		#{name}, #{ssn}, #{email}, #{hp})
+	</insert>
+
+	<select id="getMember" parameterType="HashMap" resultType="MemberDTO">
+		select * from member where id=#{id} and pw=#{pw}
+	</select>
+
+	<select id="serchID" parameterType="HashMap" resultType="MemberDTO">
+		select * from member where name=#{name} and email=#{email}
+	</select>
+
+	<select id="serchPW" parameterType="HashMap" resultType="MemberDTO">
+		select * from member where name=#{name} and id=#{id} and email=#{email}
+	</select>
+	
+	<update id="approve" parameterType="HashMap">
+		update member set confirm=#{approve} where id=#{id} 
+	</update>
+	
+	<select id="insertMoney" parameterType="MemberDTO">
+         update member set money=#{money} where id=#{id}
+   	</select>
+   	
+   	<update id="updateNickname" parameterType="Map">
+		update member set nickname=#{nickname} where id=#{id}   	
+   	</update>
+   	
+   	<update id="updateProfile_img" parameterType="Map" >
+   		update member set profile_img=#{profile_img} where id=#{id}
+   	</update>
+   	
+   	<select id="idCheck" parameterType="String" resultType="MemberDTO">
+   		select * from member where id=#{id}
+   	</select>
+	
+	<!-- ================ Admin ================ -->
+	<select id="memberGetCount" resultType="int">
+		select count(*) from
+		member
+	</select>
+
+	<select id="listMember" parameterType="HashMap" resultType="MemberDTO">
+		select * from(select rownum rn,mem.* from (select * from member)mem)
+		where rn between #{start} and #{end}
+	</select>
+
+	<select id="getMemberAdmin" parameterType="Integer" resultType="MemberDTO">
+		select * from member where num=#{num}
+	</select>
+
+	<update id="updateMember" parameterType="MemberDTO">
+		update member set
+		num=#{num}, name=#{name}, id=#{id}, pw=#{pw}, email=#{email},
+		money=#{money}, point=#{point}
+		where num=#{num}
+	</update>
+
+	<delete id="deleteMember" parameterType="int">
+		delete from member where
+		num = #{num}
+	</delete>
+
+</mapper>

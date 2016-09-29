@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="qnaboard.mybatis.Account">
+
+	<insert id="QNAinsertBoard" parameterType="HashMap">
+		insert into qnaboard values(qnaboard_seq.nextval, #{category}, #{id}, #{title}, #{content}, #{fileName}, #{fileSize}, sysdate, 0, 0, 0, 'admin')
+	</insert>
+
+	<select id="QNAgetBoard" parameterType="int" resultType="QNABoardDTO">
+		select * from qnaboard where num = #{num}
+	</select>
+	
+	<update id="QNAupCount" parameterType="int">
+		update qnaboard set readcount = readcount+1 where num = #{num}
+	</update>
+
+	<select id="QNAgetCount" resultType="int">
+		select count(*) from qnaboard
+	</select>
+
+	<select id="QNAlistBoard" parameterType="HashMap" resultType="QNABoardDTO">
+		select * from (select rownum rn, A.* from (select * from qnaboard where id = #{id} or recipient = #{id} order by re_step asc)A) where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<delete id="QNAdeleteBoard" parameterType="int">
+		delete from qnaboard where num = #{num}
+	</delete>
+	
+	<update id="QNAupdateBoard" parameterType="HashMap">
+		update qnaboard set category=#{category}, id=#{id}, title=#{title}, content=#{content} where num=#{num}
+	</update>
+	
+	<select id="QNAgetCategory" resultType="QNACategoryDTO">
+		select * from board_category where category_num > 0
+	</select>
+	
+	<update id="newStep">
+		update qnaboard set re_step = re_step+1
+	</update>
+	
+	<!-- <select id="getBoard" parameterType="int" resultType="BoardDTO">
+		select * from board where num = #{num}
+	</select>
+	
+	<insert id="insertBoard" parameterType="BoardDTO">
+		insert into board values(board_seq.nextval,#{writer},#{email},#{subject},#{passwd},sysdate,0,#{content},#{ip},#{re_step},#{re_level},#{fileName},#{fileSize})
+	</insert>
+	
+	<update id="new_update">
+		update board set re_step = re_step+1
+	</update>
+	<update id="re_update" parameterType="BoardDTO">
+		update board set re_step=re_step+1 where re_step>#{re_step}
+	</update> -->
+</mapper>

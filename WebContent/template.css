@@ -1,0 +1,317 @@
+@CHARSET "EUC-KR";
+
+/*  container START */
+.topMainContainer {
+	display: flex;
+	flex-direction: column;
+}
+
+.topMainADContainer {
+	display: flex;
+	width: 100%;
+	background-color: white;
+}
+.topMainADContainer img{
+	position: static;
+	left: 0;
+	top: 0;
+	width: 100% height: 30px;
+	align-content: center;
+	text-align: center;
+}
+
+.topLoginContainer {
+	/* border-top: 1px solid gray;
+	border-bottom: 1px solid gray; */
+	background-color: rgb(253, 252, 240);
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+.topMainMenuContainer {
+	border-top: 1px solid gray;
+	border-bottom: 1px solid gray;
+	display: flex;
+	flex-direction: row;
+}
+/*  container END */
+
+/*  item START */
+.topMainMenuItem:nth-child(1) {
+	text-align: center;
+	flex-shrink: 0;
+	flex-basis: 20%;
+}
+
+.topMainMenuItem:nth-child(2) {
+	text-align: center;
+	flex-shrink: 0;
+	flex-basis: 60%;
+	padding-top: 40px;
+}
+
+.topMainMenuItem:nth-child(3) {
+	text-align: center;
+	flex-shrink: 1;
+	flex-basis: 374px;
+	height: 100px;
+	padding-right: 40px;
+}
+
+.topLoginItem:nth-child(1) {
+	text-align: center;
+	flex-shrink: 0;
+	flex-basis: 100px;
+	padding-top: 10px;
+	padding-right: 40px;
+	height: 30px;
+}
+
+.topLoginItem:nth-child(2) {
+	text-align: center;
+	flex-shrink: 0;
+	flex-basis: 100px;
+	padding-top: 10px;
+	height: 30px;
+}
+
+.topLoginItem:nth-child(3) {
+	text-align: center;
+	flex-shrink: 0;
+	flex-basis: 100px;
+	padding-top: 10px;
+	height: 30px;
+}
+
+.topLoginItem:nth-child(4) {
+	text-align: center;
+	flex-shrink: 0;
+	flex-basis: 100px;
+	padding-top: 10px;
+	height: 30px;
+}
+
+/*  item END */
+#me { /* Label */
+	background-color: black;
+	color: white;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	width: 30% height: 30px;
+	align-content: center;
+	text-align: center;
+}
+
+header {
+	width: 100%;
+	padding: 0;
+}
+
+footer {
+	border-top: 1px solid gray;
+	padding: 20px;
+	text-align: center;
+}
+
+.content {
+	display: flex;
+}
+
+.content nav {
+	border-right: 1px solid gray;
+}
+
+.content aside {
+	border-left: 1px solid gray;
+	padding-right: 40px;
+}
+
+nav, aside {
+	flex-basis: 150px;
+	flex-shrink: 0;
+}
+
+main {
+	padding: 10px;
+	width: 1200px;
+}
+
+.topLoginContainer img {
+	width: 100%;
+}
+
+/* font */
+#type1 {
+	font-size: 1rem;
+	font-family: arial, verdana, "Helvetica Neue", monospace;
+	font-weight: bold;
+	line-height: 2; /*첫문장과 두번째 문장의 간격이라 보면됨*/
+
+	/*Helvetica Neue 이렇게 띄어쓰기가 들어간 이름은 ""으로 묶어줌. arial이없으면 verdana, verdana가없으면 Helvetica Neue이 적용됨
+  		이렇듯 폰트들의 묶음이라하여 font-family라는 예약어 사용.*/
+
+	/*serif (장식이 있는 폰트)
+sans-serif
+cursive (흘림체)
+fantasy
+monospace (고정폭)*/
+}
+
+/*표준 링크 스타일*/
+a:visited {
+	color: black;
+	text-decoration: none;
+	font-size: 1rem;
+	font-family: arial, verdana, "Helvetica Neue", monospace;
+	font-weight: bold;
+}
+
+a:link {
+	color: black;
+	text-decoration: none;
+	font-size: 1rem;
+	font-family: arial, verdana, "Helvetica Neue", monospace;
+	font-weight: bold;
+}
+
+a:hover {
+	color: tomato;
+	text-decoration: underline;
+	font-size: 1rem;
+	font-family: arial, verdana, "Helvetica Neue", monospace;
+	font-weight: bold;
+}
+
+.topMainMenuItem:nth-child(2) a:link {
+	color: black;
+	text-decoration: none;
+	font-size: 2rem;
+	font-family: arial, verdana, "Helvetica Neue", monospace;
+	font-weight: bold;
+}
+
+.topMainMenuItem:nth-child(2) a:hover {
+	color: tomato;
+	text-decoration: none;
+	font-size: 2rem;
+	font-family: arial, verdana, "Helvetica Neue", monospace;
+	font-weight: bold;
+}
+
+/*================Login================*/
+section.loginContent {
+	margin-top: 150px;
+	display: flex;
+	direction: row;
+	display: flex;
+	direction: row;
+	height: 700px;
+}
+
+.loginContent nav, .loginContent aside {
+	flex-grow: 0;
+	flex-basis: 600px;
+	flex-shrink: 2;
+}
+
+div.memberLoginContainer {
+	height: 253px;
+	flex-grow: 1;
+	flex-shrink: 1;
+}
+
+div.loginButtonContainer {
+	border-bottom: 2px solid gray;
+	display: flex;
+	direction: row;
+	display: flex;
+}
+
+div.loginButtonContainer button.loginbtn {
+	background-color: #b42222;
+	color: ghostwhite;
+	flex-basis: 150px;
+	height: 40px;
+	border: 1px solid black;
+	border-bottom: 2px solid black;
+	font-size: 1rem;
+}
+
+div.loginButtonContainer button.nologinbtn {
+	background-color: whitesmoke;
+	color: black;
+	flex-basis: 150px;
+	height: 40px;
+	border: 1px solid black;
+	border-bottom: 2px solid black;
+	font-size: 1rem;
+}
+
+div.loginFormDiv {
+	padding: 20px;
+	display: flex;
+	direction: column;
+	padding-top:20px;
+	padding-bottom:0;
+	padding-right:0;
+	border-left: 1px;
+	width:500px;
+}
+
+div.loginFormDiv form.loginForm input {
+	height: 50px;
+	padding: 10px;
+	border: 1px solid black;
+	font-size: 1rem;
+}
+
+div.loginFormDiv form.loginForm input#submit {
+	height: 50px;
+	font-size: 1rem;
+	font-weight: bold;
+	background-color: #b42222;
+	color: ghostwhite;
+	margin-top:30px;
+	margin-left:355px;
+	width: 100px;
+	
+}
+
+div.loginFormDiv button {
+	margin-top: 30px;
+	margin-left: 20px;
+	width: 100px;
+	height: 90px;
+	margin-left: 20px;
+	border: 1px solid darkgray;
+	border-bottom: 2px solid black;
+	border-right: 2px solid black;
+	background-color: #b42222;
+	font-weight: bold;
+	font-size: 1.1rem;
+	color: ghostwhite;
+}
+
+div.serchDiv {
+	border-top:5px solid gray;
+	padding-top: 0;
+	padding-left: 230px;
+	display: flex;
+	direction: column;
+	display: flex;
+	padding-top: 0;
+}
+
+div.serchDiv button.serchDivItem {
+	flex-basis: 150px;
+	height: 30px;
+	background-color: white;
+	border: 1px solid black;
+	border-bottom: 2px solid black;
+	border-right: 2px solid black;
+	font-size: 0.8rem;
+}
+
+/*================Login================*/
+

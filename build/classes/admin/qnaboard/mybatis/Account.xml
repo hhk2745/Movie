@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admin.qnaboard.mybatis.Account">
+
+	<insert id="admin_QNAinsertBoard" parameterType="HashMap">
+		insert into qnaboard values(qnaboard_seq.nextval, #{category}, #{id}, #{title}, #{content}, #{fileName}, #{fileSize}, sysdate, 0, #{re_step}, #{re_level}, #{recipient})
+	</insert>
+
+	<select id="admin_QNAgetBoard" parameterType="int" resultType="AdminQNABoardDTO">
+		select * from qnaboard where num = #{num}
+	</select>
+	
+	<update id="admin_QNAupCount" parameterType="int">
+		update qnaboard set readcount = readcount+1 where num = #{num}
+	</update>
+
+	<select id="admin_QNAgetCount" resultType="int">
+		select count(*) from qnaboard
+	</select>
+
+	<select id="admin_QNAlistBoard" parameterType="HashMap" resultType="AdminQNABoardDTO">
+		select * from (select rownum rn, A.* from (select * from qnaboard order by re_step asc)A) where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<delete id="admin_QNAdeleteBoard" parameterType="int">
+		delete from qnaboard where num = #{num}
+	</delete>
+	
+	<update id="admin_QNAupdateBoard" parameterType="HashMap">
+		update qnaboard set id=#{id}, title=#{title}, content=#{content} where num=#{num}
+	</update>
+	
+	<select id="admin_QNAgetCategory" resultType="AdminQNACategoryDTO">
+		select * from board_category
+	</select>
+	
+	<update id="admin_stepUpdate" parameterType="int">
+		update qnaboard set re_step=re_step+1 where re_step>#{re_step}
+	</update>
+	
+</mapper>

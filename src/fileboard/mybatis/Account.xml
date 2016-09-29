@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="fileboard.mybatis.Account">
+
+	<select id="FILElistBoard" parameterType="HashMap" resultType="FILEBoardDTO">
+		  select * from (select rownum rn, A.* from (select * from fileboard order by num desc)A) where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<select id="FILEgetBoard" parameterType="int" resultType="FILEBoardDTO">
+		select * from fileboard where num = #{num}
+	</select>
+	
+	<insert id="FILEinsertBoard" parameterType="HashMap">
+		insert into fileboard values(fileboard_seq.nextval, #{id}, #{content}, sysdate, #{fileName}, 0)
+	</insert> 
+	
+	<delete id="FILEdeleteBoard" parameterType="int">
+		delete from fileboard where num = #{num}
+	</delete>
+	
+	<select id="FILEgetCount" resultType="int">
+		select count(*) from fileboard
+	</select>
+	
+	<update id="FILEreadCount" parameterType="int">
+	    update fileboard set readCount=readCount+1 where num=#{num}
+	</update>
+	
+	<update id="FILEupdateBoard" parameterType="HashMap">
+	    update fileboard set id=#{id}, content=#{content}, reg_date=sysdate, fileName=#{fileName}, likeCount=#{likeCount} where num=#{num}
+	</update>
+	
+	<select id="FILEsearchBoard" parameterType="String" resultType="String">
+		select fileName from fileboard where id = #{id}
+	</select>
+	
+</mapper>

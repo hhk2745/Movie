@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<context:annotation-config/>
+		<bean id="memberDAO" class="member.db.MemberDAOImpl" />
+		<bean id="movieDAO" class="admin.movie.db.MovieDAOImpl" />
+		<bean id="admin_scheduleDAO" class="admin.schedule.db.ScheduleDAOImpl"/>
+		<bean id="sellDAO" class="admin.sell.db.SellDAOImpl"/>
+		<bean id="ticketDAO" class="client.reserve.db.TicketDAOImpl" />
+		<bean id="gmail" class="member.db.Gmail" />
+		<!-- 승주 -->
+		<bean id="qnaBoardDAO" class="qnaboard.db.QNABoardDAOImpl" />
+		<bean id="adminQNABoardDAO" class="admin.qnaboard.db.AdminQNABoardDAOImpl" />
+		<bean id="faqBoardDAO" class="faqboard.db.FAQBoardDAOImpl" />
+		<bean id="adminFAQBoardDAO" class="admin.faqboard.db.AdminFAQBoardDAOImpl" />
+		<bean id="fileBoardDAO" class="fileboard.db.FILEBoardDAOImpl" />
+		<bean id="adminFILEBoardDAO" class="admin.fileboard.db.AdminFILEBoardDAOImpl" />
+		<bean id="adminCategoryDAO" class="admin.category.db.AdminCategoryDAOImpl" />
+		<!-- 승주 -->
+		
+		<!-- 진철 시작 -->
+		
+		
+		
+		<bean class="admin.controller.AdminTheaterController"/>
+		<bean class="admin.sell.controller.SellListController"/>
+		<bean class="admin.controller.AdminMovieController"/> 
+		<bean class="admin.movie.controller.AdminMovieUpdateController"/>
+		<!-- 승주 시작 -->
+		
+		
+		<bean class="IndexController" />
+		<bean class="member.controller.MemberCheckController"/>
+		<bean class="member.controller.MemberInsertController"/>
+		<bean class="member.controller.LoginController"/>
+		<bean class="member.controller.LogoutController" />
+		<bean class="member.controller.MyPageController"/>
+		<bean class="member.controller.AdminMemberController"/>
+		<bean class="member.controller.AdminMemberUpdateController"/>
+		<bean class="member.controller.AdminMemberDeleteController"/>
+		<bean class="member.controller.MemberSerchIDController"/>
+		<bean class="member.controller.MemberMoneyController"/>
+		<bean class="member.controller.MemberSerchPWController"/>
+		<bean class="member.controller.MemberConfirmController"/>
+		<bean class="member.controller.MemberUpdateNicknameController"/>
+		<bean class="member.controller.MemberUpdateProfile_imgController"/>
+		<bean class="member.controller.MemberIdCheckController"/>
+		
+		<bean class="client.reserve.controller.MovieReserveController" />
+		
+		
+		
+		
+		<!-- 승주 -->
+		<!-- qnaboard -->
+		<bean class="qnaboard.controller.QNABoardListController"/>
+		<bean class="qnaboard.controller.QNABoardWriteController"/>
+		<bean class="qnaboard.controller.QNABoardContentController"/>
+		<!-- faqboard -->
+		<bean class="faqboard.controller.FAQBoardListController" />
+		<bean class="faqboard.controller.FAQBoardContentController" />
+		<!-- fileboard -->
+		<bean class="fileboard.controller.FILEBoardListController" />
+		<bean class="fileboard.controller.FILEBoardWriteController" />
+		<!-- admin -->
+		<!-- admin_qnaboard -->
+		<bean class="admin.qnaboard.controller.AdminQNABoardListController" />
+		<bean class="admin.qnaboard.controller.AdminQNABoardContentController" />
+		<bean class="admin.qnaboard.controller.AdminQNABoardWriteController" />
+		
+		
+		<!-- admin_faqboard -->
+		<bean class="admin.faqboard.controller.AdminFAQBoardListController" />
+		<bean class="admin.faqboard.controller.AdminFAQBoardWriteController" />
+		<bean class="admin.faqboard.controller.AdminFAQBoardContentController" />
+		
+		
+		<!-- admin_fileboard -->
+		<bean class="admin.fileboard.controller.AdminFILEBoardListController" />
+		
+		
+		<!-- admin_category -->
+		<bean class="admin.category.controller.AdminCategoryListController" />
+		<bean class="admin.category.controller.AdminCategoryWriteController" />
+		<!-- 승주 -->
+		
+		
+		
+	
+
+</beans>

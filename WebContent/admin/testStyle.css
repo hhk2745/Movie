@@ -1,0 +1,207 @@
+H1 {
+	color: white;
+	background: teal;
+	FONT-FAMILY: arial, helvetica, lucida-sans, sans-serif;
+	FONT-SIZE: 18pt;
+	FONT-STYLE: normal;
+	FONT-VARIANT: normal
+}
+
+H2 {
+	COLOR: #000000;
+	FONT-FAMILY: verdana, helvetica, lucida-sans, sans-serif;
+	FONT-SIZE: 14pt;
+	FONT-STYLE: normal;
+	FONT-VARIANT: normal
+}
+
+H3 {
+	COLOR: #000000;
+	FONT-FAMILY: lucida-sans, sans-serif;
+	FONT-SIZE: 14pt;
+	FONT-STYLE: normal;
+	FONT-VARIANT: normal
+}
+
+H4 {
+	COLOR: #000000;
+	FONT-FAMILY: lucida-sans, sans-serif;
+	FONT-SIZE: 12pt;
+	FONT-STYLE: normal;
+	FONT-VARIANT: normal
+}
+
+H5 {
+	color: white;
+	background: darkblue;
+	FONT-FAMILY: lucida-sans, sans-serif;
+	FONT-SIZE: 12pt;
+	FONT-STYLE: normal;
+	FONT-VARIANT: normal
+}
+
+H6 {
+	color: yellow;
+	background: green;
+	FONT-FAMILY: lucida-sans, sans-serif;
+	FONT-SIZE: 10pt;
+	FONT-STYLE: normal;
+	FONT-VARIANT: normal
+}
+
+.localheader {
+	COLOR: #dddddd;
+	FONT-FAMILY: geneva, arial, helvetica, lucida-sans, sans-serif;
+	FONT-SIZE: 15px;
+	TEXT-DECORATION: none
+}
+
+body {
+	COLOR: #000000;
+	FONT-FAMILY: lucida-sans, sans-serif;
+	FONT-SIZE: 10pt;
+	FONT-STYLE: normal;
+	FONT-VARIANT: normal;
+	background-image: url('bkgnd.gif')
+}
+
+.localheader {
+	COLOR: #dddddd;
+	FONT-FAMILY: geneva, arial, helvetica, lucida-sans, sans-serif;
+	FONT-SIZE: 15px;
+	TEXT-DECORATION: none
+}
+
+.locallink {
+	COLOR: #dddddd;
+	FONT-FAMILY: geneva, arial, helvetica, lucida-sans, sans-serif;
+	FONT-SIZE: 13px;
+	FONT-WEIGHT: normal;
+	TEXT-DECORATION: none
+}
+
+.localsublink {
+	COLOR: #dddddd;
+	FONT-FAMILY: geneva, arial, helvetica, lucida-sans, sans-serif;
+	FONT-SIZE: 11px;
+	FONT-WEIGHT: normal;
+	TEXT-DECORATION: none
+}
+
+.tm {
+	COLOR: #000000;
+	FONT-FAMILY: geneva, arial, helvetica, lucida-sans, sans-serif;
+	FONT-SIZE: 8pt;
+	FONT-STYLE: normal;
+	FONT-VARIANT: normal
+}
+
+A:link .nonu {
+	COLOR: #000000;
+	TEXT-DECORATION: none
+}
+
+.nonuw {
+	COLOR: #ffffff;
+	TEXT-DECORATION: none
+}
+
+A:visited .nonu {
+	TEXT-DECORATION: none
+}
+
+.linespace {
+	LINE-HEIGHT: 120%
+}
+
+.just {
+	TEXT-ALIGN: justify
+}
+
+CODE {
+	COLOR: #666666;
+	FONT-FAMILY: courier, monaco, courier new;
+	FONT-SIZE: 12pt
+}
+
+KBD {
+	COLOR: #666666;
+	FONT-FAMILY: courier, monaco, courier new;
+	FONT-SIZE: 12pt
+}
+
+.hover {
+	max-width: 400px;
+	height: 60px;
+	width: 16%;
+	line-height: 60px;
+	margin: 0px auto;
+	margin-bottom: 0px;
+	background-color: #0000cd;
+	text-align: center;
+	transition: all 0.8s, color 0.3s 0.3s;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+.subHover {
+	max-width: 400px;
+	height: 80px;
+	width: 20%;
+	line-height: 80px;
+	margin: 0px auto;
+	background-color: #ffffff;
+	text-align: center;
+	transition: all 0.8s, color 0.3s 0.3s;
+	color: #000000;
+	cursor: pointer;
+}
+
+.subHover:subHover {
+	color: #000;
+}
+
+.effect:subHover {
+	box-shadow: 0 -150px 0 0 rgba(0, 0, 0, 0.5) inset;
+}
+
+.hover:hover {
+	color: #000;
+}
+
+.effect4:hover {
+	box-shadow: 0 -150px 0 0 rgba(255, 255, 255, 1) inset;
+}
+
+.topBox {
+	height: 60px;
+	width: 100%;
+	margin: 0px auto;
+	background-color: #0000cd;
+	color: #ffffff;
+}
+
+.submenuBox {
+	height: 80px;
+	width: 100%;
+	margin: 0px auto;
+	background-color: #ffffff;
+	color: #ffffff;
+}
+
+.bottomLine {
+	height: 50px;
+	width: 100%;
+	margin: 0px auto;
+	line-height: 50px;
+	background-color: #708090;
+	color: #ffffff;
+}
+
+.bottomBox {
+	height: 150px;
+	width: 100%;
+	margin: 0px auto;
+	background-color: #ffffff;
+	color: #000000;
+}

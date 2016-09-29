@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="admin.sell.mybatis.Account">
+<!-- 
+
+	1월	서울강남	총 매출  	
+		서울종로	총 매출	
+		
+	2월	서울강남	총 매출	
+		서울종로	총 매출	
+		
+	3월	서울강남	총 매출	
+		서울종로	총 매출	
+		
+	4월	서울강남	총 매출	
+		서울종로	총 매출	
+		
+ -->
+ 
+	<select id="countingMonth" parameterType="String" resultType="int">
+		select count(*) from ticket where day like #{date}||'%' and THEATER='서울_강남'   <!-- 16/07  처럼 4글자 입력 -->
+	</select>
+
+	<select id="countingYear" parameterType="String" resultType="int">
+		select count(*) from ticket where day like #{date}||'%' and THEATER='서울_강남' <!-- 15 , 16 2글자 년만 입력 -->
+	</select>
+
+	<select id="countingMovies" parameterType="String" resultType="int">
+		select count(*) from ticket where title = #{title}  	<!--  title은 현재 상영중인 무비 리스트로 받아서 컨트롤러에서 작업 --> 
+	</select>
+
+
+</mapper>
