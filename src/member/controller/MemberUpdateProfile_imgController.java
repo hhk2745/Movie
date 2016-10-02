@@ -39,8 +39,21 @@ public class MemberUpdateProfile_imgController
 		// 2. MultipartRequest객체로 id, 파일정보를 받아 upPath에 파일을 등록한다.
 		// 해당파일 정보를 filereader로 읽어들이고 변수에 담아둔다.
 		// 기존에 등록된 파일을 삭제하고, id.jpg로 등록한다.
+		
+		
+		
+		
+		
+		
 		MultipartRequest mr = null;
 		String upPath = req.getServletContext().getRealPath("/profile_img/"); //
+		File file = new File(upPath);
+		if(file.exists()){}else{
+			if(file.mkdirs()){
+				System.out.println("생성됨");
+			}
+		}
+		
 		String id = "", profile_img = "";
 		try
 		{

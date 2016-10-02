@@ -1,6 +1,7 @@
 package fileboard.controller;
 
 import java.io.File;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,16 +15,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import fileboard.db.FILEBoardDAO;
+import fileboard.db.FILEBoardDTO;
+import member.db.MemberDAO;
+import member.db.MemberDTO;
 
 @Controller
 public class FILEBoardListController {
 	
 	@Autowired
 	private FILEBoardDAO fileBoardDAO;
+	private MemberDAO memberDAO;
+	
 	
 	@RequestMapping(value="/fileboard_list.do")
 	public ModelAndView file_list(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
-		int pageSize = 10;
+		int pageSize = 4;
 		String pageNum = arg0.getParameter("pageNum");
 		if(pageNum == null){
 			pageNum = "1";
@@ -48,7 +54,7 @@ public class FILEBoardListController {
 		List list = fileBoardDAO.listBoard(startRow, endRow);
 		
 		HttpSession session = arg0.getSession();
-		String upPath = arg0.getServletContext().getRealPath("WEB-INF/customer/fileboard/files/");
+		String upPath = arg0.getServletContext().getRealPath("fileboard_files/");
 		session.setAttribute("upPath", upPath);
 		
 		System.out.println(upPath);
@@ -75,7 +81,7 @@ public class FILEBoardListController {
 		String id = ServletRequestUtils.getStringParameter(arg0, "id");
 		String fileName = ServletRequestUtils.getStringParameter(arg0, "fileName");
 		
-		String upPath = arg0.getServletContext().getRealPath("/WEB-INF/customer/fileboard/files/"+id);
+		String upPath = arg0.getServletContext().getRealPath("/fileboard_files/"+id);
 		File file = new File(upPath+"/"+fileName);
 		
 		boolean delResult = file.delete();

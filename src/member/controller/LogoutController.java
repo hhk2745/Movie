@@ -20,7 +20,7 @@ public class LogoutController
 		HttpSession session = req.getSession();
 		session.invalidate();
 		
-		return new ModelAndView("WEB-INF/member/memberLoginForm.jsp");
+		return new ModelAndView("back.jsp");
 	}
 
 }

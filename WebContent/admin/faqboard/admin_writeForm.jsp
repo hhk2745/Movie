@@ -59,7 +59,7 @@
 					
 						<input type="submit" value="질문등록">
 						<input type="reset" value="다시쓰기">
-						<input type="button" value="목록보기" onClick="window.location='admin_faqboard_list.do'">
+						<input type="button" value="목록보기" onClick="window.location='admin_faqboard_list.do?mode=전체'">
 					</td>
 				</tr>
 			</table>

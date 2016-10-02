@@ -7,7 +7,12 @@
 		alert("ID,PW를 다시 확인해 주세요.");
 	</script>
 </c:if>
-
+<c:if test="${!empty loginId}">
+	<script type="text/javascript">
+		alert("로그인 상태입니다.");
+		location.href="index.do";
+	</script>
+</c:if>
 <c:if test="${param.mode eq 'serchID' }">
 	<c:if test="${empty serchID}">
 		<script type="text/javascript">

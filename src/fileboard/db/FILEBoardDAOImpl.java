@@ -9,6 +9,16 @@ import fileboard.mybatis.SimpleExample;
 public class FILEBoardDAOImpl implements FILEBoardDAO {
 	
 	@Override
+	public int profileSetting(String id){
+		return SimpleExample.profileSetting(id);
+	}
+	
+	@Override
+	public List all(){
+		return SimpleExample.all();
+	}
+	
+	@Override
 	public List listBoard(int startRow, int endRow) {
 		HashMap map = new HashMap();
 		map.put("startRow", startRow);
@@ -54,7 +64,6 @@ public class FILEBoardDAOImpl implements FILEBoardDAO {
 		map.put("content", dto.getContent());
 		map.put("fileName", dto.getFileName());
 		map.put("likeCount", dto.getLikeCount());
-		System.out.println(dto);
 		SimpleExample.updateBoard(map);
 	}
 
@@ -62,5 +71,5 @@ public class FILEBoardDAOImpl implements FILEBoardDAO {
 	public List searchBoard(String id) throws SQLException {
 		return SimpleExample.searchBoard(id);
 	}
-	
+
 }

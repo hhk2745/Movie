@@ -26,6 +26,17 @@ a {
 	color: inherit;
 }
 </style> 
+
+<c:if test="${empty id }">
+	<script type="text/javascript">
+		alert("관리자용 페이지 입니다.");
+		location.href ="index.do";
+	
+	</script>
+</c:if>  
+
+
+
 <c:if test="${not empty msg}">
 	<script type="text/javascript">
 		alert("${msg}");
@@ -48,7 +59,7 @@ a {
 	<a href="admin_theater.do">
 		<li class="hover effect4"><span>극장관리</span></li>
 	</a>
-	<a href="admin_sales.do">
+	<a href="admin_sell_month.do">
 		<li class="hover effect4"><span>매출관리</span></li>
 	</a>
 	<a href="admin_board.do">

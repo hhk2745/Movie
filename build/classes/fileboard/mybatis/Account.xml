@@ -5,6 +5,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="fileboard.mybatis.Account">
 
+	<update id="FILEprofileSetting" parameterType="String">
+		update fileboard set profile_state='no' where id=#{id}
+	</update>
+
+	<select id="FILEall" resultType="FILEBoardDTO">
+		select * from fileboard
+	</select>
+
 	<select id="FILElistBoard" parameterType="HashMap" resultType="FILEBoardDTO">
 		  select * from (select rownum rn, A.* from (select * from fileboard order by num desc)A) where rn between #{startRow} and #{endRow}
 	</select>
@@ -14,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="FILEinsertBoard" parameterType="HashMap">
-		insert into fileboard values(fileboard_seq.nextval, #{id}, #{content}, sysdate, #{fileName}, 0)
+		insert into fileboard values(fileboard_seq.nextval, #{id}, #{content}, sysdate, #{fileName}, 0, null)
 	</insert> 
 	
 	<delete id="FILEdeleteBoard" parameterType="int">

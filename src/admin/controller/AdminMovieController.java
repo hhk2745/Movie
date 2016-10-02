@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -84,33 +86,66 @@ public class AdminMovieController {
 		mav.setViewName("admin/movie/admin_movie.jsp");
 		return mav;
 	}
-	 // 영화리스트보기
-	   @RequestMapping(value = "/client_movie_all.do")
-	   public ModelAndView client_movie_all(HttpServletRequest req, HttpServletResponse resp) {
-	      ModelAndView mav = new ModelAndView();
-	      List list = null;
-	      list = movieDAO.getList("all");
-	      List allReplyList = movieDAO.allReply();
-	//     String upPath = req.getServletContext().getRealPath("/poster");
-	      try {
-        	  SimpleDateFormat format1 = new SimpleDateFormat("yyyy/MM/dd");
-        	  SimpleDateFormat format2 = new SimpleDateFormat("20yy");
-        	  for(Iterator it = list.iterator(); it.hasNext();){
-        		  Movie_infoDTO dto = (Movie_infoDTO)it.next();
-        		  String date = format2.format(format1.parse(dto.getOpendate()));
-        		  String str = dto.getTitle()+"("+date+")";
-        		  dto.setFile_directory(str);
-        	  }
+	// 영화리스트보기
+	@RequestMapping(value = "/client_movie_all.do")
+	public ModelAndView client_movie_all(HttpServletRequest req, HttpServletResponse resp) {
+		ModelAndView mav = new ModelAndView();
+
+		int pageSize = 6;
+		int pageBlock = 3;
+
+		String pageNum = req.getParameter("pageNum");
+
+		if (pageNum == null) {
+			pageNum = "1";
+		}
+		System.out.println("pageNum : " + pageNum);
+
+		int currentPage = Integer.parseInt(pageNum);
+		int startRow = pageSize * (currentPage - 1) + 1;
+		int endRow = startRow + pageSize - 1;
+
+		int count = 0;
+		System.out.println("movieDAO.movieGetCount() before count : " + count);
+		count = movieDAO.movieGetCount();// ?
+
+		if (endRow > count) {
+			endRow = count;
+		}
+
+
+		List list = movieDAO.movieList_admin(startRow, endRow);
+
+		List allReplyList = movieDAO.allReply(); // 한줄평
+		// String upPath = req.getServletContext().getRealPath("/poster");
+		try {
+			SimpleDateFormat format1 = new SimpleDateFormat("yyyy/MM/dd");
+			SimpleDateFormat format2 = new SimpleDateFormat("20yy");
+			for (Iterator it = list.iterator(); it.hasNext();) {
+				Movie_infoDTO dto = (Movie_infoDTO) it.next();
+				String date = format2.format(format1.parse(dto.getOpendate()));
+				String str = dto.getTitle() + "(" + date + ")";
+				dto.setFile_directory(str);
+			}
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	      
-	      mav.addObject("allReplyList", allReplyList);
-	      mav.addObject("allmovieList", list);
-	      mav.setViewName("client/movie_all.jsp");
-	      return mav;
-	   }
+		System.out.println("currentPage: " + currentPage);
+		System.out.println("startRow: " + startRow);
+		System.out.println("endRow: " + endRow);
+		System.out.println("count: " + count);
+		mav.addObject("pageSize", pageSize);
+		mav.addObject("startPage", (currentPage - 1) / pageBlock * pageBlock + 1);
+		mav.addObject("pageBlock", pageBlock);
+		mav.addObject("pageCount", count / pageSize + (count % pageSize == 0 ? 0 : 1));
+		mav.addObject("Godcount", count);
+		mav.addObject("currentPage", currentPage);
+		mav.addObject("allReplyList", allReplyList);
+		mav.addObject("allmovieList", list);
+		mav.setViewName("client/movie_all.jsp");
+		return mav;
+	}
 	   @RequestMapping(value = "/client_movie_due.do")
 	   public ModelAndView client_movie_due(HttpServletRequest req, HttpServletResponse resp) {
 	      ModelAndView mav = new ModelAndView();
@@ -212,6 +247,7 @@ public class AdminMovieController {
 			
 			String pageNum = req.getParameter("pageNum");
 			String upPath = req.getServletContext().getRealPath("/poster");
+			Calendar today = Calendar.getInstance();
 			if (pageNum == null)
 			{
 				pageNum = "1";
@@ -232,18 +268,31 @@ public class AdminMovieController {
 			dto = movieDAO.getMovie(num);
 			replyList = movieDAO.listReply(num,startRow,endRow);
 			
-			
+			int todayYear = today.get(Calendar.YEAR);
+			int todayMonth = today.get(Calendar.MONTH)+1;
+			int todayDay = today .get(Calendar.DATE);
+			Date now = null;
+			Date closeDate=null;
+			int compare=1;
 			try {
-	        	  SimpleDateFormat format1 = new SimpleDateFormat("yyyy/MM/dd");
+	        	  SimpleDateFormat format1 = new SimpleDateFormat("yy/MM/dd");
 	        	  SimpleDateFormat format2 = new SimpleDateFormat("20yy");
 	        	  String date = format2.format(format1.parse(dto.getOpendate()));
         		  String str = dto.getTitle()+"("+date+")";
         		  dto.setFile_directory(str);
 	              System.out.println(str);
+	              System.out.println("20"+dto.getClosedate());
+	              now = format1.parse(todayYear+"/"+todayMonth+"/"+todayDay);
+	              closeDate = format1.parse("20"+dto.getClosedate());
+	              
+	              compare = now.compareTo(closeDate);
+	              System.out.println(compare);
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			mav.addObject("compare", compare);
 			mav.addObject("openDate", openDate);
 			mav.addObject("upPath", upPath);
 			mav.addObject("pageSize", pageSize);
@@ -265,21 +314,45 @@ public class AdminMovieController {
 		@RequestMapping(value="/admin_movie_replyDelete.do",method=RequestMethod.GET)
 		public ModelAndView admin_movie_replyDelete(HttpServletRequest req,HttpServletResponse resp){
 			ModelAndView mav = new ModelAndView();
-			
+			String mode = req.getParameter("mode");
 			int num = Integer.parseInt(req.getParameter("num"));
-			int movieNum = Integer.parseInt(req.getParameter("movieNum"));
-			
+			String url2 = req.getHeader("referer");
+			System.out.println(url2);
+/*			String url3[] =url2.split("[?]");
+			if(url3.length>1){
+				url2 = url3[0];
+			}*/
+				
 			String msg=null;
-			String url="/admin_movie_detail.do?num="+movieNum; //뒤로가기 location??
+			String url=null;
+			if(mode.equals("admin")){
+				int movieNum = Integer.parseInt(req.getParameter("movieNum"));
+				url="/admin_movie_detail.do?num="+movieNum; //뒤로가기 location??
+			}if(mode.equals("all")){
+				url="/client_movie_all.do";
+				System.out.println("삭제성공");
+			}
+			if(mode.equals("now")){
+				url="/client_movie_now.do";
+				System.out.println("삭제성공");
+			}else if(mode.equals("box")){
+				url="/client_movie_box.do";
+				System.out.println("삭제성공");
+			}else if(mode.equals("due")){
+				url="/client_movie_due.do";
+				System.out.println("삭제성공");
+			}
 			
 			
 			int res = movieDAO.deleteReply(num);
 			if(res>0){
 			}else{
 				msg="한줄평 삭제 실패!!";
+				mav.addObject("msg", msg);
+				System.out.println("삭제실패");
 			}
 			
-			mav.addObject("msg", msg);
+			
 			mav.setViewName(url);
 			
 			return mav;
@@ -406,13 +479,15 @@ public class AdminMovieController {
 	      } else {
 	         msg = "등록 실패!!";
 	         url = "/admin_movie_insert.do";
+	         mav.addObject("msg", msg);
 	      }
 
-	      mav.addObject("msg", msg);
+	      
 	      mav.setViewName(url);
 
 	      return mav;
 	   }
+	   
 	/*//영화리스트보기
 	
 	@RequestMapping(value="/client_movie_due.do")

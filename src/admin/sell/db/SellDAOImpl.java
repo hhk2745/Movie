@@ -1,6 +1,8 @@
 package admin.sell.db;
 
 
+import java.util.Map;
+
 import admin.sell.mybatis.SimpleExample;
 
 
@@ -24,6 +26,18 @@ public class SellDAOImpl implements SellDAO{
 	public int countMovies(String title) {
 		// TODO Auto-generated method stub
 		return SimpleExample.countingMovies(title);
+	}
+	
+	@Override
+	public int sellMode(String mode, String date) {
+		// TODO Auto-generated method stub
+		return SimpleExample.sellMode(mode, date);
+	}
+	
+	@Override
+	public int sellMovieMode(String mode, Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return SimpleExample.sellMovieMode(mode, map);
 	}
 
 }

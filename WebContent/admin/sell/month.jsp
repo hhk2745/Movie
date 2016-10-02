@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../admin_top.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" type="text/css" href="admin/sell/vGraph.css"/>
 
 
@@ -17,9 +18,9 @@
 <tr><td align="center" width="100%">
 
 <div class="vGraph">
-	<ul>
+	<ul class="submenuBox">
 	<c:forEach var="month" items="${monthmap }">
-		<li><span class="gTerm">${month.key } 월</span><span class="gBar" style="height: ${(month.value /100)}"><span>${month.value} (원) </span></span></li>
+		<li><span class="gTerm">${month.key } 월</span><span class="gBar" style="height: ${(month.value /100)}"><c:if test="${month.value!=0}">${month.value} (원)</c:if></span></li>
 	</c:forEach>
 	</ul>
 </div>

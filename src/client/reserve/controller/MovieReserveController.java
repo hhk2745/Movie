@@ -52,8 +52,9 @@ public class MovieReserveController {
 		SimpleDateFormat format1 = new SimpleDateFormat("yyyy/MM/dd");
   	  	SimpleDateFormat format2 = new SimpleDateFormat("20yy");
   	  
-		List<Movie_infoDTO> list = movieDAO.getList("now");
-		
+	//	List<Movie_infoDTO> list = movieDAO.getList("now");
+  	  List<Movie_infoDTO> list = ticketDAO.getMovieList();
+		 
 		for(Iterator it = list.iterator();it.hasNext();){
 			Movie_infoDTO dto = (Movie_infoDTO)it.next();
 			String date = format2.format(format1.parse(dto.getOpendate()));
@@ -171,7 +172,7 @@ public class MovieReserveController {
 		}
 		System.out.println(movieDTO.getGrade()>age);
 		
-		if(movieDTO.getGrade()>19){
+		if(movieDTO.getGrade()>17){
 			String adult="adult";
 			mav.addObject("adult",adult);
 		}
@@ -305,7 +306,16 @@ public class MovieReserveController {
 			
 			System.out.println("돈 -- ");
 			int res = ticketDAO.downMoney(mdto.getId(), pay);
-			//upPoint
+			int pointRes=0;
+			if(res>0){
+				pointRes =  memberDAO.upPoint(mdto.getId(),Integer.parseInt(count));
+			}
+			
+			if(pointRes>0){
+				System.out.println("포인트 1000이 추가되었습니다.");
+			}else{
+				System.out.println("포인트 추가실패!!");
+			}
 			
 			System.out.println("res" +res);
 			System.out.println(mdto.getId()+ " / " + pay);
@@ -338,10 +348,11 @@ public class MovieReserveController {
 			mav.setViewName("index.jsp");
 		}
 		else if(ChkStr == false){
-			System.out.println("잔액이 부족합니다.");
+			System.out.println("ㅠㅠ");
 			String msg = "잔액이 부족합니다 ";
-			mav.addObject("msg", msg);
+			mav.addObject("msg",msg);
 			mav.setViewName("index.jsp");
+			
 		}
 		
 		

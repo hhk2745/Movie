@@ -28,7 +28,7 @@
 <c:set var="num" value="${num}" />
 <c:choose>
 	<c:when test="${empty dto}">
-		<c:redirect url="admin_faqboard_list.do" />
+		<c:redirect url="admin_faqboard_list.do?mode=전체" />
 	</c:when>
 	<c:otherwise>
 
@@ -67,7 +67,7 @@
 		
 		<input type="submit" value="수정완료">
 		<input type="reset" value="다시작성">
-		<input type="button" value="목록보기" onclick="location.href='admin_faqboard_list.do'">
+		<input type="button" value="목록보기" onclick="location.href='admin_faqboard_list.do?mode=전체'">
 		</td>
 	</tr>
 </table>

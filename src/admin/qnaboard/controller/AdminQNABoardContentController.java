@@ -23,12 +23,8 @@ public class AdminQNABoardContentController {
 		ModelAndView mav = new ModelAndView();
 		
 		int num = ServletRequestUtils.getIntParameter(arg0, "num");
-		/*int re_step = ServletRequestUtils.getIntParameter(arg0, "re_step");
-		int re_level = ServletRequestUtils.getIntParameter(arg0, "re_level");*/
 		
 		AdminQNABoardDTO dto = adminQNABoardDAO.admin_getBoard(num);
-		/*dto.setRe_step(re_step);
-		dto.setRe_level(re_level);*/
 		
 		mav.addObject("QNAboardDTO", dto);
 		mav.setViewName("admin/qnaboard/admin_content.jsp");

@@ -6,80 +6,91 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script language="JavaScript" src="js/calendar.js"></script>
 <script type="text/javascript">
-	function checkEmpty(){
-		if (f.title.value==""){
-			alert("제목을 입력해 주세요!!");
-			f.title.focus();
-			return false;
-		}
-		if (f.genre.value==""){
-			alert("장르를 입력해 주세요!!");
-			f.genre.focus();
-			return false;
-		}
-		if (f.grade.value==""){
-			alert("제한연령 입력해 주세요!!");
-			f.grade.focus();
-			return false;
-		}
-		if (f.country.value==""){
-			alert("국가를 입력해 주세요!!");
-			f.country.focus();
-			return false;
-		}
-		if (f.country.value==""){
-			alert("국가를 입력해 주세요!!");
-			f.country.focus();
-			return false;
-		}
-		if (f.opendate.value==""){
-			alert("개봉일을 입력해 주세요!!");
-			f.opendate.focus();
-			return false;
-		}
-		if (f.director.value==""){
-			alert("영화감독을 입력해 주세요!!");
-			f.director.focus();
-			return false;
-		}
-		if (f.actor.value==""){
-			alert("영화배우를 입력해 주세요!!");
-			f.actor.focus();
-			return false;
-		}
-		if (f.runtime.value==""){
-			alert("상영시간을 입력해 주세요!!");
-			f.runtime.focus();
-			return false;
-		}
-		if (f.movie_info.value==""){
-			alert("영화정보를 입력해 주세요!!");
-			f.movie_info.focus();
-			return false;
-		}
-		
-		return true;
-	}
+   function checkEmpty(){
+      if (f.title.value==""){
+         alert("제목을 입력해 주세요!!");
+         f.title.focus();
+         return false;
+      }
+      if (f.genre.value==""){
+         alert("장르를 입력해 주세요!!");
+         f.genre.focus();
+         return false;
+      }
+      if (f.grade.value==""){
+         alert("제한연령 입력해 주세요!!");
+         f.grade.focus();
+         return false;
+      }
+      if (f.country.value==""){
+         alert("국가를 입력해 주세요!!");
+         f.country.focus();
+         return false;
+      }
+      if (f.country.value==""){
+         alert("국가를 입력해 주세요!!");
+         f.country.focus();
+         return false;
+      }
+      if (f.opendate.value==""){
+         alert("개봉일을 입력해 주세요!!");
+         f.opendate.focus();
+         return false;
+      }
+      if (f.director.value==""){
+         alert("영화감독을 입력해 주세요!!");
+         f.director.focus();
+         return false;
+      }
+      if (f.actor.value==""){
+         alert("영화배우를 입력해 주세요!!");
+         f.actor.focus();
+         return false;
+      }
+      if (f.runtime.value==""){
+         alert("상영시간을 입력해 주세요!!");
+         f.runtime.focus();
+         return false;
+      }
+      if (f.movie_info.value==""){
+         alert("영화정보를 입력해 주세요!!");
+         f.movie_info.focus();
+         return false;
+      }
+      function showKeyCode(event) {
+         event = event || window.event;
+         var keyID = (event.which) ? event.which : event.keyCode;
+         if( ( keyID >=48 && keyID <= 57 ) || ( keyID >=96 && keyID <= 105 ) || keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 )
+         {
+            return;
+         }
+         else
+         {
+            return false;
+         }
+      }
+      return true;
+   }
 </script>
 <div align="center">
-	<ul class="submenuBox">
-		<a href="admin_movie.do">
-			<li class="subHover effect">
-				<span>영화리스트</span>
-			</li>
-		</a>
-		<a href="admin_movie_insert.do">
-			<li class="subHover effect">
-				<span>영화추가</span>
-			</li>
-		</a>
-		<!-- <a>
-			<li class="subHover effect">
-				<span>+</span>
-			</li>
-		</a> -->
-	</ul>
-	<form name="f" action="admin_movie_update.do" method="post" onsubmit="return checkEmpty()"
+   <ul class="submenuBox">
+      <a href="admin_movie.do">
+         <li class="subHover effect">
+            <span>영화리스트</span>
+         </li>
+      </a>
+      <a href="admin_movie_insert.do">
+         <li class="subHover effect">
+            <span>영화추가</span>
+         </li>
+      </a>
+      <!-- <a>
+         <li class="subHover effect">
+            <span>+</span>
+         </li>
+      </a> -->
+   </ul>
+   <form name="f" action="admin_movie_update.do" method="post" onsubmit="return checkEmpty()"
    enctype="multipart/form-data">
    <input type="hidden" name="num" value="${movieDTO.num}" >
    <%-- <c:set var="dto" value="${MemberDTO}"> --%>
@@ -142,13 +153,13 @@
                <script type="text/javascript" src="/js/calendar.js"
                   charset='EUC-KR'></script>
             </form>
-			
+         
          </td>
 
       </tr>
       <tr>
          <th class="m2">*상영시간</th>
-         <td align="left"><input type="text" name="runtime" value="${movieDTO.runtime }" > 단위:
+         <td align="left"><input type="text" name="runtime" value="${movieDTO.runtime }" onkeydown="return showKeyCode(event)"> 단위:
             분</td>
       </tr>
       <!-- <tr>

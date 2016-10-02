@@ -3,7 +3,7 @@
 <!-- admin_board.jsp -->
 <%@ include file="admin_top.jsp"%>
 <ul class="submenuBox">
-	<a href="admin_faqboard_list.do">
+	<a href="admin_faqboard_list.do?mode=전체">
 		<li class="subHover effect"><span>FAQ게시판</span></li>
 	</a>
 	<a href="admin_qnaboard_list.do">

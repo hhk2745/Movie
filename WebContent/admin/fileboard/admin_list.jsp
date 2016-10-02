@@ -4,11 +4,32 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>    
 <%@ include file="../admin_top.jsp"%>
 
-	<table border="1" width="100%">
+<c:if test="${!empty result && result eq true}">
+	<script>
+		window.open("admin_imgOpen.do?id=${id}&fileName=${fileName}", "", "width=1000, height=500, left=100, top=100"); 
+	</script>
+</c:if>
+
+<ul class="submenuBox">
+	<a href="admin_faqboard_list.do?mode=전체">
+		<li class="subHover effect"><span>FAQ게시판</span></li>
+	</a>
+	<a href="admin_qnaboard_list.do">
+		<li class="subHover effect"><span>QNA게시판</span></li>
+	</a>
+	<a href="admin_fileboard_list.do">
+		<li class="subHover effect"><span>File게시판</span></li>
+	</a>
+	<a href="admin_category_list.do">
+		<li class="subHover effect"><span>카테고리 관리</span></li>
+	</a>
+</ul>
+
+	<table width="100%">
 	<tr>
 		<td colspan="2">
 			<div align="center">
-				<b>일반 게시판</b>
+				<b>파일 게시판</b>
 				<table width="90%" class="ex1">
 				</table>
 			</div>
@@ -30,7 +51,14 @@
 					<table border="1" width="30%" height="30%">
 						<tr>
 							<td width="10">
-								<img src="img/logo.png" width="60" height="60">
+								<c:choose>
+									<c:when test="${dto.profile_state eq 'no'}">
+										<img src="img/profile.png" width="60" height="60">
+									</c:when>
+									<c:otherwise>
+										<img src="<c:url value="/profile_img/${dto.id}.jpg"/>" width="60" height="60">
+									</c:otherwise>
+								</c:choose>
 							</td>
 							<th align="center" valign="top">${dto.id}</th>
 								<td align="center">
@@ -46,16 +74,10 @@
 						</tr>
 						<tr>
 							<td colspan="3" align="center">
-								<img src="${upPath}${dto.fileName}">
-								<%-- <c:out value="${upPath}${dto.fileName}"></c:out> --%>
-								<%-- <c:out value="${upPath}${dto.fileName}"></c:out> --%>
-								<%-- "${pageContext.request.contextPath}/img/sitImg/out.png" --%>
-								<%-- <c:out value="${pageContext.request.contextPath}"></c:out> --%>
-								<%-- <img src="${imgUpPath}${dto.fileName}"> --%>
-								<%-- <img src="<img src="<c:url value="/images/tomcat.gif"/>">"> --%>
-								<%-- <img src="${pageContext.request.contextPath}"> --%>
-								<%-- <img src="<c:url value='/WebContent/WEB-INF/customer/fileboard/files/ony.PNG'/>"> --%>
-								<%-- <c:out value="${pageContext.request.contextPath}/WebContent/WEB-INF/customer/fileboard/files/ony.PNG"></c:out> --%>
+								<a href="admin_img.do?id=${dto.id}&fileName=${dto.fileName}">
+									<img src="<c:url value="/fileboard_files/${dto.id}/${dto.fileName}" />" 
+										width="200px" height="200px" title="클릭하시면 원본 크기로 보실 수 있습니다." >
+								</a>
 							</td>
 						</tr>
 					</table>

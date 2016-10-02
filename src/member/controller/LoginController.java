@@ -48,14 +48,15 @@ public class LoginController
 				mav.setViewName("admin/admin_main.jsp");
 				HttpSession session = req.getSession();
 				session.setAttribute("loginId", dto);
-				return mav;
+				session.setAttribute("id", "admin");
 			}
-			mav.setViewName("index.jsp");
+			else{
+			mav.setViewName("back.jsp");
 			HttpSession session = req.getSession();
 			session.setAttribute("loginId", dto);
-
-			return mav;
+}
 		}
+		return mav;
 	}
 
 }

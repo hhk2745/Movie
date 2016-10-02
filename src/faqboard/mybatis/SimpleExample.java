@@ -43,10 +43,17 @@ public class SimpleExample {
 
   public static List listBoard(HashMap map){
 	  SqlSession session = sqlMapper.openSession();
-	  List list = session.selectList("FAQlistBoard",map);
+	  List list = session.selectList("FAQlistBoard", map);
 	  session.close();
 	  return list;
 
+  }
+  
+  public static List allListBoard(HashMap map){
+	  SqlSession session = sqlMapper.openSession();
+	  List list = session.selectList("FAQallListBoard", map);
+	  session.close();
+	  return list;
   }
 
   public static FAQBoardDTO getBoard(int num){

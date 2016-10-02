@@ -7,6 +7,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<!-- ================ Client ================ -->
+	<select id="allMember" resultType="MemberDTO">
+		select * from member
+	</select>
+	
 	<select id="checkMember" parameterType="HashMap" resultType="MemberDTO">
 		select * from member where name=#{name} and ssn=#{ssn} and hp=#{hp}
 	</select>
@@ -49,6 +53,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    	<select id="idCheck" parameterType="String" resultType="MemberDTO">
    		select * from member where id=#{id}
    	</select>
+   	
+   	<update id="upPoint" parameterType="int">
+		update member set point = point+1000 where id = #{id}
+   	</update>
+   	
+   	<update id="downPoint" parameterType="int">
+		update member set point = point-1000 where id = #{id}
+   	</update>
 	
 	<!-- ================ Admin ================ -->
 	<select id="memberGetCount" resultType="int">

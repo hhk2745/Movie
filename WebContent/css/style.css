@@ -18,6 +18,30 @@ ul {
 	margin-right: auto;
 }
 
+/*
+
+bootstrap template - login-form Template
+
+*/
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+* { font-family: 'Nanum Gothic', sans-serif; }
+
+.spaceLeft {
+  margin-left: 10px;
+}
+.spaceRight {
+  margin-right: 10px;
+}
+
+/* custom checkbox */
+.btn span.fa {
+	opacity: 0;
+}
+.btn.active span.fa {
+	opacity: 1;
+}
+
+
 /* 이미지를 담고 있는 요소 (슬라이딩 되는 요소)*/
 div#view {
 	height: 346px;
@@ -62,6 +86,7 @@ td, input, select, textarea, p, th {
 	font-size: 16px;
 	font-family: fantasy;
 	color: black;
+	padding:0;
 }
 
 left

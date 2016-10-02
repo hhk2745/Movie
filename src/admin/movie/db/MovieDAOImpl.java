@@ -59,7 +59,11 @@ public class MovieDAOImpl implements MovieDAO {
 		
 		return dto;
 	}
-
+	@Override
+	public List nowMonthMovie(String date) {
+		// TODO Auto-generated method stub
+		return SimpleExample.nowMonthMovie(date);
+	}
 	@Override
 	public int insertMovie(Movie_infoDTO dto) {
 		// TODO Auto-generated method stub
@@ -119,9 +123,9 @@ public class MovieDAOImpl implements MovieDAO {
 	}
 
 	@Override
-	public void updateClose(int num , String date) {
+	public int updateClose(int num) {
 		// TODO Auto-generated method stub
-		SimpleExample.updateClose(num, date);
+		return SimpleExample.updateClose(num);
 	}
 	//영화 한줄평
 	
@@ -158,6 +162,11 @@ public class MovieDAOImpl implements MovieDAO {
 	      res=SimpleExample.insertReply(dto);
 	      return res;
 	 }
+	@Override
+	public List nowSchedule(String day) {
+		// TODO Auto-generated method stub
+		return SimpleExample.nowSchedule(day);
+	}
 	
 }
 

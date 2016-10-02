@@ -32,6 +32,13 @@ public class SimpleExample
 	}
 
 	/* Client */
+	public static List all(){
+		SqlSession session = sqlMapper.openSession();
+		List list = session.selectList("allMember");
+		session.close();
+		return list;
+	}
+	
 	public static MemberDTO checkMember(String name, String ssn, String hp)
 	{
 		SqlSession session = sqlMapper.openSession();
@@ -63,6 +70,28 @@ public class SimpleExample
 
 		MemberDTO dto = (MemberDTO) session.selectOne("getMember", map);
 		return dto;
+	}
+	
+	public static int upPoint(String id,int count)
+	{
+		SqlSession session = sqlMapper.openSession();
+		int res = 0;
+		for(int i =0; i<count;i++){
+			res = session.update("upPoint", id);
+		}
+		session.commit();
+		session.close();
+		return res;
+	}
+	
+	public static int downPoint(String id)
+	{
+		SqlSession session = sqlMapper.openSession();
+		
+		int res = session.update("downPoint", id);
+		session.commit();
+		session.close();
+		return res;
 	}
 
 	/* Admin */

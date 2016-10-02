@@ -21,4 +21,5 @@ public interface TicketDAO {
 	public int upSpaceSit(String day,String time,String theaternum);
 	public int upMoney(String id, int pay);
 	public int downMoney(String id, int total);
+	public List getMovieList();
 }

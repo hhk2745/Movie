@@ -70,6 +70,13 @@ private static SqlSessionFactory sqlMapper;
 	  session.close();
 	  return res;
   }
+  public static int updateCloseMovie(int num){
+	  SqlSession session = sqlMapper.openSession();
+	  int res = session.update("updateCloseMovie",num);
+	  session.commit();
+	  session.close();
+	  return res;
+  }
   //스케줄 최신화
   public static int deleteSchedule(){
 	  SqlSession session = sqlMapper.openSession();

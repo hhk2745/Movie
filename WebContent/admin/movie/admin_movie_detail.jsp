@@ -66,7 +66,7 @@
 		</tr>
 		<tr>
 			<td align="right" colspan="4" bgcolor="#ffdab9">
-				<%-- <input type="button" value="스케줄링" onclick="window.location='admin_schedule.do?title=${movieDTO.title}'"> --%>
+				<c:if test="${compare<0}"><input type="button" value="스케줄링" onclick="window.location='admin_movie_closeDate.do?num=${movieDTO.num}'"></c:if>
 				<input type="button" value="영화수정" onclick="window.location='admin_movie_update.do?num=${movieDTO.num}'">
 				<input type="button" value="영화삭제" onclick="window.location='admin_movie_delete.do?num=${movieDTO.num}'">
 			</td>
@@ -86,16 +86,14 @@
 			<th align="center">날짜</th>
 			<th align="center">삭제</th>
 		</tr>
-		<c:choose>
+			<c:choose>
 				<c:when test="${endRow>count}">
 					<c:set var="endRow" value="${count}"/>
-					<c:choose>
-						<c:when test="${empty replyList}">
+						<c:if test="${empty replyList}">
 							<tr>
-								<td colspan="6">등록된 글이 없습니다.</td>
+								<td colspan="5">등록된 글이 없습니다.</td>
 							</tr>
-						</c:when>
-					</c:choose>
+						</c:if>
 				</c:when>
 			</c:choose>
 			<!-- @@@@@ -->
@@ -106,7 +104,7 @@
 					<td>${dto.reply}</td>
 					<td>${dto.reg_date}</td>
 					<td>
-						<a href="admin_movie_replyDelete.do?num=${dto.num}&movieNum=${movieDTO.num}">삭제</a>
+						<a href="admin_movie_replyDelete.do?num=${dto.num}&movieNum=${movieDTO.num}&mode=admin">삭제</a>
 					</td>
 				</tr>
 			</c:forEach>

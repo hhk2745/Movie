@@ -7,12 +7,13 @@ public interface MovieDAO {
 	public int movieGetCount();
 	public List getList(String mode);		// 1. 전체  2. 상영중인 영화  3. 상영예정 영화  4. 상영종료 영화  5. 박스오피스  
 	public List DayToList(String date);		// 해당날짜에 대한 영화 리스트(예매할때 필요)
+	public List nowSchedule(String day);
 	public Movie_infoDTO getMovie(int num);		// num으로 영화 정보 불러오기
 	public int insertMovie(Movie_infoDTO dto);	// 영화 추가
 	public int updateMovie(Movie_infoDTO dto);	// 영화 수정
 	public int updateLike_num(int num);	// 추천 누르면 num 으로 영화 정보 불러와서  update  like_num  +1 
 	public List searchMovie(String search, String searchStr); // search는 영화 제목
-	
+	public List nowMonthMovie(String date);
 	///////////////////////////////////////////기본 영화 table/////////////////////////////////////
 	
 	public int insertStillcut(Movie_urlDTO dto); // 스틸컷 경로 추가
@@ -23,7 +24,7 @@ public interface MovieDAO {
 	public void upCount(int num);	// 영화 번호를 받아서 예매 할 때  카운트 +1 
 	public void downCount(int num);	// 영화 번호를 받아서 예매 취소 시 카운트 -1
 	
-	public void updateClose(int num,String date);	// 영화 번호를 받아서 update  closedate :sysdate 
+	public int updateClose(int num);	// 영화 번호를 받아서 update  closedate :sysdate 
 	public List listReply(int movieNum,int startRow,int endRow);
 	public int deleteReply(int num);
 	public int replyGetCount();

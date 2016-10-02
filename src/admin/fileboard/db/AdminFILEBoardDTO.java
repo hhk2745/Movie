@@ -2,9 +2,16 @@ package admin.fileboard.db;
 
 public class AdminFILEBoardDTO {
 	int num, likeCount;
-	String id, content, reg_date, fileName;
+	String id, content, reg_date, fileName, profile_state;
 	
 	
+	
+	public String getProfile_state() {
+		return profile_state;
+	}
+	public void setProfile_state(String profile_state) {
+		this.profile_state = profile_state;
+	}
 	public int getNum() {
 		return num;
 	}

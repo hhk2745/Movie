@@ -26,13 +26,9 @@ public class QNABoardContentController {
 		ModelAndView mav = new ModelAndView();
 		
 		int num = ServletRequestUtils.getIntParameter(arg0, "num");
-//		int re_step = ServletRequestUtils.getIntParameter(arg0, "re_step");
-//		int re_level = ServletRequestUtils.getIntParameter(arg0, "re_level");
 		String recipient = ServletRequestUtils.getStringParameter(arg0, "recipient");
 		
 		QNABoardDTO dto = qnaBoardDAO.getBoard(num);
-//		dto.setRe_step(re_step);
-//		dto.setRe_level(re_level);
 		dto.setRecipient(recipient);
 		
 		mav.addObject("QNAboardDTO", dto);

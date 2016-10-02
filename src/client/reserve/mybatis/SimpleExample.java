@@ -230,6 +230,13 @@ public class SimpleExample {
 		session.close();
 		return res;
 	}
-	
+	public static List getMovieList() {
+		SqlSession session = sqlMapper.openSession();
+		List list = null;
+		list = session.selectList("getMovieList");
+		session.close();
+		return list;
+	}
+
 	
 }

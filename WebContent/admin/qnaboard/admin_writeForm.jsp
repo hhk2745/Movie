@@ -34,17 +34,6 @@
 				<tr bgcolor="yellow">
 					<th colspan="2">문의 답변</th>
 				</tr>
-				<%-- <tr>
-					<th bgcolor="yellow">문의유형</th>
-					<td>
-						<select name="category">
-							<option value="default" selected>선택하세요.</option>
-							<c:forEach var="dto" items="${categoryList}">
-								<option value="${dto.category_num}">${dto.category_title}</option>
-							</c:forEach>
-						</select>
-					</td>
-				</tr> --%>
 				<tr>
 					<th bgcolor="yellow">제목</th>
 					<td><input type="text" name="title" size="60"></td>
@@ -53,10 +42,6 @@
 					<th bgcolor="yellow">내용</th>
 					<td><textarea name="content" cols="60" rows="10"></textarea></td>
 				</tr>
-				<!-- <tr>
-					<th bgcolor="yellow">첨부파일</th>
-					<td><input type="file" name="fileName"></td>
-				</tr> -->
 				<tr>
 					<td colspan="3" bgcolor="yellow" align="center">
 						<input type="hidden" name="id" value="admin">

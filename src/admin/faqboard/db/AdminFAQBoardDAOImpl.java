@@ -11,12 +11,21 @@ import admin.faqboard.mybatis.SimpleExample;
 public class AdminFAQBoardDAOImpl implements AdminFAQBoardDAO {
 	
 	@Override
-	public List listBoard(int startRow, int endRow) throws SQLException{
+	public List listBoard(int startRow, int endRow, String mode) throws SQLException{
 		HashMap map = new HashMap();
 		map.put("startRow", startRow);
 		map.put("endRow", endRow);
-		SimpleExample.admin_getCategory();
+		map.put("mode", mode);
+//		SimpleExample.admin_getCategory();
 		return SimpleExample.admin_listBoard(map);
+	}
+	
+	@Override
+	public List allListBoard(int startRow, int endRow) throws SQLException{
+		HashMap map = new HashMap();
+		map.put("startRow", startRow);
+		map.put("endRow", endRow);
+		return SimpleExample.admin_allListBoard(map);
 	}
 	
 	@Override

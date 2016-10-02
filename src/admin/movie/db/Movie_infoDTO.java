@@ -15,10 +15,17 @@ public class Movie_infoDTO {
 	private String director;
 	private String actor;
 	private String file_directory;
+	private String closedate;
 	
 	
 	
 	
+	public String getClosedate() {
+		return closedate;
+	}
+	public void setClosedate(String closedate) {
+		this.closedate = closedate;
+	}
 	public String getFile_directory() {
 		return file_directory;
 	}

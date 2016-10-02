@@ -54,7 +54,6 @@ public class QNABoardListController {
 		List list = qnaBoardDAO.listBoard(startRow, endRow, id);
 		ModelAndView mav = new ModelAndView();
 		
-		//setAttribute과 같은 역할, 계속 넣어주기만 하면 됨
 		mav.addObject("endPage", endPage);
 		mav.addObject("startPage", startPage);
 		mav.addObject("pageBlock", pageBlock);
@@ -64,7 +63,7 @@ public class QNABoardListController {
 		mav.addObject("currentPage", currentPage);
 		mav.addObject("boardList", list);
 		
-		mav.setViewName("/WEB-INF/customer/qnaboard/list.jsp");
+		mav.setViewName("WEB-INF/member/memberMyQuestion.jsp");
 		
 		return mav;
 	}

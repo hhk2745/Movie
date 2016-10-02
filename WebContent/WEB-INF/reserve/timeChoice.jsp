@@ -27,10 +27,10 @@
 				<c:when test="${dto.sitCount ==0 }"> </c:when>
 				<c:otherwise>
 					<td  align="center" width="20%"><br> ${dto.day } <br></td>
-					<td  align="center" width="20%"><br>${dto.theaternum } 관 <br></td>
+					<td  align="center" width="20%"><br>${dto.theaternum } 상영관 <br></td>
 					<td  align="center" width="40%"><br>
 					<a href="client_chairReserve.do?time=${dto.time }&num=${num}&theater=${theater}&day=${dto.day}&theaternum=${dto.theaternum}" > ${dto.time }  
-					<font style="font-size: 12px"> ( 전체  : 56 석 / 남은 좌석 : ${dto.sitCount} 석 )</font></a>
+					<font style="font-size: 12px"> ( 전체  : 56  / 가능: ${dto.sitCount} )</font></a>
 					<br>
 					</td>
 			</tr>

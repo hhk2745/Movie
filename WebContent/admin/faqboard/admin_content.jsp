@@ -29,7 +29,7 @@
 			<td bgcolor="yellow" align="right" colspan="4">
 				<input type="button" value="수정" onClick="window.location='admin_faqboard_updateForm.do?num=${boardDTO.num}'">&nbsp;&nbsp;&nbsp;
 				<input type="button" value="삭제" onClick="window.location='admin_faqboard_delete.do?num=${boardDTO.num}'">&nbsp;&nbsp;&nbsp;
-				<input type="button" value="목록" onClick="window.location='admin_faqboard_list.do'">
+				<input type="button" value="목록" onClick="window.location='admin_faqboard_list.do?mode=전체'">
 			</td>
 		</tr>
 	</table>

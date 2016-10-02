@@ -23,7 +23,7 @@ public class AdminFILEBoardListController {
 	
 	@RequestMapping(value="/admin_fileboard_list.do")
 	public ModelAndView admin_file_list(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
-		int pageSize = 10;
+		int pageSize = 4;
 		String pageNum = arg0.getParameter("pageNum");
 		if(pageNum == null){
 			pageNum = "1";
@@ -48,11 +48,8 @@ public class AdminFILEBoardListController {
 		List list = adminFILEBoardDAO.listBoard(startRow, endRow);
 		
 		HttpSession session = arg0.getSession();
-		String upPath = arg0.getServletContext().getRealPath("WEB-INF/customer/fileboard/files/");
-//		String upPath = arg0.getServletContext().getRealPath("\"/\"");
+		String upPath = arg0.getServletContext().getRealPath("fileboard_files/");
 		session.setAttribute("upPath", upPath);
-		
-		System.out.println(upPath);
 		
 		ModelAndView mav = new ModelAndView();
 		
@@ -76,7 +73,7 @@ public class AdminFILEBoardListController {
 		String id = ServletRequestUtils.getStringParameter(arg0, "id");
 		String fileName = ServletRequestUtils.getStringParameter(arg0, "fileName");
 		
-		String upPath = arg0.getServletContext().getRealPath("/WEB-INF/customer/fileboard/files/"+id);
+		String upPath = arg0.getServletContext().getRealPath("/fileboard_files/"+id);
 		File file = new File(upPath+"/"+fileName);
 		
 		boolean delResult = file.delete();

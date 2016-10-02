@@ -78,7 +78,7 @@
 			<c:set var="endPage" value="${pageCount}" />
 		</c:if>
 		<c:if test="${startPage>pageBlock}">
-		[<a href="list.board?pageNum=${startPage-pageBlock}">이전</a>]
+		[<a href="admin_movie.do?pageNum=${startPage-pageBlock}">이전</a>]
 		</c:if>
 
 		<c:forEach var="i" begin="${startPage}" end="${endPage}" step="1">

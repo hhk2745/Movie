@@ -11,6 +11,11 @@ public class MemberDAOImpl implements MemberDAO
 	/*Client*/
 	
 	@Override
+	public List all() throws SQLException{
+		return SimpleExample.all();
+	}
+	
+	@Override
 	public MemberDTO checkMember(String name, String ssn, String hp) throws SQLException
 	{
 		System.out.println(name+ ssn+ hp);
@@ -29,8 +34,17 @@ public class MemberDAOImpl implements MemberDAO
 		return SimpleExample.getMember(id, pw);
 	}
 
+	@Override
+	public int upPoint(String id,int count) throws SQLException{
+		// TODO Auto-generated method stub
+		return SimpleExample.upPoint(id,count);
+	}
 	
-	
+	@Override
+	public int downPoint(String id) throws SQLException {
+		// TODO Auto-generated method stub
+		return SimpleExample.downPoint(id);
+	}
 	
 	/*Admin*/
 	@Override

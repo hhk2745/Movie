@@ -38,7 +38,7 @@ public class FILEBoardWriteController {
 	protected ModelAndView file_writePro(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		MultipartRequest mr = null;
-		String upPath = arg0.getServletContext().getRealPath("WEB-INF/customer/fileboard/files");
+		String upPath = arg0.getServletContext().getRealPath("fileboard_files");
 		String realName = null;
 		String id = null;
 		FILEBoardDTO dto = new FILEBoardDTO();
@@ -55,7 +55,7 @@ public class FILEBoardWriteController {
 			
 			FileInputStream fis = new FileInputStream(upPath+"/"+fileName);
 		    
-		    upPath = arg0.getServletContext().getRealPath("/WEB-INF/customer/fileboard/files/"+id);
+		    upPath = arg0.getServletContext().getRealPath("fileboard_files/"+id);
 		    
 		    File dir = new File(upPath);
 		    if(!dir.exists()){
@@ -115,7 +115,7 @@ public class FILEBoardWriteController {
 	@RequestMapping(value="/fileboard_updatePro.do", method=RequestMethod.POST)
 	protected ModelAndView file_updatePro(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		MultipartRequest mr = null;
-		String upPath = arg0.getServletContext().getRealPath("WEB-INF/customer/fileboard/files");
+		String upPath = arg0.getServletContext().getRealPath("fileboard_files");
 		FILEBoardDTO dto = new FILEBoardDTO();
 		String realName = null;
 		String id = null;
@@ -132,7 +132,7 @@ public class FILEBoardWriteController {
 			
 			FileInputStream fis = new FileInputStream(upPath+"/"+fileName);
 		    
-		    upPath = arg0.getServletContext().getRealPath("/WEB-INF/customer/fileboard/files/"+id);
+		    upPath = arg0.getServletContext().getRealPath("fileboard_files/"+id);
 		    
 		    File dir = new File(upPath);
 		    if(!dir.exists()){

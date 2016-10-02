@@ -9,10 +9,14 @@
 	</script>
 </c:if>
 
-
-
 <link rel="stylesheet" type="text/css" href="myPage.css">
-
+    <!-- Bootstrap -->
+    <link href="infoUpdate_css/bootstrap.min.css" rel="stylesheet">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="infoUpdate_css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
+    <!-- Custom style -->
+    <link rel="stylesheet" href="infoUpdate_css/style.css" media="screen" title="no title" charset="utf-8">
+    
 <main id="myPageMain">
 <div class="bgImgContainer">
 	<div class="myPageContainer">
@@ -23,7 +27,7 @@
 					<strong>[ <a href="member_MyPage.do?mode=myProfile">프로필관리</a> ] </strong>에서 등록 할 수 있습니다.
 				</c:if>
 				<c:if test="${!empty loginId.profile_img}">
-					<img alt="프로필 사진" src="${pageContext.request.contextPath}/profile_img/${loginId.profile_img}" width="150px" height="180px">
+					<img alt="프로필 사진" src="<c:url value="/profile_img/${loginId.profile_img}"/>" width="150px" height="180px">
 				</c:if>
 			</div>
 			<div class="profile_itemContainer">
@@ -72,15 +76,46 @@
 				<li><a href="member_MyPage.do?mode=myTicket">나의 예매 내역</a></li>
 				<li><a href="member_MyPage.do?mode=myPoint">MyPoint</a></li>
 				<li style="background-color: rgb(231, 26, 15);"><a href="member_MyPage.do?mode=myMoney" style="color:white">MyMoney</a></li>
-				<li><a href="member_MyPage.do?mode=myInfo">회원 정보</a></li>
+				<li><a href="member_MyPage.do?mode=myInfo">회원 정보 변경</a></li>
 				<li><a href="member_MyPage.do?mode=myProfile">프로필 관리</a></li>
-				<li><a href="member_MyPage.do?mode=myQuestion">나의
-						문의내역</a></li>
+				<li><a href="qnaboard_list.do">나의 문의내역</a></li>
+				<li><a href="member_MyPage.do?mode=dropOut">회원탈퇴</a></li>
 			</ul>
 		</div>
 	</nav>
 	<main>
-	<c:out value="${loginId.money }" />원 소유중</main>
+	
+<c:out value="${loginId.money }" />원 소유중<br>
+   <div>
+      <form action="member_Money.do"> 
+         <h2>결제 금액</h2>
+         <div>
+            <input type="radio" value="1000" name="money" checked> <label>
+               1,000원 </label>
+         </div>
+         <div>
+            <input type="radio" value="5000" name="money"> <label>
+               5,000원 </label>
+         </div>
+         <div>
+            <input type="radio" value="10000" name="money"> <label>
+               10,000원 </label>
+         </div>
+         <div>
+            <input type="radio" value="50000" name="money"> <label>
+               50,000원 </label>
+         </div>
+         <div>
+            <input type="radio" value="100000" name="money"> <label>
+               100,000원 </label>
+         </div>
+
+
+         <input type="submit" value="결제"> <input type="reset"
+            value="취소">
+      </form>
+   </div>
+</main>
 	<aside>3</aside>
 </section>
 <%@ include file="../../bottom.jsp"%>

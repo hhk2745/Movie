@@ -28,12 +28,24 @@
 	height: 0px;
 	display: flex;
 	flex-direction: row;
+	font-size:1.3rem;
 }
 
 .profile_item1 {
 	flex-grow: 2;
 	border-right: 3px solid rgb(110, 98, 66);
 	height: 180px;
+	
+}
+
+.profile_item1 img {
+	border: 3px solid gold;
+	border-radius: 150px;
+	-moz-border-radius: 150px;
+	-khtml-border-radius: 150px;
+	-webkit-border-radius: 150px;
+	height: 170px;
+	width: 200px;
 }
 
 .profile_itemContainer {
@@ -75,7 +87,7 @@
 	height: 170px;
 	color: #fece29;
 	font-weight: bold;
-	font-size: 2rem;
+	font-size: 4rem;
 }
 
 .profile_money_point {
@@ -86,7 +98,7 @@
 	height: 170px;
 	color: #3140fb;
 	font-weight: bold;
-	font-size: 2rem;
+	font-size: 4rem;
 }
 
 .profile_money_favorite {
@@ -109,7 +121,7 @@ strong {
 }
 
 .myPageContent nav {
-	margin-right:10px;
+	margin-right: 10px;
 	flex-grow: 1;
 }
 
@@ -117,14 +129,13 @@ strong {
 	display: flex;
 	flex-direction: column;
 	height: 1000px;
-	width:200px;
-	margin-left:200px;
+	width: 200px;
+	margin-left: 200px;
 	color: white;
 }
 
 .myPageContent main {
 	flex-grow: 3;
-	
 }
 
 .myPageContent aside {
@@ -134,32 +145,34 @@ strong {
 
 .myPageContent nav .navContainer ul li {
 	border-top: 1px solid #bbb9b1;
-	font-size: 2rem;
+	font-size: 3rem;
 	color: fefcf0;
 }
 
 li a:link {
-	padding-left: 27px;
+	padding-left: 20px;
 	text-decoration: none;
 	color: #333333;
-}
+font-size: 1.5rem;}
 
 li a:visited {
-	padding-left: 27px;
+	padding-left: 20px;
 	text-decoration: none;
 	color: #333333;
-}
+font-size: 1.5rem;}
 
 li a:active {
-	padding-left: 27px;
+	padding-left: 20px;
 	text-decoration: none;
 	border: 2px solid powderblue;
+	font-size: 1.5rem;
 }
 
 li a:hover {
-	padding-left: 27px;
+	ppadding-left: 20px;
 	text-decoration: underline;
 	color: red;
+	font-size: 1.5rem;
 }
 
 /* 프로필 관리 */
@@ -185,21 +198,21 @@ main .myProfileItemContainer_ItemContainer {
 	display: flex;
 	flex-direction: row;
 }
+
 main .myProfileItemContainer_ItemContainer_Item:nth-child(1) {
-	flex-basis:100px;
+	flex-basis: 100px;
 	flex-grow: 1;
-	font-size:0.9rem;
-	padding: 10px;
-	border-bottom: 1px solid #c0c0c0;
-	
-}
-main .myProfileItemContainer_ItemContainer_Item:nth-child(2) {
-	flex-grow: 5;
-	font-size:0.9rem;
+	font-size: 1.2rem;
 	padding: 10px;
 	border-bottom: 1px solid #c0c0c0;
 }
 
+main .myProfileItemContainer_ItemContainer_Item:nth-child(2) {
+	flex-grow: 5;
+	font-size: 1.2rem;
+	padding: 10px;
+	border-bottom: 1px solid #c0c0c0;
+}
 
 main .myProfileItem:nth-child(3) {
 	height: 50px;

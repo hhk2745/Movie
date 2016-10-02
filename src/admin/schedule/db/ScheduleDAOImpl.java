@@ -45,6 +45,12 @@ public class ScheduleDAOImpl implements ScheduleDAO{
 	}
 	
 	@Override
+	public int updateCloseMovie(int num) {
+		// TODO Auto-generated method stub
+		return SimpleExample.updateCloseMovie(num);
+	}
+	
+	@Override
 	public int newSchedule(int maxTerm) {
 		// TODO Auto-generated method stub
 		int res = 0;

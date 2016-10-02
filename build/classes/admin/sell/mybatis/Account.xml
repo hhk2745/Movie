@@ -22,11 +22,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="countingMonth" parameterType="String" resultType="int">
 		select count(*) from ticket where day like #{date}||'%' and THEATER='서울_강남'   <!-- 16/07  처럼 4글자 입력 -->
 	</select>
-
 	<select id="countingYear" parameterType="String" resultType="int">
 		select count(*) from ticket where day like #{date}||'%' and THEATER='서울_강남' <!-- 15 , 16 2글자 년만 입력 -->
 	</select>
-
+	<select id="MonthNormal" parameterType="String" resultType="int">
+		select sum(pay) from ticket where day like #{date}||'%' and THEATER='서울_강남'
+	</select>
+	<select id="MonthAdult" parameterType="String" resultType="int">
+		select sum(pay) from ticket where day like #{date}||'%' and theater='서울_강남' and age>=19
+	</select>
+	<select id="MonthStudent" parameterType="String" resultType="int">
+		select sum(pay) from ticket where day like #{date}||'%' and theater='서울_강남' and 19>age
+	</select>
+	<select id="MonthMovies" parameterType="Map" resultType="int">
+		select sum(pay) from ticket where day like #{date}||'%' and THEATER='서울_강남' and title=#{title}
+	</select>
+	<select id="MonthMoviesAdult" parameterType="Map" resultType="int">
+		select sum(pay) from ticket where day like #{date}||'%' and THEATER='서울_강남' and title=#{title} and age>=19
+	</select>
+	<select id="MonthMoviesStudent" parameterType="Map" resultType="int">
+		select sum(pay) from ticket where day like #{date}||'%' and THEATER='서울_강남' and title=#{title} and 19>age
+	</select>
+	<select id="YearNormal" parameterType="String" resultType="int">
+		select sum(pay) from ticket where day like #{date}||'%' and THEATER='서울_강남'
+	</select>
+	<select id="YearAdult" parameterType="String" resultType="int">
+		select sum(pay) from ticket where day like #{date}||'%' and THEATER='서울_강남' and age>=19
+	</select>
+	<select id="YearStudent" parameterType="String" resultType="int">
+		select sum(pay) from ticket where day like #{date}||'%' and THEATER='서울_강남' and 19>age
+	</select>
 	<select id="countingMovies" parameterType="String" resultType="int">
 		select count(*) from ticket where title = #{title}  	<!--  title은 현재 상영중인 무비 리스트로 받아서 컨트롤러에서 작업 --> 
 	</select>

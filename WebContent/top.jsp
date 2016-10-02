@@ -3,20 +3,7 @@
 <%@ taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 <html>
 <head>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.0.min.js" ></script>
-	<script language="javascript" src="js/rolling.js"></script>
-	<link rel="stylesheet" type="text/css" href="template.css">
-	<!-- <link rel="stylesheet" type="text/css" href="css\template.css"> -->
-	<script>
-		$(document).ready(function() {
-			 $('.rolling_wrap').rolling({
-			arrowBtn:true,
-			rollingBtn:true,
-			main:true,
-			timer:6000
-			});
-		});
-	</script>
+<link rel="stylesheet" type="text/css" href="css\template.css">
 </head>
 
 <body id="floating_banner" onload="InitializeStaticMenu();">
@@ -28,8 +15,9 @@
 				<a href="member_MyPage.do?mode=myPageMain"><font size="2.5px" face="BareunDotum1">
 				MyPage &nbsp;</a>
 				<!-- 회원가입 링크 메뉴  -->
-				<a href="member_JoinCheck.do"><font size="2.5px" face="BareunDotum1"> 
-				회원가입 &nbsp;</a>			
+				<c:if test='${empty loginId}'>
+					<a href="member_JoinCheck.do"><font size="2.5px" face="BareunDotum1"> 회원가입 &nbsp;</a>
+				</c:if>
 				<!-- 로그인 링크 메뉴  -->
 				<c:if test='${empty loginId}'> 
 					<a href="member_Login.do"><font size="2.5px" face="BareunDotum1">
@@ -63,12 +51,13 @@
 				
 				<!-- 예매 메뉴  -->			
 				<c:forEach begin="1" end="20" step="1">&nbsp;</c:forEach>
-				<a href="client_movieReserve.do" valign="bottom"><font size="5px">
-				예매</a>	
+				
+					<a href="client_movieReserve.do" valign="bottom"><font size="5px">예매</a>
+					
 				
 				<!-- 극장 메뉴  -->		
 				<c:forEach begin="1" end="20" step="1">&nbsp;</c:forEach>
-				<a href="#" valign="bottom"><font size="5px">
+				<a href="client_theater.do" valign="bottom"><font size="5px">
 				극장</a>
 				
 				&nbsp;&nbsp;&nbsp;&nbsp; <!-- 메뉴 간격 가독성을 위한 공백 -->
@@ -81,3 +70,19 @@
 		</tr>
 		</table>
 	</div>
+
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.0.min.js" ></script>
+	<script language="javascript" src="js/rolling.js"></script>
+	
+	<script>
+		$(document).ready(function() {
+			 $('.rolling_wrap').rolling({
+			arrowBtn:true,
+			rollingBtn:true,
+			main:true,
+			timer:6000
+			});
+		});
+	</script>
+	
+	

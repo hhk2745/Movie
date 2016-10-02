@@ -9,6 +9,7 @@ public interface ScheduleDAO {
 	public ScheduleDTO getSchedule(ScheduleDTO dto);
 	public int insertSchedule(ScheduleDTO dto);
 	public int updateSchedule(ScheduleDTO dto);
+	public int updateCloseMovie(int num);
 	public int deleteSchedule();
 	public int newSchedule(int maxTerm);
 	public String maxTerm();

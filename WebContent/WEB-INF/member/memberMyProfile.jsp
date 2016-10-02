@@ -23,7 +23,12 @@ alert("닉네임 등록 실패!")
 
 
 <link rel="stylesheet" type="text/css" href="myPage.css">
-
+    <!-- Bootstrap -->
+    <link href="infoUpdate_css/bootstrap.min.css" rel="stylesheet">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="infoUpdate_css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
+    <!-- Custom style -->
+    <link rel="stylesheet" href="infoUpdate_css/style.css" media="screen" title="no title" charset="utf-8">
 <main id="myPageMain">
 <div class="bgImgContainer">
 	<div class="myPageContainer">
@@ -34,7 +39,7 @@ alert("닉네임 등록 실패!")
 					<strong>[ <a href="member_MyPage.do?mode=myProfile">프로필관리</a> ] </strong>에서 등록 할 수 있습니다.
 				</c:if>
 				<c:if test="${!empty loginId.profile_img}">
-					<img alt="프로필 사진" src="${pageContext.request.contextPath}/profile_img/${loginId.profile_img}" width="150px" height="180px">
+					<img alt="프로필 사진" src="<c:url value="/profile_img/${loginId.profile_img}"/>" width="150px" height="180px">
 				</c:if>
 			</div>
 			<div class="profile_itemContainer">
@@ -83,11 +88,11 @@ alert("닉네임 등록 실패!")
 				<li><a href="member_MyPage.do?mode=myTicket">나의 예매 내역</a></li>
 				<li><a href="member_MyPage.do?mode=myPoint">MyPoint</a></li>
 				<li><a href="member_MyPage.do?mode=myMoney">MyMoney</a></li>
-				<li><a href="member_MyPage.do?mode=myInfo">회원 정보</a></li>
+				<li><a href="member_MyPage.do?mode=myInfo">회원 정보 변경</a></li>
 				<li style="background-color: rgb(231, 26, 15);"><a
 					href="member_MyPage.do?mode=myProfile" style="color:white;">프로필 관리</a></li>
-				<li><a href="member_MyPage.do?mode=myQuestion">나의
-						문의내역</a></li>
+				<li><a href="qnaboard_list.do">나의 문의내역</a></li>
+				<li><a href="member_MyPage.do?mode=dropOut">회원탈퇴</a></li>
 			</ul>
 		</div>
 	</nav>

@@ -11,14 +11,17 @@
 	width: 100%;
 	background-color: white;
 }
-.topMainADContainer img{
+
+.topMainADContainer img {
 	position: static;
 	left: 0;
 	top: 0;
 	width: 100% height: 30px;
 	align-content: center;
 	text-align: center;
+
 }
+
 
 .topLoginContainer {
 	/* border-top: 1px solid gray;
@@ -116,6 +119,7 @@ footer {
 
 .content {
 	display: flex;
+	height: 1000px;
 }
 
 .content nav {
@@ -252,11 +256,11 @@ div.loginFormDiv {
 	padding: 20px;
 	display: flex;
 	direction: column;
-	padding-top:20px;
-	padding-bottom:0;
-	padding-right:0;
+	padding-top: 20px;
+	padding-bottom: 0;
+	padding-right: 0;
 	border-left: 1px;
-	width:500px;
+	width: 500px;
 }
 
 div.loginFormDiv form.loginForm input {
@@ -272,10 +276,9 @@ div.loginFormDiv form.loginForm input#submit {
 	font-weight: bold;
 	background-color: #b42222;
 	color: ghostwhite;
-	margin-top:30px;
-	margin-left:355px;
+	margin-top: 30px;
+	margin-left: 355px;
 	width: 100px;
-	
 }
 
 div.loginFormDiv button {
@@ -294,7 +297,7 @@ div.loginFormDiv button {
 }
 
 div.serchDiv {
-	border-top:5px solid gray;
+	border-top: 5px solid gray;
 	padding-top: 0;
 	padding-left: 230px;
 	display: flex;
@@ -314,4 +317,3 @@ div.serchDiv button.serchDivItem {
 }
 
 /*================Login================*/
-

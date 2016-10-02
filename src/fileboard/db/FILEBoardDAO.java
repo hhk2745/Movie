@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface FILEBoardDAO {
+	public int profileSetting(String id) throws SQLException;
+	public List all() throws SQLException;
 	public List searchBoard(String id) throws SQLException;
 	public List listBoard(int startRow, int endRow) throws SQLException;
 	public FILEBoardDTO getBoard(int num) throws SQLException;

@@ -15,16 +15,20 @@
       <tr>
          <td align="center">
             <button type="button" class="btn btn-default">
-               <a href="client_movie_all.do" style="font-size: 3rem;">모든 영화</a>
+               <a href="client_movie_all.do" style="font-size: 3rem;">
+               <img src="img\theater\btn_all.png"><!-- 모든 영화 --></a>
             </button>
-            <button class="btn btn-primary">
-               <a href="client_movie_now.do" style="font-size: 3rem;">현재개봉작</a>
+            <button class="btn btn-primary" style="border: 5px solid lightgray;">
+               <a href="client_movie_now.do" style="font-size: 3rem;">
+               <img src="img\theater\btn_nowmovie.png"><!-- 현재개봉작 --></a>
             </button>
             <button class="btn btn-success">
-               <a href="client_movie_box.do" style="font-size: 3rem;">박스오피스</a>
+               <a href="client_movie_box.do" style="font-size: 3rem;">
+               <img src="img\theater\btn_boxoffice.png"><!-- 박스오피스 --></a>
             </button>
             <button class="btn btn-info">
-               <a href="client_movie_due.do" style="font-size: 3rem;">개봉 예정작</a>
+               <a href="client_movie_due.do" style="font-size: 3rem;">
+               <img src="img\theater\btn_comingmovie.png"><!-- 개봉 예정작 --></a>
             </button>
 
          </td>
@@ -39,13 +43,13 @@
 
          <div class="col-sm-4 col-lg-4 col-md-4">
             <div class="thumbnail">
-               <img src="${pageContext.request.contextPath}/poster/${dtoList.file_directory}/${dtoList.poster}" width="99%">
+               <img src="${pageContext.request.contextPath}/poster/${dtoList.file_directory}/${dtoList.poster}" width="300px">
                <div class="caption">
-                  <h4 class="pull-right">10,000원</h4>
+                  <h4 class="pull-right">${dtoList.runtime } &nbsp; (분)</h4>
                   <h4 class="movie-title">
-                     <button type="button" class="btn btn-primary btn-lg"
+                     <button type="button" class="btn btn-default btn-lg"
                         data-toggle="modal" data-target="#${dtoList.num }" data-title="num"
-                        onclick="<c:set var='num' value='${dtoList.num }'/>">${dtoList.title}</button>
+                        onclick="<c:set var='num' value='${dtoList.num }'/>"><font style="font-size:15px;font-weight: bold"> ${dtoList.title}</font></button>
 
                   </h4>
                </div>
@@ -67,88 +71,108 @@
             
                
                <c:forEach var="dto" items="${nowmovieList}">
-                  <c:if test="${dto.num == num}">
-                  <table border="0" align="center">
+                      <c:if test="${dto.num == num}">
+                     <table border="0" align="center">
                      <tr>
-                        <td align="center"><img src="${pageContext.request.contextPath}/poster/${dtoList.file_directory}/${dtoList.poster}" width="99%"></td>
+                        <td align="center">
+							<img src="${pageContext.request.contextPath}/poster/${dtoList.file_directory}/${dtoList.poster}" width="300px">
+						</td>
                      </tr>
                   </table>
-                     <table border="0">
-                        <tr>
-                           <td width="100px">개봉일:</td>
-                           <td>${dto.opendate}</td>
-                        </tr>
-                        <tr>
-                           <td width="100px">영화 제목:</td>
-                           <td>${dto.title}</td>
-                        </tr>
-                        <tr>
-                           <td width="17.5%">감독:</td>
-                           <td>${dto.director}</td>
-                        </tr>
-                        <tr>
-                           <td width="17.5%">출연진:</td>
-                           <td>${dto.actor}</td>
-                        </tr>
-                        <tr>
-                           <td width="17.5%">장르:</td>
-                           <td>${dto.genre}</td>
-                        </tr>
-                        <tr>
-                           <td width="17.5%">누적관객:</td>
-                           <td>${dto.watchcount}</td>
-                        </tr>
-                        <tr>
-                           <td width="17.5%"><font color="tomato">상영시간: </font></td>
-                           <td>${dto.runtime}</td>
-                        </tr>
-                        <tr>
-                           <td width="17.5%">줄거리</td>
-                           <td>${dto.movie_info}</td>
-                        </tr>
+                  <hr color="Gray" width="99%">
+								<div style="padding: 10px">
+									<br> 영화 제목
+									<pre>${dto.title}</pre>
+									<p>개봉일
+									<pre>${dto.opendate} </pre>
+									<p>감독
+									<pre>${dto.director} </pre>
+									<p>출연진
+									<pre>${dto.actor}	</pre>
+									<p>장르
+									<pre>${dto.genre}</pre>
+									<p>누적관객
+									<pre>${dto.watchcount}</pre>
+									<p>
+										<font color="tomato">상영시간 </font>
+									<pre>${dto.runtime}</pre>
+									<p>줄거리
+									<pre id="movie_content">${dto.movie_info}	</pre>
+									<p>
+								</div>
 
-                     </table>
-                     <div class="modal-footer">
+								<div class="modal-footer">
 
-                        <button type="button" class="btn btn-default"
-                           data-dismiss="modal"
-                           onclick="location.href='client_theaterReserve.do?num=${dto.num }'">예매하기</button>
+                           <button type="button" class="btn btn-default"
+                              data-dismiss="modal"
+                              onclick="location.href='client_theaterReserve.do?num=${dto.num }'">예매하기</button>
 
-                     </div>
+                        </div>
                      한줄평 : <form action="admin_movie_insertReply.do" name="f"
                            method="post">
-                           <input type="hidden" name="surl" value="${pageContext.request.requestURL}">
-                           <input type="hidden" name="movieNum" value="${dto.num}">
-                           <input type="hidden" name="id" value="${loginId.id}">
+                           <input type="hidden" name="surl"
+                              value="${pageContext.request.requestURL}"> <input
+                              type="hidden" name="movieNum" value="${dto.num}"> <input
+                              type="hidden" name="id" value="${loginId.id}">
                            <table border="center" width="99%">
                               <tr>
-                              
-                                 <td ><input type="text" name="reply" size="62"></td>
-                                 <td align="right" bgcolor="#ffdab9">
-                                 <input type="submit" value="등록"> <input type="reset" value="취소"></td>
-                                 
+                                 <td><input type="text" name="reply" size="62"></td>
+                                 <td align="right" bgcolor="#ffdab9"><input type="submit"
+                                    value="등록"> <input type="reset" value="취소"></td>
                               </tr>
-                              <c:forEach var="replydto" items="${allReplyList}">
-                                 <c:if test="${replydto.movieNum == num}">
-                                 <div>
-                                 
-                                 </div>
-                               <div>
-                                  <table border="1" align="center">
-                                     <tr>
-                                       <td align="center" width="15%px">아이디: ${replydto.id}</td>
-                                       <td align="center" width="60%">${replydto.reply}</td>
-                                       <td align="center" width="15%">${replydto.reg_date}</td>
-                                       <!--같은 로그인 아이디일때만 삭제버튼  -->
-                                       <c:if test="${loginId.id == replydto.id}">
-                                          <td align="center" width="10%%"><input type="button" name="delete" value="삭제" onclick="location.href='admin_movie_replyDelete.do?num=${replydto.num}'"></td>
-                                       </c:if>
-                                    </tr>
-                                 </table>
-                              </div> 
-                              </c:if>
-                              </c:forEach> 
                            </table>
+                           <br>
+                           <hr color="Gray" width="99%">
+                           <br>
+                           <!-- @@@@@@@@@ -->
+                           <c:set var="pageSize" value="3"/>
+                           <c:set var="currnetPage" value="${pageNum}"/>
+                           <c:set var="startRow" value="${pageSize*(currentPage)-1}"/>
+                           <c:set var="endRow" value="${startRow+pageSize-1}"/>
+                           <c:set var="count" value="0"/>
+                           <c:forEach var="countdto" items="${allReplyList}">
+                               <c:if test="${countdto.movieNum == num}">
+                               <c:set var="count" value="${count+1}"/>
+                               </c:if>
+                           </c:forEach>
+                           <!-- @@@@@@@@@ -->
+                           <table border="1" align="center">
+                           		<tr>	
+                           			<th width="15%">ID</th>
+                           			<th width="60%">한줄평</th>
+                           			<th width="15%">날짜</th>
+                           			<th width="10%"></th>
+                           		</tr>
+                           <c:choose>
+                           		<c:when test="${empty allReplyList}">
+                           			<tr>
+                           				<td colspan="4">등록된 한줄평이 없습니다.</td>
+                           			</tr>
+                           		</c:when>
+                           		<c:otherwise>
+                           		<c:set var="rowCount" value="0"/>
+		                           <c:forEach var="replydto" items="${allReplyList}">
+		                                 <c:if test="${replydto.movieNum == num}">
+		                                    <!-- <div>-->
+		                                        <tr>
+		                                           <td align="center" width="15%">${replydto.id}</td>
+		                                           <td align="center" width="60%">${replydto.reply}</td>
+		                                           <td align="center" width="15%">${replydto.reg_date}</td>
+		                                           <!--같은 로그인 아이디일때만 삭제버튼  admin일때 다 만들어야함.-->
+		                                           <c:if test="${loginId.id == replydto.id}">
+		                                              <td align="center" width="10%">
+		                                              <input type="button" name="delete" value="삭제" onclick="location.href='admin_movie_replyDelete.do?num=${replydto.num}&mode=now'"></td>
+		                                           </c:if>
+		                                           <c:if test="${loginId.id != replydto.id}">
+		                                              <td align="center" width="10%"></td>
+		                                           </c:if>
+		                                        </tr>
+		                                        <c:set var="rowCount" value="${rowCount+1}"/>
+		                                 </c:if>
+		                            </c:forEach>
+                           		</c:otherwise>
+                           </c:choose>
+                            </table>
                         </form>
                      </c:if>
                </c:forEach>
@@ -163,7 +187,6 @@
 <div class="container">
 
    <!-- 버튼 -->
-
 
    
 

@@ -24,7 +24,6 @@ public class MyPageController
 {
 	@Autowired
 	private MemberDAO memberDAO;
-
 	@Autowired
 	private TicketDAO ticketDAO;
 
@@ -66,6 +65,9 @@ public class MyPageController
 		} else if (req.getParameter("mode").equals("myQuestion"))
 		{
 			mav = myQuestion(req, resp);
+		} else if (req.getParameter("mode").equals("dropOut"))
+		{
+			mav = myDropOut(req, resp);
 		}
 
 		Calendar cal = Calendar.getInstance();
@@ -78,6 +80,7 @@ public class MyPageController
 	 * ==========================Post CommandFactory==========================
 	 */
 	public ModelAndView postCommandFactory(HttpServletRequest req, HttpServletResponse resp)
+			throws NumberFormatException, SQLException
 	{
 
 		if (req.getParameter("mode").equals("myPageMain"))
@@ -92,8 +95,11 @@ public class MyPageController
 		} else if (req.getParameter("mode").equals("myMoney"))
 		{
 			mav = myMoneyPro(req, resp);
+		} else if (req.getParameter("mode").equals("myInfoPwCheck"))
+		{// 개인정보 변경 전 패스워드
+			mav = myInfoPwCheck(req, resp);
 		} else if (req.getParameter("mode").equals("myInfo"))
-		{
+		{// 개인정보 변경
 			mav = myInfoPro(req, resp);
 		} else if (req.getParameter("mode").equals("myProfile"))
 		{
@@ -101,6 +107,9 @@ public class MyPageController
 		} else if (req.getParameter("mode").equals("myQuestion"))
 		{
 			mav = myQuestionPro(req, resp);
+		} else if (req.getParameter("mode").equals("dropOut"))
+		{
+			mav = myDropOutPro(req, resp);
 		}
 
 		Calendar cal = Calendar.getInstance();
@@ -124,51 +133,49 @@ public class MyPageController
 	public ModelAndView myTicket(HttpServletRequest req, HttpServletResponse resp)
 	{
 		HttpSession session = req.getSession();
-		MemberDTO mdto = (MemberDTO) session.getAttribute("loginId");
+		MemberDTO mdto = (MemberDTO) session.getAttribute("loginId"); 
 		List<TicketDTO> list = ticketDAO.listTicket(mdto.getId());
 		List<TicketDTO> listDC = ticketDAO.listTicketDelCant(mdto.getId());
-
+		
 		ModelAndView mav = new ModelAndView("WEB-INF/member/memberMyTicket.jsp");
-		mav.addObject("listTicket", list);
-		mav.addObject("listTicketDC", listDC);
+		mav.addObject("listTicket",list);
+		mav.addObject("listTicketDC",listDC);
 		return mav;
 
 	}
 
-	@RequestMapping(value = "/myTicketDelete.do")
+
+@RequestMapping(value = "/myTicketDelete.do")
 	public ModelAndView TicketDelete(HttpServletRequest req, HttpServletResponse resp)
 	{
-		String num = req.getParameter("num");
-		TicketDTO dto = ticketDAO.getTicket(num);
+	String num = req.getParameter("num");
+	TicketDTO dto = ticketDAO.getTicket(num);
+	
+	
+	HttpSession session = req.getSession();
+	MemberDTO dto1 = (MemberDTO)session.getAttribute("loginId");
+	String pw = dto1.getPw();
+	String id = dto1.getId();
+			
+	int res = ticketDAO.watchCountDown(dto.getTitle());
+	int res1 = ticketDAO.upSpaceSit(dto.getDay(), dto.getTime(), dto.getTheaternum()+""); 
+	ticketDAO.upMoney(dto.getId(),dto.getPay());
+	ticketDAO.deleteTicket(Integer.parseInt(num));
 
-		HttpSession session = req.getSession();
-		MemberDTO dto1 = (MemberDTO) session.getAttribute("loginId");
-		String pw = dto1.getPw();
-		String id = dto1.getId();
-
-		int res = ticketDAO.watchCountDown(dto.getTitle());
-		int res1 = ticketDAO.upSpaceSit(dto.getDay(), dto.getTime(), dto.getTheaternum() + "");
-		ticketDAO.upMoney(dto.getId(), dto.getPay());
-		//downPoint
-		ticketDAO.deleteTicket(Integer.parseInt(num));
-
-		MemberDTO memberDTO = null;
-		try
-		{
-			memberDTO = memberDAO.getMember(id, pw);
-
-		} catch (SQLException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		session.setAttribute("loginId", memberDTO);
-		ModelAndView mav = new ModelAndView("member_MyPage.do?mode=myTicket");
-		return mav;
+	MemberDTO memberDTO = null;
+	try {
+		memberDTO = memberDAO.getMember(id, pw);
+		
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	session.setAttribute("loginId", memberDTO);
+	ModelAndView mav = new ModelAndView("member_MyPage.do?mode=myTicket");
+	return mav;
 
 	}
-
 	public ModelAndView myPoint(HttpServletRequest req, HttpServletResponse resp)
 	{
 
@@ -219,6 +226,13 @@ public class MyPageController
 
 	}
 
+	public ModelAndView myDropOut(HttpServletRequest req, HttpServletResponse resp)
+	{
+		ModelAndView mav = new ModelAndView("WEB-INF/member/memberMyDropOut.jsp");
+
+		return mav;
+	}
+
 	/* ==========================Post Method========================== */
 
 	public ModelAndView myPageMainPro(HttpServletRequest req, HttpServletResponse resp)
@@ -257,10 +271,37 @@ public class MyPageController
 
 	}
 
-	public ModelAndView myInfoPro(HttpServletRequest req, HttpServletResponse resp)
+	public ModelAndView myInfoPwCheck(HttpServletRequest req, HttpServletResponse resp)
+			throws NumberFormatException, SQLException
 	{
+		// 개인정보 변경 전 PwCheck
+		ModelAndView mav = new ModelAndView("WEB-INF/member/memberMyInfoUpdateForm.jsp");
+		MemberDTO dto = memberDAO.getMemberAdmin(Integer.parseInt(req.getParameter("memberNum")));
+		mav.addObject("dto", dto);
+		return mav;
+	}
 
+	public ModelAndView myInfoPro(HttpServletRequest req, HttpServletResponse resp)
+			throws NumberFormatException, SQLException
+	{
+		// 개인정보 변경 controller
+		// mail. pw, name
+		String email = req.getParameter("email");
+		String pw = req.getParameter("pw");
+		String name = req.getParameter("name");
 		ModelAndView mav = new ModelAndView("WEB-INF/member/memberMyPage.jsp");
+		MemberDTO dto = memberDAO.getMemberAdmin(Integer.parseInt(req.getParameter("memberNum")));
+		dto.setEmail(email);
+		dto.setPw(pw);
+		dto.setName(name);
+		int res = memberDAO.updateMember(dto);
+		if (res > 0)
+		{//성공
+			mav.setViewName("index.jsp");
+			mav.addObject("memberInfoUpdateResult", true);
+			HttpSession session = req.getSession();
+			session.invalidate();
+		}
 
 		return mav;
 
@@ -284,4 +325,26 @@ public class MyPageController
 
 	}
 
+	public ModelAndView myDropOutPro(HttpServletRequest req, HttpServletResponse resp)
+			throws NumberFormatException, SQLException
+	{
+
+		ModelAndView mav = new ModelAndView();
+		String initPw = req.getParameter("initPw");
+
+		int res = memberDAO.deleteMember(Integer.parseInt(req.getParameter("memberNum")));
+
+		if (res > 0)
+		{
+			mav.addObject("dropOutResult", true);
+			HttpSession session = req.getSession();
+			session.invalidate();
+			mav.setViewName("index.jsp");
+		} else
+		{
+			mav.addObject("dropOutResult", false);
+			mav.setViewName("redirect:member_MyPage.do");
+		}
+		return mav;
+	}
 }

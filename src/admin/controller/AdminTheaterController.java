@@ -1,6 +1,7 @@
 package admin.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
@@ -62,8 +63,6 @@ public class AdminTheaterController {
 			msg="새 목록 등록 실패!!";
 		}
 		
-		
-		
 		mav.addObject("theaterList",theaterList);
 		mav.addObject("timeList", timeList);
 		mav.addObject("theaternumsize", theaterList.size()/5);
@@ -78,18 +77,34 @@ public class AdminTheaterController {
 		ModelAndView mav = new ModelAndView();
 		ScheduleDTO dto = new ScheduleDTO();
 		String scheduleTime = null;
-		
+		Calendar now = Calendar.getInstance();
+		String msg = null;
+		int year = now.get(Calendar.YEAR)-2000;
+		int mm = now.get(Calendar.MONTH)+1;
+		String month = mm +"";
+		if(mm<10){
+			month="0"+mm;
+		}
+		int dd = now.get(Calendar.DATE);
+		String day = dd +"";
+		if(dd<10){
+			day="0"+dd;
+		}
+		if(req.getParameter("day").equals(year+"/"+month+"/"+day)){
+			msg="오늘 날짜의 영화를 스케줄링 할 수 없습니다.";
+			mav.addObject("msg",msg);
+			mav.setViewName("/admin_theater.do");
+			return mav;
+		}
 	
 		dto.setTheater(req.getParameter("theater"));
-		String str =req.getParameter("theater");
-		System.out.println(str);
 		dto.setTheaternum(Integer.parseInt(req.getParameter("theaternum")));
 		dto.setDay(req.getParameter("day"));
 		dto.setTime(Integer.parseInt(req.getParameter("time")));
 		System.out.println(dto);
 		ScheduleDTO scheduleDTO = admin_scheduleDAO.getSchedule(dto);
 		
-		List movieTitleList = movieDAO.getList("now");
+		List movieTitleList = movieDAO.nowSchedule(req.getParameter("day"));
 		
 		List scheduleTimelist = admin_scheduleDAO.listScheduleTime();
 		for(Iterator it = scheduleTimelist.iterator();it.hasNext();){
@@ -144,4 +159,30 @@ public class AdminTheaterController {
 		
 		return mav;
 	}
+	@RequestMapping(value="/admin_movie_closeDate.do")
+	   public ModelAndView admin_movie_closeDate(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		   ModelAndView mav= new ModelAndView();
+		   int num = Integer.parseInt(req.getParameter("num"));
+		   String msg=null;
+		   String url=null;
+		   int scheduleRes=0;
+		   int closeRes =0;
+		   closeRes= movieDAO.updateClose(num);
+		   
+		   if(closeRes>0){
+			   scheduleRes = admin_scheduleDAO.updateCloseMovie(num);
+			   url="/admin_movie.do";
+			   if(scheduleRes<=0){
+				   msg="스케줄에 등록되어 있지 않은 영화입니다!!";
+				   url="/admin_movie.do";
+			   }
+		   }else if(closeRes<=0){
+			   
+			   msg="클로징을 할 수 없는 영화입니다!!";
+			   url="/admin_movie.do";
+		   }
+		   mav.addObject("msg",msg);
+		   mav.setViewName(url);
+		   return mav;
+	   }
 }

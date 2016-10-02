@@ -24,6 +24,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	update schedule set title=#{title} where theater=#{theater} and theaternum=#{theaternum} and time=#{time} and day = #{day}
 </update>
 
+<update id="updateCloseMovie" parameterType="int">
+	update schedule set title = null where title =(select title from MOVIES_INFO where num= #{num})
+</update>
+
 <!-- 스케줄 최신화 -->
 <insert id="newSchedule" parameterType="Map">
 	insert into schedule(day,time,theater,theaternum,sitcount) values

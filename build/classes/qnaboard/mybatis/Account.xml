@@ -42,18 +42,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update qnaboard set re_step = re_step+1
 	</update>
 	
-	<!-- <select id="getBoard" parameterType="int" resultType="BoardDTO">
-		select * from board where num = #{num}
-	</select>
-	
-	<insert id="insertBoard" parameterType="BoardDTO">
-		insert into board values(board_seq.nextval,#{writer},#{email},#{subject},#{passwd},sysdate,0,#{content},#{ip},#{re_step},#{re_level},#{fileName},#{fileSize})
-	</insert>
-	
-	<update id="new_update">
-		update board set re_step = re_step+1
-	</update>
-	<update id="re_update" parameterType="BoardDTO">
-		update board set re_step=re_step+1 where re_step>#{re_step}
-	</update> -->
 </mapper>

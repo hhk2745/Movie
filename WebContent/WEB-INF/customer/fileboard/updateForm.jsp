@@ -23,9 +23,9 @@
 	<nav>
 		<ul>
 			<li><a href="customer_main.do">고객센터 메인</a></li>
-			<li><a href="qnaboard_list.do">QNA(1:1)</a></li>
-			<li><a href="faqboard_list.do">FAQ(일반)</a></li>
-			<li><a href="fileboard_list.do">FILE(자료실형)</a></li>
+			<li><a href="qna_writeForm.do">QNA(1:1)</a></li>
+			<li><a href="faqboard_list.do?mode=전체">FAQ(일반)</a></li>
+			<li><a href="fileboard_setting.do">FILE(자료실형)</a></li>
 		</ul>
 	</nav>
 	<main>

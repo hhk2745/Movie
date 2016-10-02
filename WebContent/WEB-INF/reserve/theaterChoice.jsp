@@ -29,7 +29,7 @@
 <c:if test="${empty loginId}">
    <script type="text/javascript">
       alert('로그인 후 사용가능한 페이지입니다.');
-      location.href="index.do";
+      location.href="member_Login.do";
    </script>
 </c:if>
 

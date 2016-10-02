@@ -4,14 +4,19 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>    
 <%@ include file="../../../top.jsp"%>
 
-<section class="content">
+<c:if test="${!empty result && result eq true}">
+	<script>
+		window.open("imgOpen.do?id=${id}&fileName=${fileName}", "", "width=1000, height=500, left=100, top=100"); 
+	</script>
+</c:if>
 
+<section class="content">
 	<nav>
 		<ul>
 			<li><a href="customer_main.do">고객센터 메인</a></li>
-			<li><a href="qnaboard_list.do">QNA(1:1)</a></li>
-			<li><a href="faqboard_list.do">FAQ(일반)</a></li>
-			<li><a href="fileboard_list.do">FILE(자료실형)</a></li>
+			<li><a href="qna_writeForm.do">QNA(1:1)</a></li>
+			<li><a href="faqboard_list.do?mode=전체">FAQ(일반)</a></li>
+			<li><a href="fileboard_setting.do">FILE(자료실형)</a></li>
 		</ul>
 	</nav>
 	<main>
@@ -26,7 +31,9 @@
 				<table width="90%" class="ex1">
 					<tr>
 						<td align="right">
-							<input type="button" value="글쓰기" onClick="window.location='fileboard_writeForm.do'"><br><br><br>
+							<c:if test="${!empty loginId.id}">
+								<input type="button" value="글쓰기" onClick="window.location='fileboard_writeForm.do'"><br><br><br>
+							</c:if>
 						</td>
 					</tr>
 				</table>
@@ -46,10 +53,17 @@
 				<c:forEach var="dto" items="${boardList}">
 				<c:set var="count" value="${count+1}" />
 				<td align="center">
-					<table border="1" width="30%" height="30%">
+					<table border="1" width="80%" height="80%">
 						<tr>
 							<td width="10">
-								<img src="img/logo.png" width="60" height="60">
+								<c:choose>
+									<c:when test="${dto.profile_state eq 'no'}">
+										<img src="img/profile.png" width="60" height="60">
+									</c:when>
+									<c:otherwise>
+										<img src="<c:url value="/profile_img/${dto.id}.jpg"/>" width="60" height="60">
+									</c:otherwise>
+								</c:choose>
 							</td>
 							<th align="center" valign="top">${dto.id}</th>
 							<c:if test="${loginId.id eq dto.id}">
@@ -72,16 +86,10 @@
 						</tr>
 						<tr>
 							<td colspan="3" align="center">
-								<%-- <c:out value="${pageContext.request.scheme}/${upPath}/${dto.id}/${dto.fileName}"></c:out> --%>
-								<%-- <c:out value="${upPath}/${dto.id}/${dto.fileName}"></c:out> --%>
-								<%-- <c:out value="${upPath}${dto.fileName}"></c:out> --%>
-								<%-- "${pageContext.request.contextPath}/img/sitImg/out.png" --%>
-								<%-- <c:out value="${pageContext.request.contextPath}"></c:out> --%>
-								<img src="${upPath}/${dto.id}/${dto.fileName}">
-								<%-- <img src="<img src="<c:url value="/images/tomcat.gif"/>">"> --%>
-								<%-- <img src="${pageContext.request.contextPath}"> --%>
-								<%-- <img src="<c:url value='/WebContent/WEB-INF/customer/fileboard/files/ony.PNG'/>"> --%>
-								<%-- <c:out value="${pageContext.request.contextPath}/WebContent/WEB-INF/customer/fileboard/files/ony.PNG"></c:out> --%>
+								<a href="img.do?id=${dto.id}&fileName=${dto.fileName}">
+									<img src="<c:url value="/fileboard_files/${dto.id}/${dto.fileName}" />" 
+									width="200px" height="200px" title="클릭하시면 원본 크기로 보실 수 있습니다." >
+								</a>
 							</td>
 						</tr>
 					</table>

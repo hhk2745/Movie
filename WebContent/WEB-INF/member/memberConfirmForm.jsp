@@ -65,6 +65,8 @@
 		</form>
 		<form name="number_confirm" action="confirmOk.do" method="post" onsubmit="return checkConfirm()">
 			<input type="hidden" name="loginId" value="${loginId.id }">
+			<input type="hidden" name="memberNum" value="${loginId.num }">
+			<input type="hidden" name="email" value="${clientEmail }">
 			<table border="1" width="600" bgcolor="515151" cellpadding="10"
 				cellspacing="5">
 				<tr>

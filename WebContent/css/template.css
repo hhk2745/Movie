@@ -4,12 +4,22 @@
 .topMainContainer {
 	display: flex;
 	flex-direction: column;
+	border:0;
+	font-size: 3px;
+	font-family: BareunDotum1, arial, verdana, "Helvetica Neue", monospace;
+		background-image: url('img\main\bg_header.png'); 
+	background-repeat: repeat-x;
 }
 
 .topMainADContainer {
 	display: flex;
 	width: 100%;
 	background-color: white;
+	border:0;
+	font-size: 3px;
+	font-family: BareunDotum1, arial, verdana, "Helvetica Neue", monospace;
+		background-image: url('img\main\bg_header.png'); 
+	background-repeat: repeat-x;
 }
 
 .topLoginContainer {
@@ -18,6 +28,12 @@
 	background-color: rgb(253, 252, 240);
 	display: flex;
 	flex-direction: row-reverse;
+	border:0;
+	font-size: 3px;
+	font-family: BareunDotum1, arial, verdana, "Helvetica Neue", monospace;
+		background-image: url('img\main\bg_header.png'); 
+	background-repeat: repeat-x;
+	
 }
 
 .topMainMenuContainer {
@@ -25,14 +41,40 @@
 	border-bottom: 1px solid gray;
 	display: flex;
 	flex-direction: row;
+	border:0;
+	font-size: 1rem;
+	font-family: BareunDotum1, arial, verdana, "Helvetica Neue", monospace;
+	background-image: url('img\main\bg_header.png'); 
+	background-repeat: repeat-x;
 }
 /*  container END */
+
+.topmenu {
+	height : 50px;
+	font-size: 3px;
+	flex-shrink: 0;
+	font-family: BareunDotum1;
+	text-align : right;
+}
+
+.mainmenu {
+	font-size: 3rem;
+	flex-shrink: 0;
+	font-family: BareunDotum1;
+	width : 98%;
+	height : 119px;
+}
 
 /*  item START */
 .topMainMenuItem:nth-child(1) {
 	text-align: center;
 	flex-shrink: 0;
 	flex-basis: 20%;
+	border:0;
+	font-size: 3px;
+	font-family: BareunDotum1, arial, verdana, "Helvetica Neue", monospace;
+	background-image: url('img\main\bg_header.png'); 
+	background-repeat: repeat-x;
 }
 
 .topMainMenuItem:nth-child(2) {
@@ -40,6 +82,11 @@
 	flex-shrink: 0;
 	flex-basis: 60%;
 	padding-top: 40px;
+	border:0;
+	font-size: 3px;
+	font-family: BareunDotum1, arial, verdana, "Helvetica Neue", monospace;
+	background-image:URL('img\main\bg_header.png');
+	background-repeat:repeat-x; 
 }
 
 .topMainMenuItem:nth-child(3) {
@@ -48,6 +95,12 @@
 	flex-basis: 374px;
 	height: 100px;
 	padding-right: 40px;
+	border:0;
+	font-size: 3px;
+	font-family: BareunDotum1, arial, verdana, "Helvetica Neue", monospace;
+	background-image:URL('img\main\bg_header.png');
+	background-repeat:repeat-x; 
+	
 }
 
 .topLoginItem:nth-child(1) {
@@ -57,6 +110,10 @@
 	padding-top: 10px;
 	padding-right: 40px;
 	height: 30px;
+	border:0;
+	font-size: 3px;
+	font-family: BareunDotum1, arial, verdana, "Helvetica Neue", monospace;
+
 }
 
 .topLoginItem:nth-child(2) {
@@ -65,6 +122,10 @@
 	flex-basis: 100px;
 	padding-top: 10px;
 	height: 30px;
+	border:0;
+	font-size: 3px;
+	font-family: BareunDotum1, arial, verdana, "Helvetica Neue", monospace;
+
 }
 
 .topLoginItem:nth-child(3) {
@@ -73,6 +134,10 @@
 	flex-basis: 100px;
 	padding-top: 10px;
 	height: 30px;
+	border:0;
+	font-size: 3px;
+	font-family: BareunDotum1, arial, verdana, "Helvetica Neue", monospace;
+
 }
 
 .topLoginItem:nth-child(4) {
@@ -81,6 +146,10 @@
 	flex-basis: 100px;
 	padding-top: 10px;
 	height: 30px;
+	border:0;
+	font-size: 3px;
+	font-family: BareunDotum1, arial, verdana, "Helvetica Neue", monospace;
+
 }
 
 /*  item END */
@@ -93,11 +162,19 @@
 	width: 30% height: 30px;
 	align-content: center;
 	text-align: center;
+	border:0;
+	font-size: 1rem;
+	font-family: BareunDotum1, arial, verdana, "Helvetica Neue", monospace;
 }
 
 header {
 	width: 100%;
 	padding: 0;
+	border:0;
+	font-size: 3px;
+	font-family: BareunDotum1, arial, verdana, "Helvetica Neue", monospace;
+		background-image:URL('img\main\bg_header.png');
+	background-repeat:repeat-x; 
 }
 
 footer {
@@ -106,39 +183,57 @@ footer {
 	text-align: center;
 }
 
-.content {
+.content {	
 	display: flex;
-	height: 1000px;
+	margin:0;
+	border:0;
+	font-size: 1rem;
+	font-family: BareunDotum1, arial, verdana, "Helvetica Neue", monospace;
 }
 
-.content nav {
+.content nav {	
 	border-right: 1px solid gray;
+	margin:0;
+	border:0;
+	font-size: 1rem;
+	font-family: BareunDotum1, arial, verdana, "Helvetica Neue", monospace;
 }
 
 .content aside {
 	border-left: 1px solid gray;
 	padding-right: 40px;
+	margin:0;
+	border:0;
+	font-size: 1rem;
+	font-family: BareunDotum1, arial, verdana, "Helvetica Neue", monospace;
 }
 
 nav, aside {
-	flex-basis: 150px;
+	flex-basis: 15%;
 	flex-shrink: 0;
+	margin:0;
+	border:0;
+	font-size: 1rem;
+	font-family: BareunDotum1, arial, verdana, "Helvetica Neue", monospace;
 }
 
 main {
-	padding-left: 400px;
-	padding-top: 50px;
-	height: 3000px;
+	padding: 10px;
+	margin:0;
+	font-size: 1rem;
+	font-family: BareunDotum1, arial, verdana, "Helvetica Neue", monospace;	
 }
 
 .topLoginContainer img {
 	width: 100%;
+	font-size: 1rem;
+	font-family: BareunDotum1, arial, verdana, "Helvetica Neue", monospace;
 }
 
 /* font */
 #type1 {
 	font-size: 1rem;
-	font-family: arial, verdana, "Helvetica Neue", monospace;
+	font-family: BareunDotum1, arial, verdana, "Helvetica Neue", monospace;
 	font-weight: bold;
 	line-height: 2; /*첫문장과 두번째 문장의 간격이라 보면됨*/
 
@@ -153,11 +248,11 @@ monospace (고정폭)*/
 }
 
 /*표준 링크 스타일*/
-a:VISITED {
+a:visited {
 	color: black;
 	text-decoration: none;
 	font-size: 1rem;
-	font-family: arial, verdana, "Helvetica Neue", monospace;
+	font-family: BareunDotum1, arial, verdana, "Helvetica Neue", monospace;
 	font-weight: bold;
 }
 
@@ -165,7 +260,7 @@ a:link {
 	color: black;
 	text-decoration: none;
 	font-size: 1rem;
-	font-family: arial, verdana, "Helvetica Neue", monospace;
+	font-family: BareunDotum1, arial, verdana, "Helvetica Neue", monospace;
 	font-weight: bold;
 }
 
@@ -173,7 +268,7 @@ a:hover {
 	color: tomato;
 	text-decoration: underline;
 	font-size: 1rem;
-	font-family: arial, verdana, "Helvetica Neue", monospace;
+	font-family: BareunDotum1, arial, verdana, "Helvetica Neue", monospace;
 	font-weight: bold;
 }
 
@@ -181,7 +276,7 @@ a:hover {
 	color: black;
 	text-decoration: none;
 	font-size: 2rem;
-	font-family: arial, verdana, "Helvetica Neue", monospace;
+	font-family: BareunDotum1, arial, verdana, "Helvetica Neue", monospace;
 	font-weight: bold;
 }
 
@@ -189,6 +284,127 @@ a:hover {
 	color: tomato;
 	text-decoration: none;
 	font-size: 2rem;
-	font-family: arial, verdana, "Helvetica Neue", monospace;
+	font-family: BareunDotum1, arial, verdana, "Helvetica Neue", monospace;
 	font-weight: bold;
 }
+
+/*================Login================*/
+section.loginContent {
+	margin-top: 80px;
+	display: flex;
+	direction: row;
+	display: flex;
+	direction: row;
+	height: 500px;
+}
+
+.loginContent nav, .loginContent aside {
+	flex-grow: 0;
+	flex-basis: 600px;
+	flex-shrink: 2;
+}
+
+div.memberLoginContainer {
+	
+	height: 283px;
+	flex-grow: 1;
+	flex-shrink: 1;
+	width: 500px;
+}
+
+div.loginButtonContainer {
+	border-bottom: 2px solid gray;
+	display: flex;
+	direction: row;
+	display: flex;
+	border-left: 2px solid gray; 
+
+}
+
+div.loginButtonContainer button.loginbtn {
+	background-color: #b42222;
+	color: ghostwhite;
+	flex-basis: 150px;
+	height: 40px;
+	border: 1px solid black;
+	border-bottom: 2px solid black;
+	font-size: 12px;
+}
+
+div.loginButtonContainer button.nologinbtn {
+	background-color: whitesmoke;
+	color: black;
+	flex-basis: 150px;
+	height: 40px;
+	border: 1px solid black;
+	border-bottom: 2px solid black;
+	font-size: 12px;
+}
+
+div.loginFormDiv {
+	border-right: 3px solid gray;
+	border-left: 5px solid black;
+	padding: 20px;
+	display: flex;
+	direction: column;
+	padding: 20px;
+	border-left: 1px;
+	font-size: 12px;
+	border-left: 2px solid gray; 
+
+}
+
+div.loginFormDiv form.loginForm input {
+	height: 50px;
+	padding: 10px;
+	border: 1px solid black;
+	font-size: 12px;
+}
+
+div.loginFormDiv form.loginForm input#submit {
+	height: 50px;
+	font-size: 1rem;
+	font-weight: bold;
+	background-color: #b42222;
+	color: ghostwhite;
+	width: 100px;
+}
+
+div.loginFormDiv button {
+	margin-top: 30px;
+	margin-left: 20px;
+	width: 100px;
+	height: 90px;
+	margin-left: 20px;
+	border: 1px solid darkgray;
+	border-bottom: 2px solid black;
+	border-right: 2px solid black;
+	background-color: #b42222;
+	font-weight: bold;
+	font-size: 12px;
+	color: ghostwhite;
+}
+
+div.serchDiv {
+	border-bottom: 3px solid gray;
+	border-right: 3px solid gray;
+	padding-top: 0;
+	padding-left: 80px;
+	display: flex;
+	direction: column;
+	display: flex;
+	padding-top: 0;
+	border-left: 2px solid gray; 
+}
+
+div.serchDiv button.serchDivItem {
+	flex-basis: 100px;
+	height: 30px;
+	background-color: white;
+	border: 1px solid black;
+	border-bottom: 2px solid black;
+	border-right: 2px solid black;
+	font-size: 12px;
+}
+
+/*================Login================*/

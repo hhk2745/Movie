@@ -17,31 +17,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="all" resultType="Movie_infoDTO">
-		select * from movies_info order by num desc
+		select * from movies_info 
 	</select>
 	
 	<select id="now" resultType="Movie_infoDTO">
 		select * from MOVIES_INFO where to_date(sysdate,'yy/MM/dd')  between to_date(OPENDATE,'yy/MM/dd') and to_date(CLOSEDATE,'yy/MM/dd')
 	</select>
 	
+	<select id="nowSchedule" parameterType="String" resultType="Movie_infoDTO">
+		select * from MOVIES_INFO where to_date(#{day},'yy/MM/dd')
+		between to_date(OPENDATE,'yy/MM/dd') and to_date(CLOSEDATE,'yy/MM/dd')
+	</select>
+	
 	<select id="due" resultType="Movie_infoDTO">
 		select * from movies_info where OPENDATE>sysdate
 	</select>
 	
-	<select id="box" resultType="Movie_infoDTO">
-      select * from (select rownum rn, movies_info.* from movies_info 
-       order by watchcount desc )a  where 10>=a.rn and (to_date(sysdate,'yy/MM/dd') between to_date(a.opendate,'yy/MM/dd')
-       and to_date(a.closedate,'yy/MM/dd')) order by a.rn desc
-   </select>
+<select id="box" resultType="Movie_infoDTO">
+		select  a.* from (select movies_info.* from movies_info where to_date(sysdate,'yy/MM/dd') between to_date(opendate,'yy/MM/dd')
+       and to_date(closedate,'yy/MM/dd') order by watchcount desc) a where 3>=rownum   
+	</select>
 	
 	<select id="getMovie" parameterType="int" resultType="Movie_infoDTO">
 		select * from movies_info where num=#{num}
 	</select>
-	
+	<select id="nowMonthMovie" resultType="String">
+		select title from MOVIES_INFO where opendate like #{date}||'%' or CLOSEDATE like #{date}||'%' or to_date(#{date}||'/01','yy/MM/dd') BETWEEN to_date(opendate,'yy/MM/dd') and to_date(closedate,'yy/MM/dd')
+	</select>
 	<insert id="insertMovie" parameterType="Movie_infoDTO">
 		insert into movies_info values(movies_seq.nextval,#{title},#{genre},#{grade},
 		#{country},to_date(#{opendate},'yy/MM/dd'),#{runtime},#{movie_info},#{poster},
-		0,20991231,#{director}, #{actor}) 
+		0,'99/12/31',#{director}, #{actor}) 
 	</insert>
 
 	<update id="updateMovie" parameterType="Movie_infoDTO">
@@ -78,8 +84,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update movies_info set watchcount = watchcount - 1 where num = #{num}
 	</update>
 	
-	<update id ="updateClose" parameterType="HashMap" >
-		update movies_info set closedate = #{date} where num = {num}
+	<update id ="updateClose" parameterType="int" >
+		update movies_info set closedate = to_date(sysdate,'yy/MM/dd') where num = #{num}
 	</update>
 	
 	<!-- 영화한줄평 -->

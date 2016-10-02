@@ -5,7 +5,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="faqboard.mybatis.Account">
 
-	<select id="FAQlistBoard" parameterType="HashMap" resultType="FAQBoardDTO">
+	<select id="FAQlistBoard" parameterType="HashMap" resultType="FAQBoardDTO"> 
+		select * from(select rownum rn, faq.num as num,board.CATEGORY_TITLE as category_title, faq.title as title,faq.readcount as readcount
+	   	from faqboard faq, BOARD_CATEGORY board where board.CATEGORY_TITLE=#{mode} and 
+	   	board.CATEGORY_NUM=faq.CATEGORY order by faq.num desc)a where a.rn BETWEEN #{startRow} and #{endRow}
+	</select>
+	
+	<select id="FAQallListBoard" parameterType="HashMap" resultType="FAQBoardDTO">
 		select * from
 		(select rownum rn, board_category.category_title as category_title, 
 		faqboard.title as title, faqboard.readcount as readcount, faqboard.num as num
@@ -17,10 +23,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from(select rownum rn, board_category.category_title as category_title, faqboard.title as title, faqboard.readcount as readcount, faqboard.num as num, faqboard.content as content
 		from faqboard, board_category where faqboard.category=board_category.category_num)a where num = #{num}
 	</select>
-	
-	<!-- <select id="FAQgetBoard" parameterType="int" resultType="FAQBoardDTO">
-		select * from faqboard where num = #{num}
-	</select> -->
 	
 	<insert id="FAQinsertBoard" parameterType="HashMap">
 		insert into faqboard values(faqboard_seq.nextval, #{category}, #{id}, #{title}, #{content}, #{fileName}, #{fileSize}, sysdate, 0, #{re_step}, #{re_level})

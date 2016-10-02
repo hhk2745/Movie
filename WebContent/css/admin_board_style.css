@@ -1,0 +1,42 @@
+DIV.brd-head { padding:0px 0px 0px 0px; /* top right bottom left*/}
+DIV.brd-head .title{ font:bold 16px gulim, tahoma; float:both;	color: #333;}
+DIV.brd-head .description{ font:normal 12px gulim, tahoma; float:both; color: #555;}
+
+DIV.brd-list table{clear:both; width:85%; table-layout:fixed; margin:5px 0 0 0 ; border-bottom: 2px solid #333;}
+DIV.brd-list table th {background-color:#333; white-space:nowrap; height:25px; overflow:hidden; text-align:center; font:normal 14px dotum, tahoma; color:#e1e1e1 ; border-bottom: 2px solid #888;}
+DIV.brd-list table th a:link, .board_list th a:visited, .board_list th a:active {text-decoration:none; color:#e1e1e1}
+DIV.brd-list table th a:hover {color:#aaa}
+
+DIV.brd-list table td {padding:.1em; height:25px; border-bottom:1px solid #ddd; font:normal 12px gulim, tahoma; white-space:nowrap; text-align:center} 
+DIV.brd-list table td.number {font:normal 12px gulim, tahoma; color:#555; text-align:center}
+DIV.brd-list table td.checkbox {text-align:center}
+DIV.brd-list table td.title {overflow:hidden; color:#555}
+DIV.brd-list table td.name {padding:0 0 0 10px; color:#555}
+DIV.brd-list table td.date {text-align:center;color:#555}
+DIV.brd-list table td a:link, .board_list td a:visited, .board_list td a:active, .board_list td a:hover {text-decoration:none; color:#555}
+DIV.brd-list table td.name .nomember {color:#555}
+DIV.brd-list table td img {vertical-align:top}
+DIV.brd-list input  {font:normal 12px gulim, tahoma; color:#555; }
+
+DIV.brd-view table{background-color:#333; clear:both; width:100%; table-layout:fixed; margin:5px 0 0 0 ; border-bottom: 2px solid #888;}
+DIV.brd-view table td {background-color:#333;margin:0 0 0 0 ; padding:.1em;}
+DIV.brd-view table td.title {font:bold 12px gulim, tahoma; color:#ddd;}
+DIV.brd-view table td.other {font:normal 12px gulim, tahoma; color:#ccc;}
+
+DIV.brd-body table{clear:both; width:100%; table-layout:fixed; margin:5px 0 0 0 ; border-bottom: 2px solid #333;}
+DIV.brd-body table td {font:normal 12px gulim, tahoma; color:#555;}
+
+DIV.brd-form table{clear:both; width:85%; table-layout:fixed; margin:5px 0 0 0 ;}
+DIV.brd-form table th {background-color:#333; white-space:nowrap; height:22px; overflow:hidden; text-align:center; font:normal 12px dotum, tahoma; color:#e1e1e1 ; border-bottom: 2px solid #888;}
+DIV.brd-form table td {font:normal 12px gulim, tahoma; color:#555;}
+DIV.brd-form input  {font:normal 12px gulim, tahoma; color:#555;}
+
+DIV.brd-buttons table{clear:both; width:100%; table-layout:fixed; margin:5px 0 0 0 ;}
+
+select.board {font:normal 12px gulim, tahoma; color:#555;padding:1px 0 1px 0;}
+.board input  {font:normal 12px gulim, tahoma; color:#555;}
+button.board {font:normal 12px gulim, tahoma; color:#555;}
+
+DIV.brd-navigation table {text-align:center; margin-top:2px; height:25px; width:100%;}
+DIV.brd-navigation table td {font:normal 12px gulim, tahoma; color:#555; text-align:center}
+DIV.brd-navigation table td a:link, .board_list td a:visited, .board_list td a:active, .board_list td a:hover {text-decoration:none; color:#555}

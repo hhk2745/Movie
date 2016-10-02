@@ -132,5 +132,13 @@ public class TicketDAOImpl implements TicketDAO{
 		int res = SimpleExample.downMoney(id,total);
 		return res;
 	}
+	
+	@Override
+	public List getMovieList() {
+		// TODO Auto-generated method stub
+		List list = SimpleExample.getMovieList();
+		return list;
+
+	}
 
 }

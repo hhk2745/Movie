@@ -42,13 +42,6 @@ public class AdminQNABoardListController {
 		int startPage = (currentPage-1)/pageBlock*pageBlock+1;
 		int endPage = startPage+pageBlock-1;
 		
-		/*HttpSession session = arg0.getSession();
-		MemberDTO dto = (MemberDTO)session.getAttribute("loginId");
-		String id = "";
-		if(dto != null){
-			id = dto.getId();
-		}*/
-		
 		List list = adminQNABoardDAO.admin_listBoard(startRow, endRow);
 		ModelAndView mav = new ModelAndView();
 		

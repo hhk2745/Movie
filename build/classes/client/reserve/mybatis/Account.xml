@@ -88,15 +88,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update Schedule set sitcount=sitcount+1 where day=#{day} and theaternum=#{theaternum} and time = #{time} 
 	</update>
 	<update id="wcd" parameterType="String">
-	update Movies_info set watchCount=watchCount-1 where num= (select num from Movies_info where title=#{title}) 
+		update Movies_info set watchCount=watchCount-1 where num= (select num from Movies_info where title=#{title}) 
 	</update>
 	
 	<update id="upMoney" parameterType="HashMap">
-	update Member set money=(money+#{pay}) where id= #{id} 
+		update Member set money=(money+#{pay}) where id= #{id} 
 	</update>
 	
 	<update id="downMoney" parameterType="HashMap">
-	update Member set money=(money-#{total}) where id=#{id} 
+		update Member set money=(money-#{total}) where id=#{id} 
 	</update>
-	
+	<select id = "getMovieList" resultType="Movie_infoDTO">
+		select m.* from movies_info m , (select DISTINCT title from schedule where not title ='null') sgm where m.title = sgm.title
+	</select>
 </mapper>

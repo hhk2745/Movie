@@ -9,11 +9,20 @@ import faqboard.mybatis.SimpleExample;
 public class FAQBoardDAOImpl implements FAQBoardDAO {
 	
 	@Override
-	public List listBoard(int startRow, int endRow) throws SQLException{
+	public List listBoard(int startRow, int endRow, String mode) throws SQLException{
 		HashMap map = new HashMap();
 		map.put("startRow", startRow);
 		map.put("endRow", endRow);
+		map.put("mode", mode);
 		return SimpleExample.listBoard(map);
+	}
+	
+	@Override
+	public List allListBoard(int startRow, int endRow) throws SQLException{
+		HashMap map = new HashMap();
+		map.put("startRow", startRow);
+		map.put("endRow", endRow);
+		return SimpleExample.allListBoard(map);
 	}
 	
 	@Override

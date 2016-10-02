@@ -58,7 +58,20 @@ public class SimpleExample {
 	  session.close();
 	  return list;
   }
-  
+  public static List nowSchedule(String day){
+	  List list = null;
+	  SqlSession session = sqlMapper.openSession();
+	  list = session.selectList("nowSchedule",day);
+	  session.close();
+	  return list;
+  }
+  public static List nowMonthMovie(String date){
+	  List list = null;
+	  SqlSession session = sqlMapper.openSession();
+	  list = session.selectList("nowMonthMovie",date);
+	  session.close();
+	  return list;
+  }
   public static Movie_infoDTO getMovie(int num){
 	  SqlSession session = sqlMapper.openSession();
 	  Movie_infoDTO dto = new Movie_infoDTO();
@@ -145,14 +158,13 @@ public class SimpleExample {
 		session.close();
 	}
 
-	public static void updateClose(int num , String date) {
+	public static int updateClose(int num) {
 		SqlSession session = sqlMapper.openSession();
-		HashMap<String,String> map = new HashMap();
-		map.put("date", date);
-		map.put("num", num+"");	//int 형을 string으로 해서 넣음
-		session.update("updateClose",map);
+		int res = 0;
+		res = session.update("updateClose",num);
 		session.commit();
 		session.close();
+		return res;
 	}
 	public static int movieGetCount(){
 		SqlSession session = sqlMapper.openSession();

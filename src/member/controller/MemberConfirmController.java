@@ -63,6 +63,7 @@ public class MemberConfirmController
 		return mav;
 	}
 	
+
 	
 	
 	@RequestMapping(value="/confirmOk.do", method= {RequestMethod.POST, RequestMethod.GET})
@@ -72,12 +73,25 @@ public class MemberConfirmController
 		ModelAndView mav = new ModelAndView();
 		
 		String id = req.getParameter("loginId");
-		
+		String num = req.getParameter("memberNum");
 		int res = memberDAO.approve(id);
 		
 		
 		if(res>0){
 			mav.addObject("confirmResult", true);
+			MemberDTO dto = memberDAO.getMemberAdmin(Integer.parseInt(num));
+			System.out.println("MemberConfirmController dto :" + dto);
+			System.out.println("MemberConfirmController dto.getEmail() :" + dto.getEmail());
+			System.out.println("MemberConfirmController req.email :" + req.getParameter("email"));
+			if(dto.getEmail() == null && req.getParameter("email")!=null){
+				dto.setEmail(req.getParameter("email"));
+				int updateRes = memberDAO.updateMember(dto);
+				if(updateRes>0){
+					System.out.println("회원가입 시 이메일 입력 안해서 이메일 인증 후등록시켜줌");
+				}else{
+					System.out.println("회원가입 시 이메일 입력 안해서 이메일 인증 후등록시켜주려했으나 실패함");
+				}
+			}
 		}else{
 			mav.addObject("confirmResult", false);
 		}
@@ -98,4 +112,7 @@ public class MemberConfirmController
 		return buffer.toString();
 	}
 
+	
+	
+	
 }

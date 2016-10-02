@@ -40,6 +40,21 @@ public class SimpleExample {
       throw new RuntimeException("Something bad happened while building the SqlMapClient instance." + e, e);
     }
   }
+  
+  public static int profileSetting(String id){
+	  SqlSession session = sqlMapper.openSession();
+	  int res = session.update("FILEprofileSetting", id);
+	  session.commit();
+	  session.close();
+	  return res;
+  }
+  
+  public static List all(){
+	  SqlSession session = sqlMapper.openSession();
+	  List list = session.selectList("FILEall");
+	  session.close();
+	  return list;
+  }
 
   public static List listBoard(HashMap map){
 	  SqlSession session = sqlMapper.openSession();
@@ -94,12 +109,8 @@ public class SimpleExample {
 	}
 	
 	public static List searchBoard(String id){
-		System.out.println(id);
 		SqlSession session = sqlMapper.openSession();
 		List list = session.selectList("FILEsearchBoard", id);
-		if(list!=null){
-			System.out.println("리스트 있어요!!");
-		}
 		session.close();
 		return list;
 	}

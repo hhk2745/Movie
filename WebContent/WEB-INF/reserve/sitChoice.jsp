@@ -67,15 +67,15 @@ hr {
 	/* 	alert('rowid : ' + rowid); */
 
 		if ((Number(f.adultCount.value) + Number(f.childCount.value)) > 6) {
-			alert('7표 이상 예매하실 수 없습니다')
+			alert('한번에 7표 이상 예매하실 수 없습니다')
 			return;
 		}
 		if ((Number(f.adultCount.value) + Number(f.childCount.value)) == 0) {
-			alert('1표 이상 예매해야 합니다')
+			alert('최소 1명 이상 예매해야 합니다')
 			return;
 		}
 		if (chkCnt != a + c) {
-			alert('표 수가 일치하지 않습니다 ')
+			alert('좌석 수를 확인해 주세요 ')
 			return;
 		}
 	      var msg = '${msg}';

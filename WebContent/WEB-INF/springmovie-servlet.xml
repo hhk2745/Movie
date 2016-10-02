@@ -12,6 +12,7 @@
 		<bean id="sellDAO" class="admin.sell.db.SellDAOImpl"/>
 		<bean id="ticketDAO" class="client.reserve.db.TicketDAOImpl" />
 		<bean id="gmail" class="member.db.Gmail" />
+		
 		<!-- 승주 -->
 		<bean id="qnaBoardDAO" class="qnaboard.db.QNABoardDAOImpl" />
 		<bean id="adminQNABoardDAO" class="admin.qnaboard.db.AdminQNABoardDAOImpl" />
@@ -66,6 +67,10 @@
 		<!-- fileboard -->
 		<bean class="fileboard.controller.FILEBoardListController" />
 		<bean class="fileboard.controller.FILEBoardWriteController" />
+		<bean class="fileboard.controller.FILEBoardImgController" />
+		<bean class="fileboard.controller.FILEBoardProfileSettingController" />
+		
+		
 		<!-- admin -->
 		<!-- admin_qnaboard -->
 		<bean class="admin.qnaboard.controller.AdminQNABoardListController" />
@@ -81,6 +86,7 @@
 		
 		<!-- admin_fileboard -->
 		<bean class="admin.fileboard.controller.AdminFILEBoardListController" />
+		<bean class="admin.fileboard.controller.AdminFILEBoardImgController" />
 		
 		
 		<!-- admin_category -->

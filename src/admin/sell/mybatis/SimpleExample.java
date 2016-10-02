@@ -3,6 +3,8 @@ package admin.sell.mybatis;
 import com.ibatis.common.resources.Resources;
 
 import java.io.Reader;
+import java.util.Iterator;
+import java.util.Map;
 import java.io.IOException;
 
 import org.apache.ibatis.session.SqlSession;
@@ -47,5 +49,28 @@ public class SimpleExample {
 		session.close();
 		return count;
 	}
+	public static int sellMode(String mode,String date){
+		int total = 0;
+		SqlSession session = sqlMapper.openSession();
+		Object obj = session.selectOne(mode, date);
+		
+		if( obj != null){
+			total = (Integer)obj;
+		}
+		session.close();
+		return total;
+	}
+	public static int sellMovieMode(String mode,Map<String,String> map){
+		int total = 0;
+		SqlSession session = sqlMapper.openSession();
+		Object obj = session.selectOne(mode,map);
+		if( obj != null){
+			total = (Integer)obj;
+		}
+		session.close();
+		return total;
+	}
+	
+	
 
 }

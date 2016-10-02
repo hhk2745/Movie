@@ -40,6 +40,13 @@ public class SimpleExample {
       throw new RuntimeException("Something bad happened while building the SqlMapClient instance." + e, e);
     }
   }
+  
+  public static List admin_allListBoard(HashMap map){
+	  SqlSession session = sqlMapper.openSession();
+	  List list = session.selectList("admin_FAQallListBoard",map);
+	  session.close();
+	  return list;
+  }
 
   public static List admin_listBoard(HashMap map){
 	  SqlSession session = sqlMapper.openSession();

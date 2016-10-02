@@ -6,6 +6,8 @@ import java.util.List;
 public interface MemberDAO
 {
 	/*Client*/
+	public List all() throws SQLException;
+	
 	public MemberDTO checkMember(String name, String ssn, String hp) throws SQLException;
 
 	public void insertMember(MemberDTO dto) throws SQLException;
@@ -25,6 +27,10 @@ public interface MemberDAO
 	public int updateProfile_img(String id, String profile_img) throws SQLException;
 	
 	public MemberDTO idCheck(String id)throws SQLException;
+
+	public int upPoint(String id,int count) throws SQLException;
+	
+	public int downPoint(String id) throws SQLException;
 	
 	/*Admin*/
 	public int memberGetCount() throws SQLException; 
