@@ -28,6 +28,6 @@
  </div>	
 </footer>
 <!-- 최 우측 Label -->
-<div id="me">박진철 고동민 박승주 김한호 양전모 이혜림 유지후</div>
+<div id="me">Springproject</div>
 </body>
 </html>

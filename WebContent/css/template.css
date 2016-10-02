@@ -295,7 +295,7 @@ section.loginContent {
 	direction: row;
 	display: flex;
 	direction: row;
-	height: 500px;
+	height: 600px;
 }
 
 .loginContent nav, .loginContent aside {
@@ -345,9 +345,9 @@ div.loginFormDiv {
 	border-right: 3px solid gray;
 	border-left: 5px solid black;
 	padding: 20px;
+	padding-bottom:0;
 	display: flex;
 	direction: column;
-	padding: 20px;
 	border-left: 1px;
 	font-size: 12px;
 	border-left: 2px solid gray; 
@@ -359,6 +359,7 @@ div.loginFormDiv form.loginForm input {
 	padding: 10px;
 	border: 1px solid black;
 	font-size: 12px;
+	width: 100%;
 }
 
 div.loginFormDiv form.loginForm input#submit {
@@ -368,6 +369,8 @@ div.loginFormDiv form.loginForm input#submit {
 	background-color: #b42222;
 	color: ghostwhite;
 	width: 100px;
+	margin-left: 76.4%;
+	margin-top: 10px;
 }
 
 div.loginFormDiv button {
@@ -389,16 +392,23 @@ div.serchDiv {
 	border-bottom: 3px solid gray;
 	border-right: 3px solid gray;
 	padding-top: 0;
-	padding-left: 80px;
 	display: flex;
-	direction: column;
-	display: flex;
+	direction: row;
 	padding-top: 0;
 	border-left: 2px solid gray; 
 }
+.serchDivItem:nth-child(1){
+	flex-grow:1;
+}
+.serchDivItem:nth-child(2){
+	flex-grow:1;
+}
+.serchDivItem:nth-child(3){
+	flex-grow:1;
+}
 
 div.serchDiv button.serchDivItem {
-	flex-basis: 100px;
+	width:100%;
 	height: 30px;
 	background-color: white;
 	border: 1px solid black;

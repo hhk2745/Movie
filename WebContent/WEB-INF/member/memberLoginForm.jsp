@@ -42,12 +42,14 @@
 <section class="loginContent">
 	<nav></nav>
 	<div class="memberLoginContainer">
+	<center><img src="img\main\btn_login.png"></center>
 		<div class="loginButtonContainer">
 			<button class="loginbtn">로그인</button>
 			<button class="nologinbtn">비회원 로그인</button>
 		</div>
 
 		<div class="loginFormDiv">
+			
 			<form name="login_form" action="member_Login.do" class="loginForm" onsubmit="return checkValidate()" method="post">
 				<input type="text" name="id" size="50"
 					onclick="if(this.value=='아디를 입력하세여'){this.value=''}"
@@ -59,15 +61,20 @@
 		</div>
 
 		<div class="serchDiv">
-			<button class="serchDivItem" onclick="location.href='member_SearchID.do'">ID
-				찾기</button>
-			<button class="serchDivItem" onclick="location.href='member_SearchPW.do'">패스워드
-				찾기</button>
-			<button class="serchDivItem" onclick="location.href='member_JoinCheck.do'">회 원
-				가 입</button>
+			<div class="serchDivItem">
+				<button class="serchDivItem" onclick="location.href='member_SearchID.do'">ID 찾기</button>
+			</div>
+			<div class="serchDivItem">
+				<button class="serchDivItem" onclick="location.href='member_SearchPW.do'">패스워드 찾기</button>
+			</div>
+			<div class="serchDivItem">
+				<button class="serchDivItem" onclick="location.href='member_JoinCheck.do'">회 원 가 입</button>
+			</div>
 		</div>
+		<img src="img\main\login_banner.png" style="width: 100%; height: 100px;">
 	</div>
 	<aside></aside>
+	
 </section>
 
 
