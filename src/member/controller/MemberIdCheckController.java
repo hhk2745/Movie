@@ -36,6 +36,7 @@ public class MemberIdCheckController
 		if (dto == null)
 		{// 등록가능
 			mav.addObject("memberIdCheckResult", true);
+			mav.addObject("checkOk", "ok");
 		} else
 		{// 등록실패
 			mav.addObject("memberIdCheckResult", false);

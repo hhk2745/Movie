@@ -10,22 +10,26 @@
 		location.href = "member_Login.do";
 	</script>
 </c:if>
-<div class="col-xs-12" style="padding-top: 3rem">
- 	<table align="center">
+<div class="col-xs-12" style="padding-top: 3rem"  align="center">
+ 	<table>
 		<tr>
-			<td align="center">
+			<td>
 				<button type="button" class="btn btn-default">
-					<a href="client_movie_all.do" style="font-size: 3rem;">모든 영화</a>
-				</button>
-				<button class="btn btn-primary">
-					<a href="client_movie_now.do" style="font-size: 3rem;">현재개봉작</a>
-				</button>
-				<button class="btn btn-success">
-					<a href="client_movie_box.do" style="font-size: 3rem;">박스오피스</a>
-				</button>
-				<button class="btn btn-info">
-					<a href="client_movie_due.do" style="font-size: 3rem;">개봉 예정작</a>
-				</button>
+               <a href="client_movie_all.do" style="font-size: 3rem;">
+               <img src="img\theater\btn_all.png"><!-- 모든 영화 --></a>
+            </button>
+            <button class="btn btn-primary">
+               <a href="client_movie_now.do" style="font-size: 3rem;" >
+               <img src="img\theater\btn_nowmovie.png"><!-- 현재개봉작 --></a>
+            </button>
+            <button class="btn btn-success" style="border: 5px solid lightgray;">
+               <a href="client_movie_box.do" style="font-size: 3rem;">
+               <img src="img\theater\btn_boxoffice.png"><!-- 박스오피스 --></a>
+            </button>
+            <button class="btn btn-info" >
+               <a href="client_movie_due.do" style="font-size: 3rem;">
+               <img src="img\theater\btn_comingmovie.png"><!-- 개봉 예정작 --></a>
+            </button>
 
 			</td>
 		</tr>

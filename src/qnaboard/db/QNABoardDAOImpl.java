@@ -61,6 +61,7 @@ public class QNABoardDAOImpl implements QNABoardDAO{
 		SimpleExample.updateBoard(map);
 	}
 	
+	@Override
 	public int getCount() throws SQLException {
 		return SimpleExample.getCount();
 	}

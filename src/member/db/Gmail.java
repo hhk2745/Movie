@@ -67,6 +67,7 @@ public class Gmail
 	private static class senderAccount extends javax.mail.Authenticator
 	{
 
+		@Override
 		public PasswordAuthentication getPasswordAuthentication()
 		{
 			return new PasswordAuthentication("fj2746", "1q2w3e4r."); //

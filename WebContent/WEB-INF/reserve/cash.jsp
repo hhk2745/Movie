@@ -22,13 +22,9 @@ hr {
  -->
 <script type="text/javascript">
 	function cash() {
-		
-		
-		
 		document.f.action="client_reserve_success.do";
 		document.f.method="post";
 		document.f.submit();
-		
 	}
 
 </script>

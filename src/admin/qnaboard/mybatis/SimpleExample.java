@@ -12,7 +12,6 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import com.ibatis.common.resources.Resources;
 
 import admin.qnaboard.db.AdminQNABoardDTO;
-import qnaboard.db.QNABoardDTO;
 
 
 /**

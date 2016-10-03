@@ -10,10 +10,10 @@
 		location.href = "member_Login.do";
 	</script>
 </c:if>
-<div class="col-xs-12" style="padding-top: 3rem">
-   <table align="center">
+<div class="col-xs-12" style="padding-top: 3rem"  align="center">
+   <table>
       <tr>
-         <td align="center">
+         <td>
             <button type="button" class="btn btn-default">
                <a href="client_movie_all.do" style="font-size: 3rem;">
                <img src="img\theater\btn_all.png"><!-- 모든 영화 --></a>
@@ -39,7 +39,6 @@
 <main>
   <div class="row">
       <c:forEach var="dtoList" items="${duemovieList}">
-
          <div class="col-sm-4 col-lg-4 col-md-4">
             <div class="thumbnail">
                <img src="${pageContext.request.contextPath}/poster/${dtoList.file_directory}/${dtoList.poster}" width="300px">
@@ -48,13 +47,10 @@
                   <h4 class="movie-title">
                      <button type="button" class="btn btn-default btn-lg"
                         data-toggle="modal" data-target="#${dtoList.num }" data-title="num"
-                        onclick="<c:set var='num' value='${dtoList.num }'/>"><font style="font-size:15px;font-weight: bold"> ${dtoList.title}</font></button>
-                     
-               
-
+                        onclick="<c:set var='num' value='${dtoList.num }'/>">${dtoList.title}
+                      </button>
                   </h4>
                </div>
-               
             </div>
          </div>
          <!-- 영화 상세정보 모달 팝업 -->

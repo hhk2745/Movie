@@ -4,6 +4,7 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="css\template.css">
+
 </head>
 
 <body id="floating_banner" onload="InitializeStaticMenu();">
@@ -34,7 +35,7 @@
 		</tr>
 		</table>
 		
-		<table width="98%" height="119px" align="center" background="img\main\bg_header.png">
+		<table style="margin-left: 1%;" width="98%" height="119px" background="img\main\bg_header.png">
 		<tr>
 			<td width="15%" height="119px" align = "right" >
 				<!-- 메뉴 가독성을 위한 빈 테이블 (좌측 레이아웃 부분) -->
@@ -50,17 +51,19 @@
 				영화</a>	
 				
 				<!-- 예매 메뉴  -->			
-				<c:forEach begin="1" end="20" step="1">&nbsp;</c:forEach>
+				<c:forEach begin="1" end="10" step="1">&nbsp;</c:forEach>
 				
 					<a href="client_movieReserve.do" valign="bottom"><font size="5px">예매</a>
 					
 				
 				<!-- 극장 메뉴  -->		
-				<c:forEach begin="1" end="20" step="1">&nbsp;</c:forEach>
+				<c:forEach begin="1" end="10" step="1">&nbsp;</c:forEach>
 				<a href="client_theater.do" valign="bottom"><font size="5px">
 				극장</a>
 				
-				&nbsp;&nbsp;&nbsp;&nbsp; <!-- 메뉴 간격 가독성을 위한 공백 -->
+				<!-- 승주 메뉴  -->		
+				<c:forEach begin="1" end="10" step="1">&nbsp;</c:forEach>
+				<a href="eventHome.do" valign="bottom"><font size="5px">Event</a>
 				
 			 </td>
 				

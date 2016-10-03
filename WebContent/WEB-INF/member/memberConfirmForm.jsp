@@ -90,7 +90,6 @@
 				return false;
 			}
 			if (form.confirmNumber.value != confirmNumber) {
-				alert(confirmNumber);
 				alert("인증번호가 잘못되었습니다. 다시 입력해주세여.");
 				return false;
 			}

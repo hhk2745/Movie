@@ -100,7 +100,9 @@ alert("닉네임 등록 실패!")
 
 	<main>
 	<div class="myProfileContainer">
-		<div class="myProfileItem">1</div>
+		<div class="myProfileItem">
+		<img src="img\main\myIcon5.png" style="background-color: fefcf0;">
+		</div>
 		<div class="myProfileItemContainer">
 			<div class="myProfileItemContainer_ItemContainer">
 				<div class="myProfileItemContainer_ItemContainer_Item">이름</div>
@@ -113,8 +115,7 @@ alert("닉네임 등록 실패!")
 					${loginId.id }</div>
 			</div>
 			<div class="myProfileItemContainer_ItemContainer">
-				<div class="myProfileItemContainer_ItemContainer_Item"
-					style="height: 100px;">닉네임</div>
+				<div class="myProfileItemContainer_ItemContainer_Item">닉네임</div>
 				<div class="myProfileItemContainer_ItemContainer_Item"
 					style="width: 50px;">
 					${loinId.nickname }
@@ -136,23 +137,23 @@ alert("닉네임 등록 실패!")
 				</div>
 			</div>
 			<div class="myProfileItemContainer_ItemContainer">
-				<div class="myProfileItemContainer_ItemContainer_Item" style="height: 335px; , border-bottom: 0px;">
+				<div class="myProfileItemContainer_ItemContainer_Item" style="border-bottom: 1px solid black;">
 					프로필이미지
 				</div>
-				<div class="myProfileItemContainer_ItemContainer_Item">
-					<form name="updateProfile_imgForm" action="updateProfile_img.do" method="post"
-												enctype="multipart/form-data" onsubmit="return checkProfile_img()">
+				<div class="myProfileItemContainer_ItemContainer_Item" style="border-bottom: 1px solid black;">
+					<form name="updateProfile_imgForm" action="member_MyProfile.do" method="post" enctype="multipart/form-data" onsubmit="return checkProfile_img()">
 						<input type="hidden" name="id" value="${loginId.id }">
 						<input type="file" name="profile_img">
-						<input type="submit" value="등록">
-					</form>
+					
 				</div>
 			</div>
 		</div>
 		<div class="myProfileItem">
-			<input type="button" value="등록하기" onclick="return checkProfileInfo()"
-				style="height: 50px; width: 100px; border: 2px solid #ff3c3c; font-size: 0.9rem; background-color: #ea5b50; color: #ffffff;">
+			<input type="submit" value="사진 등록하기" onclick="return checkProfileInfo()"
+				style="height: 50px; width: 100px; border: 2px solid #ff3c3c; font-size: 1.5rem; font-weight:bold; background-color: #ea5b50; color: #ffffff; margin-left: 800px;">
+		</form>
 		</div>
+		
 	</div>
 	</main>
 

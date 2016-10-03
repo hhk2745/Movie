@@ -45,7 +45,7 @@ public class MemberInsertController
 		memberDAO.insertMember(dto);
 		ModelAndView mav = new ModelAndView();
 		
-		mav.setViewName("index.jsp");
+		mav.setViewName("WEB-INF/member/memberLoginForm.jsp");
 		mav.addObject("insertResult", true);
 		return mav;
 	}

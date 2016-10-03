@@ -87,7 +87,8 @@
 	
 <c:out value="${loginId.money }" />원 소유중<br>
    <div>
-      <form action="member_Money.do"> 
+      <form action="member_MyPage.do" method="post"> 
+      <input type="hidden" name="mode" value="myMoney">
          <h2>결제 금액</h2>
          <div>
             <input type="radio" value="1000" name="money" checked> <label>

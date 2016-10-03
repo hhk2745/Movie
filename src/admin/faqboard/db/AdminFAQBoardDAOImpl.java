@@ -4,8 +4,6 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 
-import org.springframework.jdbc.core.JdbcTemplate;
-
 import admin.faqboard.mybatis.SimpleExample;
 
 public class AdminFAQBoardDAOImpl implements AdminFAQBoardDAO {

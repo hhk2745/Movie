@@ -1,19 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../../top.jsp"%>
-
-<!-- <style type="text/css">
-hr {
-	border-top: 2px solid #9C9C9C;
-	border-bottom: 4px solid #F6F6F6;
-}
-</style> -->
 <c:if test="${!empty msg}">
 	<script type="text/javascript">
 		var msg = '${msg}';
 		alert(msg);
-		location.href="index.do";
-		</script>
+		location.href = "index.do";
+	</script>
 </c:if>
 <c:if test="${empty loginId}">
 	<script type="text/javascript">
@@ -21,7 +14,6 @@ hr {
 		location.href = "member_Login.do";
 	</script>
 </c:if>
-
 <script type="text/javascript">
 	function sitCheck() {
 		var a = Number(f.adultCount.value); // 어른 표수 select
@@ -64,7 +56,7 @@ hr {
 
 		}
 
-	/* 	alert('rowid : ' + rowid); */
+		/* 	alert('rowid : ' + rowid); */
 
 		if ((Number(f.adultCount.value) + Number(f.childCount.value)) > 6) {
 			alert('한번에 7표 이상 예매하실 수 없습니다')
@@ -78,12 +70,12 @@ hr {
 			alert('좌석 수를 확인해 주세요 ')
 			return;
 		}
-	      var msg = '${msg}';
-	      if(msg){
-	         alert(msg);
-	         location.href="index.do";
-	         return;
-	      }
+		var msg = '${msg}';
+		if (msg) {
+			alert(msg);
+			location.href = "index.do";
+			return;
+		}
 
 		f.sit.value = rowid;
 
@@ -165,8 +157,6 @@ hr {
 	imgCbox.ImgObjs = {};
 </script>
 
-
-
 <section class="content">
 	<nav>
 		<ul>
@@ -179,12 +169,9 @@ hr {
 	<main> <!-- 표수에 맞춰서 좌석 선택 가능하게   / 클릭하면 색 변화로 처리  -->
 
 	<div style="padding: 30px;">
-		<br>
-		<br>
-		<font
+		<br> <br> <font
 			style="font-family: 'Times New Roman'; font-size: 30px; font-weight: bold;">Select
-			- Seat</font><br>
-		<br>
+			- Seat</font><br> <br>
 	</div>
 	<p style="line-height: 220px">
 	<form name="f">
@@ -194,32 +181,35 @@ hr {
 				<c:forEach var="i" begin="0" end="6" step="1">
 					<option value="${i }">${i }</option>
 				</c:forEach>
-			</select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-		<c:choose>
-		<c:when  test="${empty adult }">
+			</select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<c:choose>
+				<c:when test="${empty adult }">
 			청소년 : <select name="childCount" style="width: 50px; height: 20px;">
-				<c:forEach var="j" begin="0" end="6" step="1">
-					<option value="${j }">${j }</option>
-				</c:forEach>
-			</select> 
-			</c:when>
-			<c:otherwise>
-				<input type="hidden" name="childCount" value="0">
-			</c:otherwise>
-		</c:choose>
-			<input type="hidden" name="num" value="${num }"> 
-			<input type="hidden" name="theater" value="${theater }"> 
-			<input type="hidden" name="time" value="${time }"> 
-			<input type="hidden" name="day" value="${day }"> 
-			<input type="hidden" name="theaternum" value="${theaternum }">
-			<input type="hidden" name="sit">
+						<c:forEach var="j" begin="0" end="6" step="1">
+							<option value="${j }">${j }</option>
+						</c:forEach>
+					</select>
+				</c:when>
+				<c:otherwise>
+					<input type="hidden" name="childCount" value="0">
+				</c:otherwise>
+			</c:choose>
+			<input type="hidden" name="num" value="${num }"> <input
+				type="hidden" name="theater" value="${theater }"> <input
+				type="hidden" name="time" value="${time }"> <input
+				type="hidden" name="day" value="${day }"> <input
+				type="hidden" name="theaternum" value="${theaternum }"> <input
+				type="hidden" name="sit">
 
 		</div>
 		<hr>
 		<div align="right" style="padding-right: 40px">
-			<img src="${pageContext.request.contextPath}/img/sitImg/out.png" width="20px"> 예약불가 
-			<img src="${pageContext.request.contextPath}/img/sitImg/off.png" width="20px"> 선택가능 
-			<img src="${pageContext.request.contextPath}/img/sitImg/on.png" width="20px"> 선택상태
+			<img src="${pageContext.request.contextPath}/img/sitImg/out.png"
+				width="20px"> 예약불가 <img
+				src="${pageContext.request.contextPath}/img/sitImg/off.png"
+				width="20px"> 선택가능 <img
+				src="${pageContext.request.contextPath}/img/sitImg/on.png"
+				width="20px"> 선택상태
 		</div>
 		<div
 			style="padding-left: 40px; padding-right: 40px; padding-top: 30px">
@@ -233,20 +223,20 @@ hr {
 					<td colspan="2"><br></td>
 				</tr>
 				<tr>
-					<td align="center">
-					<c:set var="count" value="0" /> 
-					<c:set 	var="tdCount" value="0" /> 
-					<c:forEach var="entry" items="${sit}">
-						<%-- <c:out value="${pageContext.request.contextPath}/img/sitImg/${entry.key }_on.png"/> --%>
+					<td align="center"><c:set var="count" value="0" /> <c:set
+							var="tdCount" value="0" /> <c:forEach var="entry" items="${sit}">
+							<%-- <c:out value="${pageContext.request.contextPath}/img/sitImg/${entry.key }_on.png"/> --%>
 							<c:choose>
 								<c:when test="${entry.value==1 }">
-									<img src="${pageContext.request.contextPath}/img/sitImg/${entry.key }.png">
+									<img
+										src="${pageContext.request.contextPath}/img/sitImg/${entry.key }.png">
 								</c:when>
 								<c:otherwise>
-									<span>
-									<input type="checkbox" name="sitChoice" value="${entry.key}"
+									<span> <input type="checkbox" name="sitChoice"
+										value="${entry.key}"
 										offsrc="${pageContext.request.contextPath}/img/sitImg/${entry.key }_off.png"
-										onsrc="${pageContext.request.contextPath}/img/sitImg/${entry.key }_on.png" /> ${entry.key }
+										onsrc="${pageContext.request.contextPath}/img/sitImg/${entry.key }_on.png" />
+										${entry.key }
 									</span>
 								</c:otherwise>
 							</c:choose>
@@ -254,24 +244,14 @@ hr {
 							<c:set var="count" value="${count+1}" />
 							<c:set var="tdCount" value="${tdCount+1}" />
 							<c:choose>
-								<c:when test="${count %8 ==0.0 }">
-										</td>
-									</tr>
-									<tr>
-										<td align="center">
-								</c:when> 
-								<c:otherwise>
-									<c:if test="${tdCount %4 ==0.0 }">
-										</td>
-										<td align="center">
-									</c:if> 
-								</c:otherwise> 
-							</c:choose> 
-							</c:forEach> 
-					<script>
+								<c:when test="${count %8 ==0.0 }"></td>
+				</tr>
+				<tr>
+					<td align="center"></c:when> <c:otherwise>
+							<c:if test="${tdCount %4 ==0.0 }"></td>
+					<td align="center"></c:if> </c:otherwise> </c:choose> </c:forEach> <script>
 						imgCbox("sitChoice");
-					</script>
-					</td>
+					</script></td>
 				</tr>
 			</table>
 		</div>
@@ -284,4 +264,8 @@ hr {
 	</main>
 	<aside>aside</aside>
 </section>
+
+
+
+
 <%@ include file="../../bottom.jsp"%>

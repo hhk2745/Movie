@@ -44,17 +44,12 @@
 		<bean class="member.controller.AdminMemberUpdateController"/>
 		<bean class="member.controller.AdminMemberDeleteController"/>
 		<bean class="member.controller.MemberSerchIDController"/>
-		<bean class="member.controller.MemberMoneyController"/>
 		<bean class="member.controller.MemberSerchPWController"/>
 		<bean class="member.controller.MemberConfirmController"/>
-		<bean class="member.controller.MemberUpdateNicknameController"/>
-		<bean class="member.controller.MemberUpdateProfile_imgController"/>
 		<bean class="member.controller.MemberIdCheckController"/>
-		
 		<bean class="client.reserve.controller.MovieReserveController" />
 		
-		
-		
+		<bean class="event.controller.EventController"/>
 		
 		<!-- 승주 -->
 		<!-- qnaboard -->

@@ -3,7 +3,6 @@ package admin.sell.mybatis;
 import com.ibatis.common.resources.Resources;
 
 import java.io.Reader;
-import java.util.Iterator;
 import java.util.Map;
 import java.io.IOException;
 

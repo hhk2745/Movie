@@ -1,11 +1,6 @@
 package client.reserve.db;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import org.apache.ibatis.session.SqlSession;
-
 import client.reserve.mybatis.SimpleExample;
 
 public class TicketDAOImpl implements TicketDAO{
@@ -38,8 +33,9 @@ public class TicketDAOImpl implements TicketDAO{
 		List list = SimpleExample.listTicketDelCant(id);
 		return list;
 	}
+	@Override
 	public TicketDTO getTicket(String num){
-		TicketDTO dto = (TicketDTO)SimpleExample.getTicket(num);
+		TicketDTO dto = SimpleExample.getTicket(num);
 		return dto;
 	}
 /*	@Override

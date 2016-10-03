@@ -13,10 +13,10 @@
 	</script>
 </c:if>
 
-<div class="col-xs-12" style="padding-top: 3rem">
-   <table align="center">
+<div class="col-xs-12" style="padding-top: 3rem" align="center">
+   <table>
       <tr>
-         <td align="center">
+         <td>
             <button type="button" class="btn btn-default" style="border: 5px solid lightgray;">
                <a href="client_movie_all.do" style="font-size: 3rem;">
                <img src="img\theater\btn_all.png"><!-- 모든 영화 --></a>

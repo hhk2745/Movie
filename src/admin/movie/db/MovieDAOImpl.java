@@ -1,16 +1,6 @@
 package admin.movie.db;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
-
-import org.springframework.dao.DataAccessException;
-import org.springframework.dao.DataRetrievalFailureException;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementSetter;
-import org.springframework.jdbc.core.ResultSetExtractor;
-import org.springframework.jdbc.core.RowMapper;
 
 import admin.movie.mybatis.SimpleExample;
 

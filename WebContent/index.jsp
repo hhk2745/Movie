@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="top.jsp"%>
+
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.0.min.js" ></script>
 <script language="javascript" src="js\rolling.js"></script>
-
-
 <c:if test="${!empty memberCheck && memberCheck eq false}">
 	<script type="text/javascript">
 		alert("이미 가입된 회원입니다. 로그인 해주세요.");
@@ -43,72 +42,55 @@
 		alert('회원정보가 수정되었습니다. 다시 로그인 해주세요.');
 	</script>
 </c:if>
-<style>
-	*{margin:0;padding:0}
-	ul,li{list-style:none}
-	.rolling_wrap{width:980px;height:450px}
-	
-	#STATICMENU { margin: 0pt; padding: 0pt;  position: absolute; right: 0px; top: 0px;}
-</style>
 <section class="content">
 <nav></nav>
 	
 <!-- 주석추가.한호 -->
 	<main> 
-	<ul class="rolling_wrap">
-				<li><img src="img\main\banner_main1.png"></li>
-				<li><img src="img\main\banner_main2.png"></li>
-				<li><img src="img\main\banner_main3.png"></li>
-				<li><img src="img\main\banner_main4.png"></li>
-				<li><img src="img\main\banner_main5.png"></li>			
+		<ul class="rolling_wrap">
+			<li><img src="img\main\banner_main1.png"></li>
+			<li><img src="img\main\banner_main2.png"></li>
+			<li><img src="img\main\banner_main3.png"></li>
+			<li><img src="img\main\banner_main4.png"></li>
+			<li><img src="img\main\banner_main5.png"></li>			
 		</ul>
-		
-	  <table width="98%">
-			<tr><td colspan="2" width="100%" height="100" align="left">
-				<img src="img\main\main_selection.png">
-			</td></tr>
-			<tr><td width="70%" height="388">
-				<embed src="img\main\miljung.mp4"
+		<ul>
+			<li><img src="img\main\main_selection.png"></li>
+			<li><embed src="img\main\miljung.mp4"
 							quality="high" bgcolor="#ffffff" width="734" height="388"
 	 						autostart="false"  loop="true"  type="video/mp4"
-				pluginspage="http://www.macromedia.com/go/getflashplayer"></embed>
-			</td>
-			<td width="70%" height="388">
-				<img src="poster\miljung.png">
-			</td>
-			</tr>
-			<tr><td colspan="2" width="100%" height="100" align="left">
-				<img src="img\main\main_event.png" alt="eventAlt"></td></tr>
-			<tr><td height="200"></td></tr>
-			<tr><td height="200"></td></tr>
-		</table>
-					<div id="STATICMENU">
+				pluginspage="http://www.macromedia.com/go/getflashplayer"></embed><img src="poster\miljung.png"></li>
+		</ul>
+		
+		<ul>
+			<li><img src="img\main\main_event.png" alt="eventAlt"></li>
+			<li><img src="img\main\event0.jpg" height="200px;"><img src="img\main\event2.jpg"><img src="img\main\event3.jpg"><img src="img\main\event4.png"></li>
+			<li style="padding-left:20px;"><img src="img\main\event5.png"><img src="img\main\event6.jpg" style="margin-left: 20px;"><img src="img\main\event7.png" style="width:228px;"></li>
+		</ul>
+			<div id="STATICMENU">
 				<img src="img\main\btn_banner.png">
 			</div>
 	</main>
 <!-- 주석추가.한호 -->
-<aside>
-AD
-</aside>
 </section>
 <!-- 주석추가.한호2 -->
 
 <script>
-			$(document).ready(function() {
-			    $('.rolling_wrap').rolling({
-					arrowBtn:true,
-					rollingBtn:true,
-					main:true,
-					timer:6000
-				});
+		$(document).ready(function() {
+		    $('.rolling_wrap').rolling({
+				arrowBtn:true,
+				rollingBtn:true,
+				main:true,
+				timer:6000
 			});
-	</script>
+		});
+</script>
 <script type="text/javascript">
 	 var stmnLEFT = 10; // 오른쪽 여백 
 	 var stmnGAP1 = 0; // 위쪽 여백 
 	 var stmnGAP2 = 150; // 스크롤시 브라우저 위쪽과 떨어지는 거리 
 	 var stmnBASE = 150; // 스크롤 시작위치 
-	 var stmnActivateSpeed = 35; //스크롤을 인식하는 딜레이 (숫자가 클수록 느리게 인식)
+	 var stmnActivateSpeed = 15; //스크롤을 인식하는 딜레이 (숫자가 클수록 느리게 인식)
 	 var stmnScrollSpeed = 20; //스크롤 속도 (클수록 느림)
 	 var stmnTimer; 
 	 

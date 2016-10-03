@@ -3,6 +3,7 @@
 /admin/
 /client/
 /db.properties
+/event/
 /faqboard/
 /fileboard/
 /member/

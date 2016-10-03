@@ -1,7 +1,5 @@
 package admin.qnaboard.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import admin.qnaboard.db.AdminQNABoardDAO;
 import admin.qnaboard.db.AdminQNABoardDTO;
-import qnaboard.db.QNABoardDTO;
 
 @Controller
 public class AdminQNABoardWriteController {

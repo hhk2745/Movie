@@ -22,7 +22,15 @@
 		var expId = /^[a-z0-9]{4,10}$/; //소문자, 숫자로 4~10자
 		var expPass = /^[a-zA-Z0-9]{6,15}$/; //소문자, 대문자, 숫자로 6~15자까지
 		var expMail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-
+		var checkOk=null;
+		if("${checkOk}"!=""){
+			checkOk = "${checkOk}";
+		}
+		
+		if(checkOk==null){
+			alert('아이디 중복확인을 체크해주세요.');
+			return false;
+		}
 		if (!expId.test(member_form.id.value)) {
 			alert("아이디가 형식에 맞지 않습니다.")
 			member_form.id.focus();
@@ -48,6 +56,7 @@
 			member_form.email.focus();
 			return false;
 		}
+		
 		return true;
 	}
 </script>

@@ -2,11 +2,7 @@ package admin.schedule.db;
 
 import java.util.List;
 
-import org.springframework.jdbc.core.JdbcTemplate;
-
-import admin.controller.AdminScheduleController;
 import admin.controller.AdminTheaterController;
-import admin.schedule.controller.ScheduleListController;
 import admin.schedule.mybatis.SimpleExample;
 
 public class ScheduleDAOImpl implements ScheduleDAO{

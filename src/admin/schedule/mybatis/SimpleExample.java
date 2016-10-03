@@ -1,9 +1,5 @@
 package admin.schedule.mybatis;
 
-import com.ibatis.sqlmap.client.SqlMapClient;
-import com.ibatis.sqlmap.client.SqlMapClientBuilder;
-
-import admin.schedule.controller.ScheduleListController;
 import admin.schedule.db.ScheduleDTO;
 import com.ibatis.common.resources.Resources;
 
@@ -16,8 +12,6 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-
-import java.sql.SQLException;
 
 public class SimpleExample {
 private static SqlSessionFactory sqlMapper;

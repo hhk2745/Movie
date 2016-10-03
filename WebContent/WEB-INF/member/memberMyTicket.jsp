@@ -90,13 +90,23 @@
 		<hr />
 		<c:choose>
 			<c:when test="${empty listTicket and empty listTicketDC}">
-		최근 예매한 티켓이 없습니다.
-	</c:when>
+				최근 예매한 티켓이 없습니다.
+			</c:when>
 			<c:otherwise>
 				<div style="overflow-y: auto; width: 100%; height: 700px;">
-					<table width="100%"  align="center">
+					<table width="100%"  align="center" border="2">
 						<c:set var="child" value="15" />
-
+							<tr>
+								<th>상영일</th>
+								<th>영화제목</th>
+								<th>극장</th>
+								<th>상영관</th>
+								<th>상영시간</th>
+								<th>구분</th>
+								<th>좌석번호</th>
+								<th>가격</th>
+								<th>선택</th>
+							</tr>
 						<c:forEach var="dto" items="${listTicket}">
 							<tr>
 								<td>${dto.day }</td>
@@ -104,17 +114,19 @@
 								<td>${dto.theater }</td>
 								<td>${dto.theaternum } 상영관</td>
 								<td>${dto.time }</td>
-								<td><c:choose>
+								<td>
+									<c:choose>
 										<c:when test="${dto.age eq child}">
-					청소년
-				</c:when>
+											청소년
+										</c:when>
 										<c:otherwise>
-					일반 
-				</c:otherwise>
-									</c:choose></td>
+											일반 
+										</c:otherwise>
+									</c:choose>
+								</td>
 								<td height="30px">${dto.sitnum }</td>
 								<td>${dto.price }원</td>
-								<td><a href="myTicketDelete.do?num=${dto.num }">취소</a></td>
+								<td><a id="cancel" href="myTicketDelete.do?num=${dto.num }">예매취소</a></td>
 							</tr>
 						</c:forEach>
 

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import admin.schedule.db.ScheduleDAO;
-import admin.schedule.db.ScheduleDTO;
 @Controller
 public class ScheduleDeleteController{
 	@Autowired
