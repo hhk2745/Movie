@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,7 +34,9 @@ public class QNABoardListController {
 		int endRow = startRow+pageSize-1;
 		int count = 0;
 		
-		count = qnaBoardDAO.getCount();
+		String id = arg0.getParameter("id");
+		
+		count = qnaBoardDAO.getCount(id);
 		
 		if(endRow > count){
 			endRow = count;
@@ -46,9 +49,9 @@ public class QNABoardListController {
 		
 		HttpSession session = arg0.getSession();
 		MemberDTO dto = (MemberDTO)session.getAttribute("loginId");
-		String id = "";
+		String loginId = "";
 		if(dto != null){
-			id = dto.getId();
+			loginId = dto.getId();
 		}
 		
 		List list = qnaBoardDAO.listBoard(startRow, endRow, id);
@@ -62,7 +65,6 @@ public class QNABoardListController {
 		mav.addObject("count", count);
 		mav.addObject("currentPage", currentPage);
 		mav.addObject("boardList", list);
-		
 		mav.setViewName("WEB-INF/member/memberMyQuestion.jsp");
 		
 		return mav;

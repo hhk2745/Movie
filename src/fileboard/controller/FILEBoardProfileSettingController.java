@@ -50,7 +50,7 @@ public class FILEBoardProfileSettingController {
 				}
 			}
 		}
-		mav.setViewName("fileboard_list.do");
+		mav.setViewName("redirect:fileboard_list.do");
 		
 		return mav;
 	}

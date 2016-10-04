@@ -32,11 +32,12 @@ a {
 <section class="content">
 	<nav>
 		<ul>
-			<li><a href="customer_main.do">고객센터 메인</a></li>
-			<li><a href="qna_writeForm.do">QNA(1:1)</a></li>
-			<li><a href="faqboard_list.do?mode=전체">FAQ(일반)</a></li>
-			<li><a href="fileboard_setting.do">FILE(자료실형)</a></li>
+			<li style="margin-left: 50px; margin-bottom: 10px;"><a href="customer_main.do">고객센터 메인</a></li>
+			<li style="margin-left: 50px; margin-bottom: 10px;"><a href="qna_writeForm.do">1:1 문의하기</a></li>
+			<li style="margin-left: 50px; margin-bottom: 10px;  background-color: rgb(231, 26, 15);"><a href="faqboard_list.do?mode=전체" style="color: white;">자주 찾는 질문</a></li>
+			<li style="margin-left: 50px; margin-bottom: 10px;"><a href="fileboard_setting.do">FILE(자료실형)</a></li>
 		</ul>
+      
 	</nav>
 	<main>
 	
@@ -54,16 +55,25 @@ a {
 	
 <c:set var="mode" value="" />
 
-		<div align="center">
-			<b>자주하는 질문</b>
-			<table width="90%" class="ex1">
-			</table>
-			<table border="1" width="90%" class="ex1">
-				<tr align="center" bgcolor="green">
-					<th>구분</th>
-					<th>제목</th>
-					<th>조회수</th>
-				</tr>
+	<div align="center">
+		<b>자주하는 질문</b>
+		<table width="90%" class="ex1">
+		</table>
+		<table border="1" width="90%" class="ex1">
+			<tr align="center" bgcolor="green">
+				<th>구분</th>
+				<th>제목</th>
+				<th>조회수</th>
+			</tr>
+
+	<c:choose>
+		<c:when test="${empty boardList}">
+			<tr>
+				<th align="center" colspan="5">등록된 질문이 없습니다.</th>
+			</tr>
+		</c:when>
+		<c:otherwise>
+		
 				<c:forEach var="dto" items="${boardList}">
 					<tr align="center">
 						<td>[ ${dto.category_title} ]</td>
@@ -76,7 +86,10 @@ a {
 					</tr>
 					<c:set var="mode" value="${dto.category_title}" />
 				</c:forEach>
-			</table>
+				
+				</c:otherwise>
+			</c:choose>
+		</table>
 			
 		<c:set var="pageCount" value="${pageCount}" />
 		<c:set var="pageBlock" value="${pageBlock}" />

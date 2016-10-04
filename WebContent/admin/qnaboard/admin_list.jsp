@@ -5,11 +5,11 @@
 
 <ul class="submenuBox">
 	<a href="admin_faqboard_list.do?mode=전체">
-		<li class="subHover effect"><span>FAQ게시판</span></li>
-	</a>
-	<a href="admin_qnaboard_list.do">
-		<li class="subHover effect"><span>QNA게시판</span></li>
-	</a>
+      <li class="subHover effect"><span>자주 찾는 질문</span></li>
+   </a>
+   <a href="admin_qnaboard_list.do?mode=전체">
+      <li class="subHover effect"><span>1:1문의</span></li>
+   </a>
 	<a href="admin_fileboard_list.do">
 		<li class="subHover effect"><span>File게시판</span></li>
 	</a>
@@ -18,11 +18,29 @@
 	</a>
 </ul>
 
+<c:if test="${param.mode == '전체'}">
+	<c:set var="all" value="전체" />
+</c:if>
+
+<ul class="submenuBox">
+	<a href="admin_qnaboard_list.do?mode=전체" />
+		<li class="subHover effect"><span>전체</span></li>
+	</a>
+	<c:forEach var="cate" items="${cateList}">
+		<a href="admin_qnaboard_list.do?mode=${cate.category_title}">
+			<li class="subHover effect"><span>${cate.category_title}</span></li>
+		</a>
+	</c:forEach>
+</ul>
+
+<c:set var="mode" value="" />
+
 		<div align="center">
 			<b>문 의 목 록</b>
 			<table border="1" width="90%" class="ex1">
 				<tr align="center" bgcolor="green">
 					<th>번호</th>
+					<th>구분</th>
 					<th>제목</th>
 					<th>작성자 ID</th>
 					<th>조회수</th>
@@ -31,13 +49,14 @@
 				<c:choose>
 					<c:when test="${empty boardList}">
 						<tr>
-							<th align="center" colspan="5">문의 내역이 없습니다.</th>
+							<th align="center" colspan="6">문의 내역이 없습니다.</th>
 						</tr>
 					</c:when>
 					<c:otherwise>
 						<c:forEach var="dto" items="${boardList}">
 							<tr align="center">
 								<td>${dto.num}</td>
+								<td>${dto.category_title}</td>
 								<td align="left">
 									<c:if test="${dto.re_level > 0}">
 										<img src="img/level.gif" width="${dto.re_level * 10}">
@@ -51,6 +70,7 @@
 								<td>${dto.readCount}</td>
 								<td>${dto.reg_date}</td>
 							</tr>
+							<c:set var="mode" value="${dto.category_title}" />
 						</c:forEach>
 					</c:otherwise>
 				</c:choose>
@@ -60,18 +80,23 @@
 		<c:set var="pageBlock" value="${pageBlock}" />
 		<c:set var="startPage" value="${startPage}" />
 		<c:set var="endPage" value="${endPage}" />
+		
+		<c:if test="${all eq '전체'}">
+			<c:set var="mode" value="전체" />
+		</c:if>
+		
 		<c:if test="${count > 0}">
 			<c:if test="${endPage > pageCount}">
 				<c:set var="endPage" value="${pageCount}" />
 			</c:if>
 			<c:if test="${startPage > pageBlock}">
-				[<a href="admin_qnaboard_list.do?pageNum=${startPage-pageBlock}">이전</a>]
+				[<a href="admin_qnaboard_list.do?mode=${mode}&pageNum=${startPage-pageBlock}">이전</a>]
 			</c:if>
 			<c:forEach var="i" begin="${startPage}" end="${endPage}">
-				[<a href="admin_qnaboard_list.do?pageNum=${i}">${i}</a>]
+				[<a href="admin_qnaboard_list.do?mode=${mode}&pageNum=${i}">${i}</a>]
 			</c:forEach>
 			<c:if test="${endPage < pageCount}">
-				[<a href="admin_qnaboard_list.do?pageNum=${startPage+pageBlock}">다음</a>]
+				[<a href="admin_qnaboard_list.do?mode=${mode}&pageNum=${startPage+pageBlock}">다음</a>]
 			</c:if>
 		</c:if>
 		</div>

@@ -63,7 +63,6 @@ public class FILEBoardDAOImpl implements FILEBoardDAO {
 		map.put("id", dto.getId());
 		map.put("content", dto.getContent());
 		map.put("fileName", dto.getFileName());
-		map.put("likeCount", dto.getLikeCount());
 		SimpleExample.updateBoard(map);
 	}
 

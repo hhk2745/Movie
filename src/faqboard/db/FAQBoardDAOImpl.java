@@ -9,6 +9,22 @@ import faqboard.mybatis.SimpleExample;
 public class FAQBoardDAOImpl implements FAQBoardDAO {
 	
 	@Override
+	public HashMap search(int startRow, int endRow, String search) throws SQLException{
+		HashMap map = new HashMap();
+		int count = SimpleExample.searchGetCount(search);
+		
+		HashMap listMap = new HashMap();
+		listMap.put("startRow", startRow);
+		listMap.put("endRow", endRow);
+		listMap.put("search", search);
+		List list = SimpleExample.search(listMap);
+		
+		map.put("count", count);
+		map.put("list", list);
+		return map;
+	}
+	
+	@Override
 	public List listBoard(int startRow, int endRow, String mode) throws SQLException{
 		HashMap map = new HashMap();
 		map.put("startRow", startRow);
@@ -30,10 +46,15 @@ public class FAQBoardDAOImpl implements FAQBoardDAO {
 		upCount(num);
 		return SimpleExample.getBoard(num);
 	}
+	
+	@Override
+	public int allGetCount() throws SQLException{
+		return SimpleExample.allGetCount();
+	}
 
 	@Override
-	public int getCount() throws SQLException{
-		return SimpleExample.getCount();
+	public int getCount(String mode) throws SQLException{
+		return SimpleExample.getCount(mode);
 	}
 
 	@Override

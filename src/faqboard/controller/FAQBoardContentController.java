@@ -22,10 +22,17 @@ public class FAQBoardContentController {
 	protected ModelAndView faq_client_content(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		int num = ServletRequestUtils.getIntParameter(arg0, "num");
+		FAQBoardDTO dto = new FAQBoardDTO();
+		String search = null;
 		
-		FAQBoardDTO dto = faqBoardDAO.getBoard(num);
+		if(ServletRequestUtils.getStringParameter(arg0, "search") != null){
+			search = ServletRequestUtils.getStringParameter(arg0, "search");
+		}
+		
+		dto = faqBoardDAO.getBoard(num);
 		
 		mav.addObject("boardDTO", dto);
+		mav.addObject("search", search);
 		mav.setViewName("WEB-INF/customer/faqboard/content.jsp");
 		return mav;
 	}

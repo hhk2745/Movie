@@ -13,10 +13,10 @@
 <section class="content">
 	<nav>
 		<ul>
-			<li><a href="customer_main.do">고객센터 메인</a></li>
-			<li><a href="qnaboard_list.do">QNA(1:1)</a></li>
-			<li><a href="faqboard_list.do?mode=전체">FAQ(일반)</a></li>
-			<li><a href="fileboard_setting.do">FILE(자료실형)</a></li>
+			<li style="margin-left: 50px; margin-bottom: 10px;"><a href="customer_main.do">고객센터 메인</a></li>
+			<li style="margin-left: 50px; margin-bottom: 10px;"><a href="qna_writeForm.do">1:1 문의하기</a></li>
+			<li style="margin-left: 50px; margin-bottom: 10px;"><a href="faqboard_list.do?mode=전체">자주 찾는 질문</a></li>
+			<li style="margin-left: 50px; margin-bottom: 10px;"><a href="fileboard_setting.do">FILE(자료실형)</a></li>
 		</ul>
 	</nav>
 	<main>
@@ -72,13 +72,13 @@
 				<c:set var="endPage" value="${pageCount}" />
 			</c:if>
 			<c:if test="${startPage > pageBlock}">
-				[<a href="qnaboard_list.do?pageNum=${startPage-pageBlock}">이전</a>]
+				[<a href="qnaboard_list.do?id=${loginId.id}&pageNum=${startPage-pageBlock}">이전</a>]
 			</c:if>
 			<c:forEach var="i" begin="${startPage}" end="${endPage}">
-				[<a href="qnaboard_list.do?pageNum=${i}">${i}</a>]
+				[<a href="qnaboard_list.do?id=${loginId.id}&pageNum=${i}">${i}</a>]
 			</c:forEach>
 			<c:if test="${endPage < pageCount}">
-				[<a href="qnaboard_list.do?pageNum=${startPage+pageBlock}">다음</a>]
+				[<a href="qnaboard_list.do?id=${loginId.id}&pageNum=${startPage+pageBlock}">다음</a>]
 			</c:if>
 		</c:if>
 		</div>

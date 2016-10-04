@@ -2,7 +2,6 @@ package qnaboard.db;
 
 public class QNABoardDTO {
 	private int num, category, readCount, re_step, re_level;
-	private long fileSize;
 	private String id, title, content, fileName, reg_date, recipient;
 	
 	
@@ -36,12 +35,6 @@ public class QNABoardDTO {
 	}
 	public void setNum(int num) {
 		this.num = num;
-	}
-	public long getFileSize() {
-		return fileSize;
-	}
-	public void setFileSize(long fileSize) {
-		this.fileSize = fileSize;
 	}
 	public int getCategory() {
 		return category;
@@ -83,7 +76,7 @@ public class QNABoardDTO {
 	@Override
 	public String toString() {
 		return "QNABoardDTO [num=" + num + ", category=" + category + ", readCount=" + readCount + ", fileSize="
-				+ fileSize + ", id=" + id + ", title=" + title + ", content=" + content + ", fileName=" + fileName
+				+ ", id=" + id + ", title=" + title + ", content=" + content + ", fileName=" + fileName
 				+ ", reg_date=" + reg_date + "]";
 	}
 }

@@ -4,13 +4,20 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../../../top.jsp"%>
 
+<c:if test="${empty loginId}">
+	<script type="text/javascript">
+		alert("로그인이 필요한 작업입니다.");
+		location.href="member_Login.do";
+	</script>
+</c:if>
+
 <section class="content">
 	<nav>
 		<ul>
-			<li><a href="customer_main.do">고객센터 메인</a></li>
-			<li><a href="qna_writeForm.do">QNA(1:1)</a></li>
-			<li><a href="faqboard_list.do?mode=전체">FAQ(일반)</a></li>
-			<li><a href="fileboard_setting.do">FILE(자료실형)</a></li>
+			<li style="margin-left: 50px; margin-bottom: 10px;"><a href="customer_main.do">고객센터 메인</a></li>
+			<li style="margin-left: 50px; margin-bottom: 10px; background-color: rgb(231, 26, 15);"><a href="qna_writeForm.do" style="color:white;">1:1 문의하기</a></li>
+			<li style="margin-left: 50px; margin-bottom: 10px;"><a href="faqboard_list.do?mode=전체">자주 찾는 질문</a></li>
+			<li style="margin-left: 50px; margin-bottom: 10px;"><a href="fileboard_setting.do">FILE(자료실형)</a></li>
 		</ul>
 	</nav>
 	<main>
@@ -35,7 +42,7 @@
 			}
 		</script>
 			<div align="center">
-			<form name="f" action="qnaboard_writePro.do" method="post" onsubmit="return checkBoard()">
+			<form name="f" action="qnaboard_writePro.do" method="post" onsubmit="return checkBoard()" enctype="multipart/form-data">
 			<table border="1" width="90%">
 				<tr bgcolor="yellow">
 					<th colspan="2">1:1 문의하기</th>
@@ -69,7 +76,7 @@
 					
 						<input type="submit" value="문의하기">
 						<input type="reset" value="다시쓰기">
-						<input type="button" value="목록보기" onClick="window.location='qnaboard_list.do'">
+						<input type="button" value="목록보기" onClick="window.location='qnaboard_list.do?id=${loginId.id}'">
 					</td>
 				</tr>
 			</table>

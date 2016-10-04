@@ -40,6 +40,13 @@ public class SimpleExample {
       throw new RuntimeException("Something bad happened while building the SqlMapClient instance." + e, e);
     }
   }
+  
+  public static List search(HashMap map){
+	  SqlSession session = sqlMapper.openSession();
+	  List list = session.selectList("FAQsearch", map);
+	  session.close();
+	  return list;
+  }
 
   public static List listBoard(HashMap map){
 	  SqlSession session = sqlMapper.openSession();
@@ -80,10 +87,23 @@ public class SimpleExample {
 		
 	}
 	
-	public static int getCount() {
+	public static int searchGetCount(String search){
 		SqlSession session = sqlMapper.openSession();
-		int count = 0;
-		count = session.selectOne("FAQgetCount");
+		int count = session.selectOne("FAQsearchGetCount", search);
+		session.close();
+		return count;
+	}
+	
+	public static int allGetCount(){
+		SqlSession session = sqlMapper.openSession();
+		int count = session.selectOne("FAQallGetCount");
+		session.close();
+		return count;
+	}
+	
+	public static int getCount(String mode) {
+		SqlSession session = sqlMapper.openSession();
+		int count = session.selectOne("FAQgetCount", mode);
 		session.close();
 		return count;
 	}

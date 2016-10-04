@@ -496,3 +496,32 @@ ul, li {
 	right: 0px;
 	top: 0px;
 }
+
+.clientEventViewContainer{
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	background-color:tomato;
+	border: 2px solid black;
+}
+
+.clientEventViewItem:nth-child(1){
+	text-align:center;
+	padding:20px;
+	font-weight:bold;
+	background-color:black;
+	color:white;
+	flex-grow:1;
+}
+.clientEventViewItem:nth-child(2){
+	padding:20px;
+	font-weight:bold;
+	flex-grow:1;
+}
+.clientEventViewItem:nth-child(3){
+	text-align:center;
+	padding:20px;
+	font-weight:bold;
+	background-color:white;
+	flex-grow:4;
+}

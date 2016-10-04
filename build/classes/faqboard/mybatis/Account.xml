@@ -5,6 +5,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="faqboard.mybatis.Account">
 
+	<select id="FAQsearch" parameterType="HashMap" resultType="FAQBoardDTO">
+		select * from (select rownum rn, faq.*, board.category_title from faqboard faq, 
+		board_category board where 
+		(faq.title like '%'||#{search}||'%' or faq.content like '%'||#{search}||'%') 
+		and faq.category=board.category_num)a where a.rn between #{startRow} and #{endRow}
+	</select>
+	
 	<select id="FAQlistBoard" parameterType="HashMap" resultType="FAQBoardDTO"> 
 		select * from(select rownum rn, faq.num as num,board.CATEGORY_TITLE as category_title, faq.title as title,faq.readcount as readcount
 	   	from faqboard faq, BOARD_CATEGORY board where board.CATEGORY_TITLE=#{mode} and 
@@ -13,14 +20,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="FAQallListBoard" parameterType="HashMap" resultType="FAQBoardDTO">
 		select * from
-		(select rownum rn, board_category.category_title as category_title, 
+		(select rownum rn, board_category.category_title as category_title,
 		faqboard.title as title, faqboard.readcount as readcount, faqboard.num as num
 		from faqboard, board_category where faqboard.category=board_category.category_num)a 
 		where a.rn between #{startRow} and #{endRow} order by num desc
 	</select>
 	
 	<select id="FAQgetBoard" parameterType="int" resultType="FAQBoardDTO">
-		select * from(select rownum rn, board_category.category_title as category_title, faqboard.title as title, faqboard.readcount as readcount, faqboard.num as num, faqboard.content as content
+		select * from(select rownum rn, board_category.category_title as category_title, 
+		faqboard.title as title, faqboard.readcount as readcount, faqboard.num as num, 
+		faqboard.content as content, faqboard.fileName as fileName 
 		from faqboard, board_category where faqboard.category=board_category.category_num)a where num = #{num}
 	</select>
 	
@@ -32,8 +41,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from faqboard where num = #{num}
 	</delete>
 	
-	<select id="FAQgetCount" resultType="int">
+	<select id="FAQsearchGetCount" parameterType="String" resultType="int">
+		select count(*) from faqboard where title like '%'||#{search}||'%' or content like '%'||#{search}||'%'
+	</select>
+	
+	<select id="FAQallGetCount" resultType="int">
 		select count(*) from faqboard
+	</select>
+	
+	<select id="FAQgetCount" parameterType="String" resultType="int">
+		select count(*) from faqboard faq, board_category board 
+		where faq.category=board.category_num and board.category_title=#{mode}
 	</select>
 	
 	<update id="FAQupCount" parameterType="int">
@@ -45,7 +63,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<select id="FAQgetCategory" resultType="FAQCategoryDTO">
-		select * from board_category where category_num > 0
+		select * from board_category
 	</select>
 	
 	<update id="FAQnewStep">

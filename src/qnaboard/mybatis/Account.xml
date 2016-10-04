@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="qnaboard.mybatis.Account">
 
 	<insert id="QNAinsertBoard" parameterType="HashMap">
-		insert into qnaboard values(qnaboard_seq.nextval, #{category}, #{id}, #{title}, #{content}, #{fileName}, #{fileSize}, sysdate, 0, 0, 0, 'admin')
+		insert into qnaboard values(qnaboard_seq.nextval, #{category}, #{id}, #{title}, #{content}, #{fileName}, sysdate, 0, 0, 0, 'admin')
 	</insert>
 
 	<select id="QNAgetBoard" parameterType="int" resultType="QNABoardDTO">
@@ -18,8 +18,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update qnaboard set readcount = readcount+1 where num = #{num}
 	</update>
 
-	<select id="QNAgetCount" resultType="int">
-		select count(*) from qnaboard
+	<select id="QNAgetCount" parameterType="String" resultType="int">
+		select count(*) from qnaboard where id=#{id} or recipient=#{id}
 	</select>
 
 	<select id="QNAlistBoard" parameterType="HashMap" resultType="QNABoardDTO">
@@ -31,11 +31,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<update id="QNAupdateBoard" parameterType="HashMap">
-		update qnaboard set category=#{category}, id=#{id}, title=#{title}, content=#{content} where num=#{num}
+		update qnaboard set category=#{category}, id=#{id}, title=#{title}, content=#{content}, fileName=#{fileName} where num=#{num}
 	</update>
 	
 	<select id="QNAgetCategory" resultType="QNACategoryDTO">
-		select * from board_category where category_num > 0
+		select * from board_category
 	</select>
 	
 	<update id="newStep">

@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="FILEinsertBoard" parameterType="HashMap">
-		insert into fileboard values(fileboard_seq.nextval, #{id}, #{content}, sysdate, #{fileName}, 0, null)
+		insert into fileboard values(fileboard_seq.nextval, #{id}, #{content}, sysdate, #{fileName}, null)
 	</insert> 
 	
 	<delete id="FILEdeleteBoard" parameterType="int">
@@ -38,7 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<update id="FILEupdateBoard" parameterType="HashMap">
-	    update fileboard set id=#{id}, content=#{content}, reg_date=sysdate, fileName=#{fileName}, likeCount=#{likeCount} where num=#{num}
+	    update fileboard set id=#{id}, content=#{content}, reg_date=sysdate, fileName=#{fileName} where num=#{num}
 	</update>
 	
 	<select id="FILEsearchBoard" parameterType="String" resultType="String">

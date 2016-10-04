@@ -45,7 +45,7 @@
 				<li><a href="member_MyPage.do?mode=myMoney">MyMoney</a></li>
 				<li style="background-color: rgb(231, 26, 15);"><a href="member_MyPage.do?mode=myInfo" style="color:white">회원 정보 변경</a></li>
 				<li><a href="member_MyPage.do?mode=myProfile">프로필 관리</a></li>
-				<li><a href="qnaboard_list.do">나의 문의내역</a></li>
+				<li><a href="qnaboard_list.do?id=${loginId.id}">나의 문의내역</a></li>
 				<li><a href="member_MyPage.do?mode=dropOut">회원탈퇴</a></li>
 			</ul>
 		</div>

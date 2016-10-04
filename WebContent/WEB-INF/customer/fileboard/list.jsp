@@ -11,21 +11,15 @@
 </c:if>
 
 <section class="content">
-	<nav>
-		<ul>
-			<li><a href="customer_main.do">고객센터 메인</a></li>
-			<li><a href="qna_writeForm.do">QNA(1:1)</a></li>
-			<li><a href="faqboard_list.do?mode=전체">FAQ(일반)</a></li>
-			<li><a href="fileboard_setting.do">FILE(자료실형)</a></li>
-		</ul>
-	</nav>
+<nav>
+</nav>
 	<main>
 	
 	<table width="100%">
 	<tr>
 		<td colspan="2">
 			<div align="center">
-				<b>일반 게시판</b>
+				<b>인증샷 Event!!</b>
 				<table width="90%" class="ex1">
 				</table>
 				<table width="90%" class="ex1">

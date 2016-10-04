@@ -1,5 +1,7 @@
 package admin.qnaboard.controller;
 
+import java.io.File;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,7 +21,7 @@ public class AdminQNABoardContentController {
 	private AdminQNABoardDAO adminQNABoardDAO;
 	
 	@RequestMapping(value="/admin_qna_content.do")
-	protected ModelAndView qna_content(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+	protected ModelAndView admin_qna_content(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		
 		int num = ServletRequestUtils.getIntParameter(arg0, "num");
@@ -28,6 +30,41 @@ public class AdminQNABoardContentController {
 		
 		mav.addObject("QNAboardDTO", dto);
 		mav.setViewName("admin/qnaboard/admin_content.jsp");
+		return mav;
+	}
+	
+	@RequestMapping(value="/admin_qnaboard_delete.do")
+	protected ModelAndView admin_qna_delete(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		String mode = null;
+		
+		if(ServletRequestUtils.getStringParameter(arg0, "mode") == null){
+			mode = "전체";
+		}else{
+			mode = ServletRequestUtils.getStringParameter(arg0, "mode");
+		}
+		int num = ServletRequestUtils.getIntParameter(arg0, "num"); 
+		String id = ServletRequestUtils.getStringParameter(arg0, "id");
+		
+		AdminQNABoardDTO dto = adminQNABoardDAO.admin_getBoard(num);
+		
+		if(dto.getFileName() != null){
+			String upPath = arg0.getServletContext().getRealPath("qnaboard_files/"+id);
+			String fileName = dto.getFileName();
+			File oldFile = new File(upPath+"/"+fileName);
+			
+			boolean delete = oldFile.delete();
+			if(!delete){
+				System.out.println("삭제실패!!");
+			}else{
+				adminQNABoardDAO.admin_deleteBoard(num);
+			}
+		}else{
+			adminQNABoardDAO.admin_deleteBoard(num);
+		}
+		
+		mav.addObject("mode", mode);
+		mav.setViewName("redirect:admin_qnaboard_list.do");
 		return mav;
 	}
 	

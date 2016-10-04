@@ -19,20 +19,13 @@
 </script>
 <section class="content">
 	<nav>
-		<ul>
-			<li><a href="customer_main.do">고객센터 메인</a></li>
-			<li><a href="qna_writeForm.do">QNA(1:1)</a></li>
-			<li><a href="faqboard_list.do?mode=전체">FAQ(일반)</a></li>
-			<li><a href="fileboard_setting.do">FILE(자료실형)</a></li>
-		</ul>
 	</nav>
 	<main>
 		<div align="center">
-		<form name="f" action="fileboard_writePro.do" method="post" 
-														onsubmit="return checkBoard()" enctype="multipart/form-data">
+		<form name="f" action="fileboard_writePro.do" method="post" onsubmit="return checkBoard()" enctype="multipart/form-data">
 		<table border="1" width="90%">
 			<tr bgcolor="yellow">
-				<th colspan="2">글 쓰 기</th>
+				<th colspan="2">인증샷 남기기</th>
 			</tr>
 			<tr>
 				<th bgcolor="yellow">내용</th>
@@ -41,7 +34,7 @@
 				</td>
 			</tr>
 			<tr>
-				<th bgcolor="yellow">파일명</th>
+				<th bgcolor="yellow">사진파일 선택</th>
 				<td>
 					<input type="file" name="fileName">
 				</td>

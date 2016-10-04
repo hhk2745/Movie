@@ -1,7 +1,7 @@
 package fileboard.db;
 
 public class FILEBoardDTO {
-	int num, likeCount;
+	int num;
 	String id, content, reg_date, fileName, profile_state;
 	
 	
@@ -16,12 +16,6 @@ public class FILEBoardDTO {
 	}
 	public void setNum(int num) {
 		this.num = num;
-	}
-	public int getLikeCount() {
-		return likeCount;
-	}
-	public void setLikeCount(int likeCount) {
-		this.likeCount = likeCount;
 	}
 	public String getId() {
 		return id;
@@ -49,7 +43,7 @@ public class FILEBoardDTO {
 	}
 	@Override
 	public String toString() {
-		return "FILEBoardDTO [num=" + num + ", likeCount=" + likeCount + ", id=" + id + ", content=" + content
+		return "FILEBoardDTO [num=" + num + ", likeCount=" + ", id=" + id + ", content=" + content
 				+ ", reg_date=" + reg_date + ", fileName=" + fileName + ", profile_state=" + profile_state + "]";
 	}
 	

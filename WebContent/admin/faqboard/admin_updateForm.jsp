@@ -32,7 +32,7 @@
 	</c:when>
 	<c:otherwise>
 
-<form name="f" action="admin_faqboard_updatePro.do" method="post" onsubmit="return checkBoard()">
+<form name="f" action="admin_faqboard_updatePro.do" method="post" onsubmit="return checkBoard()" enctype="multipart/form-data">
 <table align="center" width="90%">
 <caption>질 문 수 정</caption>
 	<tr>
@@ -58,12 +58,12 @@
 		<td bgcolor="yellow" align="center">파일</td>
 		<td>
 			<input type="file" name="fileName">
+			<input type="hidden" name="fileName2" value="${dto.fileName}">
 		</td>
 	</tr>	
 	<tr>
 		<td colspan="6">
 		<input type="hidden" name="num" value="${num}">
-		<input type="hidden" name="id" value="${loginId.id}">
 		
 		<input type="submit" value="수정완료">
 		<input type="reset" value="다시작성">

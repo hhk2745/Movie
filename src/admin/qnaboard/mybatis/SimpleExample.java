@@ -12,6 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import com.ibatis.common.resources.Resources;
 
 import admin.qnaboard.db.AdminQNABoardDTO;
+import qnaboard.db.QNABoardDTO;
 
 
 /**
@@ -42,19 +43,41 @@ public class SimpleExample {
 		}
 	}
 	
+	public static void admin_deleteBoard(int num){
+		SqlSession session = sqlMapper.openSession();
+		session.delete("admin_QNAdeleteBoard", num);
+		session.commit();
+		session.close();
+	}
+	
 	public static void admin_insertBoard(HashMap map){
 		SqlSession session = sqlMapper.openSession();
 		session.insert("admin_QNAinsertBoard", map);
 		session.commit();
 		session.close();
 	}
-
-	public static int admin_getCount(){
+	
+	public static int admin_getCount(String mode){
 		SqlSession session = sqlMapper.openSession();
 		int count = 0;
-		count = session.selectOne("admin_QNAgetCount");
+		count = session.selectOne("admin_QNAgetCount", mode);
 		session.close();
 		return count;
+	}
+
+	public static int admin_allGetCount(){
+		SqlSession session = sqlMapper.openSession();
+		int count = 0;
+		count = session.selectOne("admin_QNAallGetCount");
+		session.close();
+		return count;
+	}
+	
+	public static List admin_allListBoard(HashMap map){
+		SqlSession session = sqlMapper.openSession();
+		List list = session.selectList("admin_QNAallListBoard", map);
+		session.close();
+		return list;
 	}
 
 	public static List admin_listBoard(HashMap map) {
@@ -62,6 +85,7 @@ public class SimpleExample {
 		SqlSession session = sqlMapper.openSession();
 		list = session.selectList("admin_QNAlistBoard", map);
 		session.close();
+		System.out.println("list size : "+list.size());
 		return list;
 	}
 	

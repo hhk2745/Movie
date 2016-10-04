@@ -63,8 +63,8 @@ a {
 		<li class="hover effect4"><span>매출관리</span></li>
 	</a>
 	<a href="admin_board.do">
-		<li class="hover effect4"><span>게시판관리</span></li>
-	</a>
+      <li class="hover effect4"><span>고객센터관리</span></li>
+   </a>
 	<a href="EventList.do">
 		<li class="hover effect4"><span>이벤트관리</span></li>
 	</a>

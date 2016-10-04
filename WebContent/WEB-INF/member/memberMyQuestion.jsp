@@ -81,7 +81,7 @@
 				<li><a href="member_MyPage.do?mode=myMoney">MyMoney</a></li>
 				<li><a href="member_MyPage.do?mode=myInfo">회원 정보 변경</a></li>
 				<li><a href="member_MyPage.do?mode=myProfile">프로필 관리</a></li>
-				<li style="background-color: rgb(231, 26, 15);"><a href="qnaboard_list.do" style="color:white">나의
+				<li style="background-color: rgb(231, 26, 15);"><a href="qnaboard_list.do?id=${loginId.id}" style="color:white">나의
 						문의내역</a></li>
 				<li><a href="member_MyPage.do?mode=dropOut">회원탈퇴</a></li>
 			</ul>
@@ -143,13 +143,13 @@
 				<c:set var="endPage" value="${pageCount}" />
 			</c:if>
 			<c:if test="${startPage > pageBlock}">
-				[<a href="qnaboard_list.do?pageNum=${startPage-pageBlock}">이전</a>]
+				[<a href="qnaboard_list.do?id=${loginId.id}&pageNum=${startPage-pageBlock}">이전</a>]
 			</c:if>
 			<c:forEach var="i" begin="${startPage}" end="${endPage}">
-				[<a href="qnaboard_list.do?pageNum=${i}">${i}</a>]
+				[<a href="qnaboard_list.do?id=${loginId.id}&pageNum=${i}">${i}</a>]
 			</c:forEach>
 			<c:if test="${endPage < pageCount}">
-				[<a href="qnaboard_list.do?pageNum=${startPage+pageBlock}">다음</a>]
+				[<a href="qnaboard_list.do?id=${loginId.id}&pageNum=${startPage+pageBlock}">다음</a>]
 			</c:if>
 		</c:if>
 		</div>

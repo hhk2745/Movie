@@ -24,12 +24,15 @@
 					<a href="member_Login.do"><font size="2.5px" face="BareunDotum1">
 					로그인 &nbsp;</font></a>
 				</c:if>
-				
 				<!-- 로그아웃 링크 메뉴  -->
 				<c:if test='${!empty loginId}'>
 					<a href="member_Logout.do"><font size="2.5px" face="BareunDotum1">
 					로그아웃 &nbsp;</font></a>
 				</c:if>
+				<a href="customer_main.do?mode=customerMain"><font size="2.5px" face="BareunDotum1">
+					고객센터 &nbsp;</font></a>
+				
+				
 						&nbsp;&nbsp; <!-- 메뉴 간격 가독성을 위한 공백 -->
 			</td>
 		</tr>
@@ -63,7 +66,7 @@
 				
 				<!-- 승주 메뉴  -->		
 				<c:forEach begin="1" end="10" step="1">&nbsp;</c:forEach>
-				<a href="eventHome.do" valign="bottom"><font size="5px">Event</a>
+				<a href="clientEventList.do" valign="bottom"><font size="5px">Event</a>
 				
 			 </td>
 				

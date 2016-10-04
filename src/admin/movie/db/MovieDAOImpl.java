@@ -4,8 +4,6 @@ import java.util.List;
 
 import admin.movie.mybatis.SimpleExample;
 
-
-
 public class MovieDAOImpl implements MovieDAO {
 	@Override
 	public List movieList_admin(int start, int end){

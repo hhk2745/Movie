@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,7 +21,16 @@ public class AdminQNABoardListController {
 	
 	@RequestMapping(value="/admin_qnaboard_list.do")
 	public ModelAndView admin_qnaboard_list(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
-		int pageSize = 10;
+		ModelAndView mav = new ModelAndView();
+		String mode = null;
+		
+		if(ServletRequestUtils.getStringParameter(arg0, "mode") == null){
+			mode = "전체";
+		}else{
+			mode = ServletRequestUtils.getStringParameter(arg0, "mode");
+		}
+		
+		int pageSize = 5;
 		String pageNum = arg0.getParameter("pageNum");
 		if(pageNum == null){
 			pageNum = "1";
@@ -31,7 +41,11 @@ public class AdminQNABoardListController {
 		int endRow = startRow+pageSize-1;
 		int count = 0;
 		
-		count = adminQNABoardDAO.admin_getCount();
+		if(mode.equals("전체")){
+			count = adminQNABoardDAO.admin_allGetCount();
+		}else{
+			count = adminQNABoardDAO.admin_getCount(mode);
+		}
 		
 		if(endRow > count){
 			endRow = count;
@@ -42,8 +56,14 @@ public class AdminQNABoardListController {
 		int startPage = (currentPage-1)/pageBlock*pageBlock+1;
 		int endPage = startPage+pageBlock-1;
 		
-		List list = adminQNABoardDAO.admin_listBoard(startRow, endRow);
-		ModelAndView mav = new ModelAndView();
+		List list = null;
+		if(mode.equals("전체")){
+			list = adminQNABoardDAO.admin_allListBoard(startRow, endRow);
+		}else{
+			list = adminQNABoardDAO.admin_listBoard(startRow, endRow, mode);
+		}
+		
+		List cateList = adminQNABoardDAO.admin_getCategory();
 		
 		mav.addObject("endPage", endPage);
 		mav.addObject("startPage", startPage);
@@ -53,7 +73,8 @@ public class AdminQNABoardListController {
 		mav.addObject("count", count);
 		mav.addObject("currentPage", currentPage);
 		mav.addObject("boardList", list);
-		
+		mav.addObject("cateList", cateList);
+		mav.addObject("mode", mode);
 		mav.setViewName("admin/qnaboard/admin_list.jsp");
 		
 		return mav;

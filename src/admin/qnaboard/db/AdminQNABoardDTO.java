@@ -4,10 +4,17 @@ public class AdminQNABoardDTO {
 	private int num, category, readCount, re_step, re_level;
 	private long fileSize;
 	private String fileName;
-	private String id, title, content, reg_date, recipient;
+	private String id, title, content, reg_date, recipient, category_title;
 	
 	
 	
+	
+	public String getCategory_title() {
+		return category_title;
+	}
+	public void setCategory_title(String category_title) {
+		this.category_title = category_title;
+	}
 	public String getRecipient() {
 		return recipient;
 	}

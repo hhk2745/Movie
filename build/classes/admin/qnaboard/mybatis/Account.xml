@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="admin.qnaboard.mybatis.Account">
 
 	<insert id="admin_QNAinsertBoard" parameterType="HashMap">
-		insert into qnaboard values(qnaboard_seq.nextval, #{category}, #{id}, #{title}, #{content}, #{fileName}, #{fileSize}, sysdate, 0, #{re_step}, #{re_level}, #{recipient})
+		insert into qnaboard values(qnaboard_seq.nextval, #{category}, #{id}, #{title}, #{content}, #{fileName}, sysdate, 0, #{re_step}, #{re_level}, #{recipient})
 	</insert>
 
 	<select id="admin_QNAgetBoard" parameterType="int" resultType="AdminQNABoardDTO">
@@ -18,12 +18,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update qnaboard set readcount = readcount+1 where num = #{num}
 	</update>
 
-	<select id="admin_QNAgetCount" resultType="int">
+	<select id="admin_QNAallGetCount" resultType="int">
 		select count(*) from qnaboard
+	</select>
+	
+	<select id="admin_QNAgetCount" parameterType="String" resultType="int">
+		select count(*) from qnaboard qna, board_category board 
+		where qna.category=board.category_num and board.category_title=#{mode}
+	</select>
+	
+	<select id="admin_QNAallListBoard" parameterType="HashMap" resultType="AdminQNABoardDTO">
+		select * from
+		(select rownum rn, board_category.category_title as category_title, 
+		qnaboard.re_step as re_step, qnaboard.title as title, 
+		qnaboard.readcount as readcount, qnaboard.id as id, qnaboard.re_level as re_level, 
+		qnaboard.num as num, qnaboard.reg_date as reg_date 
+		from qnaboard, board_category where qnaboard.category=board_category.category_num)a 
+		where a.rn between #{startRow} and #{endRow} order by re_step asc, num desc
 	</select>
 
 	<select id="admin_QNAlistBoard" parameterType="HashMap" resultType="AdminQNABoardDTO">
-		select * from (select rownum rn, A.* from (select * from qnaboard order by re_step asc)A) where rn between #{startRow} and #{endRow}
+		select * from(select rownum rn, qna.num as num, qna.re_step as re_step, qna.recipient as recipient, 
+		board.CATEGORY_TITLE as category_title, qna.title as title, qna.id as id, qna.reg_date as reg_date, 
+		qna.re_level as re_level, qna.readcount as readcount from qnaboard qna, 
+		BOARD_CATEGORY board where board.CATEGORY_TITLE=#{mode} and 
+		board.CATEGORY_NUM=qna.CATEGORY order by qna.re_step asc)a where a.rn BETWEEN #{startRow} and #{endRow}
 	</select>
 	
 	<delete id="admin_QNAdeleteBoard" parameterType="int">
@@ -35,7 +54,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<select id="admin_QNAgetCategory" resultType="AdminQNACategoryDTO">
-		select * from board_category
+		select * from board_category where category_num > 0
 	</select>
 	
 	<update id="admin_stepUpdate" parameterType="int">

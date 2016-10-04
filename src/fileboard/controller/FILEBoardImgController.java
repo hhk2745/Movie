@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class FILEBoardImgController {
 	
-	@RequestMapping(value="/img.do")
+	@RequestMapping(value="/file_img.do")
 	public ModelAndView file_img(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		String id = ServletRequestUtils.getStringParameter(arg0, "id");
@@ -23,7 +23,7 @@ public class FILEBoardImgController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/imgOpen.do")
+	@RequestMapping(value="/file_imgOpen.do")
 	public ModelAndView file_imgOpen(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		String id = ServletRequestUtils.getStringParameter(arg0, "id");

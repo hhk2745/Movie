@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.ServletRequestUtils;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import admin.faqboard.db.AdminFAQBoardDAO;
+import member.db.MemberDTO;
 
 @Controller
 public class AdminFAQBoardListController {
@@ -27,7 +30,7 @@ public class AdminFAQBoardListController {
 			mode = ServletRequestUtils.getStringParameter(arg0, "mode");
 		}
 		
-		int pageSize = 10;
+		int pageSize = 5;
 		String pageNum = arg0.getParameter("pageNum");
 		if(pageNum == null){
 			pageNum = "1";
@@ -38,7 +41,7 @@ public class AdminFAQBoardListController {
 		int endRow = startRow+pageSize-1;
 		int count = 0;
 		
-		count = adminFAQBoardDAO.getCount();
+		count = adminFAQBoardDAO.admin_getCount();
 		
 		if(endRow > count){
 			endRow = count;
@@ -51,12 +54,12 @@ public class AdminFAQBoardListController {
 		
 		List list = null;
 		if(mode.equals("ÀüÃ¼")){
-			list = adminFAQBoardDAO.allListBoard(startRow, endRow);
+			list = adminFAQBoardDAO.admin_allListBoard(startRow, endRow);
 		}else{
-			list = adminFAQBoardDAO.listBoard(startRow, endRow, mode);
+			list = adminFAQBoardDAO.admin_listBoard(startRow, endRow, mode);
 		}
 		
-		List cateList = adminFAQBoardDAO.getCategory();
+		List cateList = adminFAQBoardDAO.admin_getCategory();
 		ModelAndView mav = new ModelAndView();
 		
 		mav.addObject("endPage", endPage);
@@ -68,7 +71,7 @@ public class AdminFAQBoardListController {
 		mav.addObject("currentPage", currentPage);
 		mav.addObject("boardList", list);
 		mav.addObject("cateList", cateList);
-		
+		mav.addObject("mode", mode);
 		mav.setViewName("/admin/faqboard/admin_list.jsp");
 		
 		return mav;

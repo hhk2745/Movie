@@ -45,7 +45,7 @@
 				<tr>
 					<td colspan="3" bgcolor="yellow" align="center">
 						<input type="hidden" name="id" value="admin">
-						<input type="hidden" name="category" value="0">
+						<input type="hidden" name="category" value="${category}">
 						<input type="hidden" name="num" value="${num}">
 						<input type="hidden" name="re_step" value="${re_step}">
 						<input type="hidden" name="re_level" value="${re_level}">

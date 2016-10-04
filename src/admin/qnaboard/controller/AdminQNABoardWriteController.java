@@ -1,5 +1,7 @@
 package admin.qnaboard.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import admin.qnaboard.db.AdminQNABoardDAO;
 import admin.qnaboard.db.AdminQNABoardDTO;
+import qnaboard.db.QNABoardDTO;
 
 @Controller
 public class AdminQNABoardWriteController {
@@ -21,7 +24,15 @@ public class AdminQNABoardWriteController {
 	@RequestMapping(value="/admin_qna_writeForm.do")
 	public ModelAndView admin_qna_writeForm(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();
+		String mode = null;
 		
+		if(ServletRequestUtils.getStringParameter(arg0, "mode") == null){
+			mode = "전체";
+		}else{
+			mode = ServletRequestUtils.getStringParameter(arg0, "mode");
+		}
+		
+		int category = ServletRequestUtils.getIntParameter(arg0, "category");
 		int num = ServletRequestUtils.getIntParameter(arg0, "num");
 		int re_step = ServletRequestUtils.getIntParameter(arg0, "re_step");
 		int re_level = ServletRequestUtils.getIntParameter(arg0, "re_level");
@@ -31,12 +42,20 @@ public class AdminQNABoardWriteController {
 		mav.addObject("re_step", re_step);
 		mav.addObject("re_level", re_level);
 		mav.addObject("recipient", recipient);
+		mav.addObject("category", category);
 		mav.setViewName("admin/qnaboard/admin_writeForm.jsp");
 		return mav;
 	}
 	
 	@RequestMapping(value="/admin_qnaboard_writePro.do")
 	protected ModelAndView admin_qna_writePro(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		String mode = null;
+		
+		if(ServletRequestUtils.getStringParameter(arg0, "mode") == null){
+			mode = "전체";
+		}else{
+			mode = ServletRequestUtils.getStringParameter(arg0, "mode");
+		}
 		
 		int category = ServletRequestUtils.getIntParameter(arg0, "category");
 		String content = ServletRequestUtils.getStringParameter(arg0, "content");
@@ -57,6 +76,8 @@ public class AdminQNABoardWriteController {
 		dto.setRe_level(re_level);
 		dto.setRecipient(recipient);
 		adminQNABoardDAO.admin_insertBoard(dto);
+		
+		mav.addObject("mode", mode);
 		mav.setViewName("redirect:admin_qnaboard_list.do");
 		
 		return mav;

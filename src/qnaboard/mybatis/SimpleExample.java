@@ -47,10 +47,11 @@ public class SimpleExample {
 		session.close();
 	}
 
-	public static int getCount(){
+	public static int getCount(String id){
 		SqlSession session = sqlMapper.openSession();
 		int count = 0;
-		count = session.selectOne("QNAgetCount");
+		
+		count = session.selectOne("QNAgetCount", id);
 		session.close();
 		return count;
 	}

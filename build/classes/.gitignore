@@ -1,10 +1,6 @@
-/IndexController.class
-/SqlMapConfig.xml
-/admin/
-/client/
-/db.properties
 /event/
+/qnaboard/
 /faqboard/
 /fileboard/
+/admin/
 /member/
-/qnaboard/

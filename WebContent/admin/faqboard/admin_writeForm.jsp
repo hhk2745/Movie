@@ -25,7 +25,7 @@
 			}
 		</script>
 			<div align="center">
-			<form name="f" action="admin_faqboard_writePro.do" method="post" onsubmit="return checkBoard()">
+			<form name="f" action="admin_faqboard_writePro.do" method="post" onsubmit="return checkBoard()" enctype="multipart/form-data">
 			<table border="1" width="90%">
 				<tr bgcolor="yellow">
 					<th colspan="2">질문등록</th>
@@ -55,7 +55,7 @@
 				</tr>
 				<tr>
 					<td colspan="3" bgcolor="yellow" align="center">
-						<input type="hidden" name="id" value="${loginId.id}">
+						<%-- <input type="hidden" name="id" value="${loginId.id}"> --%>
 					
 						<input type="submit" value="질문등록">
 						<input type="reset" value="다시쓰기">

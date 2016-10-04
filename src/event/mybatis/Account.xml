@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update event set title=#{title}, content=#{content}, startdate=#{startDate}, enddate=#{endDate} where num=#{num}
 	</update>
 	
-	<select id="getEvent" parameterType="int">
+	<select id="getEvent" parameterType="int" resultType="EventDTO">
 		select * from event where num=#{num}
 	</select>
 	
@@ -26,7 +26,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		to_date(ENDDATE,'yy/MM/dd') >= to_date(sysdate,'yy/MM/dd')
 	</select>
 	
-	<select id="getSeqCurrVal" parameterType="int">
+	<select id="getSeqCurrVal" resultType="int">
 		select event_seq.currval from dual
 	</select>
 	

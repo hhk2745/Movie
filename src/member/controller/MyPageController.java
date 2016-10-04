@@ -381,7 +381,7 @@ public class MyPageController
 		String id = "", profile_img = "";
 		try
 		{
-			mr = new MultipartRequest(req, upPath, 10 * 1024 * 1024, "EUC-KR");
+			mr = new MultipartRequest(req, upPath, 10 * 1024 * 1024, "UTF-8");
 			profile_img = mr.getFilesystemName("profile_img");
 			id = mr.getParameter("id");
 
@@ -458,7 +458,8 @@ public class MyPageController
 		if (index != -1)
 		{
 			pureFileName = fileName.substring(0, index);
-			ext = fileName.substring(index + 1);
+			ext = (fileName.substring(index + 1)).toLowerCase();
+			
 			System.out.println("파일명: " + fileName + ", 확장자: " + ext);
 			newfname = fileName + "_s." + ext;
 			System.out.println(newfname);

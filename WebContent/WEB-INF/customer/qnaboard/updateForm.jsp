@@ -7,8 +7,8 @@
 	<nav>
 		<ul>
 			<li><a href="customer_main.do">고객센터 메인</a></li>
-			<li><a href="qna_writeForm.do">QNA(1:1)</a></li>
-			<li><a href="faqboard_list.do?mode=전체">FAQ(일반)</a></li>
+			<li><a href="qna_writeForm.do">1:1 문의하기</a></li>
+			<li><a href="faqboard_list.do?mode=전체">자주 찾는 질문</a></li>
 			<li><a href="fileboard_setting.do">FILE(자료실형)</a></li>
 		</ul>
 	</nav>
@@ -38,11 +38,11 @@
 <c:set var="num" value="${num}" />
 <c:choose>
 	<c:when test="${empty dto}">
-		<c:redirect url="qnaboard_list.do" />
+		<c:redirect url="qnaboard_list.do?id=${loginId.id}" />
 	</c:when>
 <c:otherwise>
 
-<form name="f" action="qnaboard_updatePro.do" method="post" onsubmit="return checkBoard()">
+<form name="f" action="qnaboard_updatePro.do" method="post" onsubmit="return checkBoard()" enctype="multipart/form-data">
 <table align="center" width="90%">
 <caption>문 의 수 정</caption>
 	<tr>
@@ -67,7 +67,16 @@
 	<tr>
 		<td bgcolor="yellow" align="center">파일</td>
 		<td>
+			<c:choose>
+				<c:when test="${dto.fileName eq null}">
+					<img src="img/null_img.gif" width="80" height="80">
+				</c:when>
+				<c:otherwise>
+					<img src="qnaboard_files/${dto.id}/${dto.fileName}"	width="80" height="80">
+				</c:otherwise>
+			</c:choose>
 			<input type="file" name="fileName">
+			<input type="hidden" name="fileName2"value="${dto.fileName}">
 		</td>
 	</tr>	
 	<tr>
@@ -77,7 +86,7 @@
 			
 			<input type="submit" value="글수정">
 			<input type="reset" value="다시작성">
-			<input type="button" value="목록보기" onclick="location.href='qnaboard_list.do'">
+			<input type="button" value="목록보기" onclick="location.href='qnaboard_list.do?id=${loginId.id}'">
 		</td>
 	</tr>
 </table>

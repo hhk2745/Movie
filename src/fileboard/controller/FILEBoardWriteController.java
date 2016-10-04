@@ -96,7 +96,7 @@ public class FILEBoardWriteController {
 		fileBoardDAO.insertBoard(dto);
 		
 		mav.addObject("file", file);
-		mav.setViewName("redirect:fileboard_list.do");
+		mav.setViewName("redirect:fileboard_setting.do");
 		return mav;
 	}
 	
@@ -125,6 +125,7 @@ public class FILEBoardWriteController {
 		try{
 			mr = new MultipartRequest(arg0, upPath, 10*1024*1024, "UTF-8");
 			String fileName = mr.getFilesystemName("fileName");
+			String fileName2 = mr.getParameter("fileName2");
 			id = mr.getParameter("id");
 			File oldFile = new File(upPath+"/"+fileName);
 			int dotNum = fileName.lastIndexOf("."); //.찾기
@@ -152,6 +153,11 @@ public class FILEBoardWriteController {
 			fis.close();
 			fos.close();
 			
+			File updateFile = new File(upPath+"/"+fileName2);
+			if(!fileName2.equals(realName)){
+				updateFile.delete();
+			}
+			
 			boolean delete = oldFile.delete();
 		    if(!delete){
 		    	System.out.println("삭제실패!!");
@@ -163,14 +169,12 @@ public class FILEBoardWriteController {
 		}
 		
 		int num = Integer.parseInt(mr.getParameter("num"));
-		int likeCount = Integer.parseInt(mr.getParameter("likeCount"));
 		String content = mr.getParameter("content");
 		
 		dto.setNum(num);
 		dto.setId(id);
 		dto.setContent(content);
 		dto.setFileName(realName);
-		dto.setLikeCount(likeCount);
 		
 		fileBoardDAO.updateBoard(dto);
 		

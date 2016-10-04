@@ -9,11 +9,20 @@ import admin.qnaboard.mybatis.SimpleExample;
 public class AdminQNABoardDAOImpl implements AdminQNABoardDAO{
 
 	@Override
-	public List admin_listBoard(int startRow, int endRow) throws SQLException {
+	public List admin_listBoard(int startRow, int endRow, String mode) throws SQLException {
 		HashMap map = new HashMap();
 		map.put("startRow", startRow);
 		map.put("endRow", endRow);
+		map.put("mode", mode);
 		return SimpleExample.admin_listBoard(map);
+	}
+	
+	@Override
+	public List admin_allListBoard(int startRow, int endRow) throws SQLException{
+		HashMap map = new HashMap();
+		map.put("startRow", startRow);
+		map.put("endRow", endRow);
+		return SimpleExample.admin_allListBoard(map);
 	}
 
 	@Override
@@ -49,12 +58,17 @@ public class AdminQNABoardDAOImpl implements AdminQNABoardDAO{
 
 	@Override
 	public void admin_deleteBoard(int num) throws SQLException {
-		
+		SimpleExample.admin_deleteBoard(num);
+	}
+	
+	@Override
+	public int admin_allGetCount() throws SQLException {
+		return SimpleExample.admin_allGetCount();
 	}
 
 	@Override
-	public int admin_getCount() throws SQLException {
-		return SimpleExample.admin_getCount();
+	public int admin_getCount(String mode) throws SQLException {
+		return SimpleExample.admin_getCount(mode);
 	}
 
 	@Override

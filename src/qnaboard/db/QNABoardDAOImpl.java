@@ -34,10 +34,8 @@ public class QNABoardDAOImpl implements QNABoardDAO{
 		map.put("content", dto.getContent());
 		if(dto.getFileName() == null){
 			map.put("fileName", "");
-			map.put("fileSize", 0);
 		}else{
 			map.put("fileName", dto.getFileName());
-			map.put("fileSize", dto.getFileSize());
 		}
 		
 		SimpleExample.insertBoard(map);
@@ -61,9 +59,8 @@ public class QNABoardDAOImpl implements QNABoardDAO{
 		SimpleExample.updateBoard(map);
 	}
 	
-	@Override
-	public int getCount() throws SQLException {
-		return SimpleExample.getCount();
+	public int getCount(String id) throws SQLException {
+		return SimpleExample.getCount(id);
 	}
 	
 	@Override

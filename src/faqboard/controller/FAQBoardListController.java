@@ -28,9 +28,7 @@ public class FAQBoardListController {
 			mode = ServletRequestUtils.getStringParameter(arg0, "mode");
 		}
 		
-		System.out.println(mode);
-		
-		int pageSize = 10;
+		int pageSize = 5;
 		String pageNum = arg0.getParameter("pageNum");
 		if(pageNum == null){
 			pageNum = "1";
@@ -41,7 +39,11 @@ public class FAQBoardListController {
 		int endRow = startRow+pageSize-1;
 		int count = 0;
 		
-		count = faqBoardDAO.getCount();
+		if(mode.equals("ÀüÃ¼")){
+			count = faqBoardDAO.allGetCount();
+		}else{
+			count = faqBoardDAO.getCount(mode);
+		}
 		
 		if(endRow > count){
 			endRow = count;
@@ -71,7 +73,7 @@ public class FAQBoardListController {
 		mav.addObject("currentPage", currentPage);
 		mav.addObject("boardList", list);
 		mav.addObject("cateList", cateList);
-		
+		mav.addObject("mode", mode);
 		mav.setViewName("/WEB-INF/customer/faqboard/list.jsp");
 		
 		return mav;

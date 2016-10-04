@@ -2,7 +2,6 @@ package admin.faqboard.db;
 
 public class AdminFAQBoardDTO {
 	private int num, category, readCount;
-	private long fileSize;
 	private String id, title, content, fileName, reg_date, category_title;
 	
 	
@@ -30,12 +29,6 @@ public class AdminFAQBoardDTO {
 	}
 	public void setReadCount(int readCount) {
 		this.readCount = readCount;
-	}
-	public long getFileSize() {
-		return fileSize;
-	}
-	public void setFileSize(long fileSize) {
-		this.fileSize = fileSize;
 	}
 	public String getId() {
 		return id;

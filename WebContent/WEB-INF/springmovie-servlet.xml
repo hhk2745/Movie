@@ -22,6 +22,7 @@
 		<bean id="fileBoardDAO" class="fileboard.db.FILEBoardDAOImpl" />
 		<bean id="adminFILEBoardDAO" class="admin.fileboard.db.AdminFILEBoardDAOImpl" />
 		<bean id="adminCategoryDAO" class="admin.category.db.AdminCategoryDAOImpl" />
+		
 		<!-- 승주 -->
 		
 		<!-- 진철 시작 -->
@@ -57,9 +58,13 @@
 		<bean class="qnaboard.controller.QNABoardListController"/>
 		<bean class="qnaboard.controller.QNABoardWriteController"/>
 		<bean class="qnaboard.controller.QNABoardContentController"/>
+		<bean class="qnaboard.controller.QNABoardImgController" />
 		<!-- faqboard -->
 		<bean class="faqboard.controller.FAQBoardListController" />
 		<bean class="faqboard.controller.FAQBoardContentController" />
+		<bean class="faqboard.controller.FAQBoardImgController" />
+		<bean class="faqboard.controller.FAQBoardSearchController" />
+		
 		<!-- fileboard -->
 		<bean class="fileboard.controller.FILEBoardListController" />
 		<bean class="fileboard.controller.FILEBoardWriteController" />
@@ -72,12 +77,14 @@
 		<bean class="admin.qnaboard.controller.AdminQNABoardListController" />
 		<bean class="admin.qnaboard.controller.AdminQNABoardContentController" />
 		<bean class="admin.qnaboard.controller.AdminQNABoardWriteController" />
-		
+		<bean class="admin.qnaboard.controller.AdminQNABoardImgController" />
 		
 		<!-- admin_faqboard -->
 		<bean class="admin.faqboard.controller.AdminFAQBoardListController" />
 		<bean class="admin.faqboard.controller.AdminFAQBoardWriteController" />
 		<bean class="admin.faqboard.controller.AdminFAQBoardContentController" />
+		<bean class="admin.faqboard.controller.AdminFAQBoardImgController" />
+		
 		
 		
 		<!-- admin_fileboard -->
