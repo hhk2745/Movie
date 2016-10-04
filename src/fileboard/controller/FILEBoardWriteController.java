@@ -154,6 +154,8 @@ public class FILEBoardWriteController {
 			fos.close();
 			
 			File updateFile = new File(upPath+"/"+fileName2);
+			
+			//fileName2 null
 			if(!fileName2.equals(realName)){
 				updateFile.delete();
 			}

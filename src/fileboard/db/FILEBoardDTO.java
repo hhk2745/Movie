@@ -42,10 +42,13 @@ public class FILEBoardDTO {
 		this.fileName = fileName;
 	}
 	@Override
-	public String toString() {
-		return "FILEBoardDTO [num=" + num + ", likeCount=" + ", id=" + id + ", content=" + content
-				+ ", reg_date=" + reg_date + ", fileName=" + fileName + ", profile_state=" + profile_state + "]";
+	public String toString()
+	{
+		return "FILEBoardDTO [num=" + num + ", id=" + id + ", content=" + content + ", reg_date=" + reg_date
+				+ ", fileName=" + fileName + ", profile_state=" + profile_state + "]";
 	}
+
+	
 	
 	
 	

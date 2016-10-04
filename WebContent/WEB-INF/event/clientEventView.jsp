@@ -5,6 +5,7 @@
 	<nav>
 		<ul>
 			<li style="padding-left: 10px;"><a href="fileboard_writeForm.do">작성하러가기</a></li>
+			
 			<li style="padding-left: 10px;"><a href="fileboard_setting.do">사람들이 남긴 글 보기</a></li>
 		</ul>
 	</nav>

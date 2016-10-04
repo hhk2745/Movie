@@ -14,7 +14,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<update id="updateEvent" parameterType="EventDTO">
-		update event set title=#{title}, content=#{content}, startdate=#{startDate}, enddate=#{endDate} where num=#{num}
+		update event set title=#{title}, content=#{content}, startdate=#{startDate}, enddate=#{endDate}, filename=#{fileName} 
+		where num=#{num}
 	</update>
 	
 	<select id="getEvent" parameterType="int" resultType="EventDTO">
@@ -22,8 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="getEvents" resultType="EventDTO">
-		select * from event where  to_date(sysdate,'yy/MM/dd') >= to_date(STARTDATE,'yy/MM/dd') AND 
-		to_date(ENDDATE,'yy/MM/dd') >= to_date(sysdate,'yy/MM/dd')
+		select * from event where  to_date(sysdate,'yy/MM/dd') >= to_date(STARTDATE,'yy/MM/dd') AND to_date(ENDDATE,'yy/MM/dd') >= to_date(sysdate,'yy/MM/dd')
 	</select>
 	
 	<select id="getSeqCurrVal" resultType="int">

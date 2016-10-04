@@ -6,7 +6,7 @@
 
 <c:if test="${!empty result && result eq true}">
 	<script>
-		window.open("imgOpen.do?id=${id}&fileName=${fileName}", "", "width=1000, height=500, left=100, top=100"); 
+		window.open("file_imgOpen.do?id=${id}&fileName=${fileName}", "", "width=1000, height=500, left=100, top=100"); 
 	</script>
 </c:if>
 
@@ -80,7 +80,7 @@
 						</tr>
 						<tr>
 							<td colspan="3" align="center">
-								<a href="img.do?id=${dto.id}&fileName=${dto.fileName}">
+								<a href="file_img.do?id=${dto.id}&fileName=${dto.fileName}">
 									<img src="<c:url value="/fileboard_files/${dto.id}/${dto.fileName}" />" 
 									width="200px" height="200px" title="클릭하시면 원본 크기로 보실 수 있습니다." >
 								</a>

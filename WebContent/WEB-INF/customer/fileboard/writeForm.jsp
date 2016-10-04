@@ -17,6 +17,7 @@
 		return true;
 	}
 </script>
+
 <section class="content">
 	<nav>
 	</nav>
