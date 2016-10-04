@@ -65,6 +65,9 @@ a {
 	<a href="admin_board.do">
 		<li class="hover effect4"><span>게시판관리</span></li>
 	</a>
+	<a href="EventList.do">
+		<li class="hover effect4"><span>이벤트관리</span></li>
+	</a>
 </ul>
 </head>
 <body>

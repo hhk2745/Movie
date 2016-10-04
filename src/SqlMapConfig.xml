@@ -16,6 +16,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="admin.schedule.db.ScheduleDTO" alias="ScheduleDTO"/>
 		<typeAlias type="admin.schedule.db.Schedule_timeDTO" alias="Schedule_timeDTO"/>
 		<typeAlias type="admin.sell.db.SellDTO" alias="SellDTO"/>
+		<typeAlias type="event.db.EventDTO" alias="EventDTO"/>
+		
 		<!-- 승주 -->
 		<typeAlias type="qnaboard.db.QNABoardDTO" alias="QNABoardDTO" />
 		<typeAlias type="qnaboard.db.QNACategoryDTO" alias="QNACategoryDTO"/>
@@ -47,7 +49,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="admin/movie/mybatis/Account.xml" />
 		<mapper resource="admin/schedule/mybatis/Account.xml" />
 		<mapper resource="admin/sell/mybatis/Account.xml"/>
-		<!-- 승주 -->
 		<mapper resource="qnaboard/mybatis/Account.xml" />
 		<mapper resource="admin/qnaboard/mybatis/Account.xml" />
 		<mapper resource="faqboard/mybatis/Account.xml" />
@@ -55,7 +56,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="fileboard/mybatis/Account.xml" />
 		<mapper resource="admin/fileboard/mybatis/Account.xml" />
 		<mapper resource="admin/category/mybatis/Account.xml" />
-		<!-- 승주 -->
+		<mapper resource="event/mybatis/Account.xml"/>
 	</mappers>
 </configuration>
  

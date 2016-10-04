@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="event.mybatis.Account">
+
+	<insert id="insertEvent" parameterType="EventDTO">
+		insert into event values(event_seq.nextval, #{title}, #{content}, #{startDate}, #{endDate}, #{fileName})
+	</insert>
+	
+	<delete id="deleteEvent" parameterType="int">
+		delete from event where num=#{num}
+	</delete>
+	
+	<update id="updateEvent" parameterType="EventDTO">
+		update event set title=#{title}, content=#{content}, startdate=#{startDate}, enddate=#{endDate} where num=#{num}
+	</update>
+	
+	<select id="getEvent" parameterType="int">
+		select * from event where num=#{num}
+	</select>
+	
+	<select id="getEvents" resultType="EventDTO">
+		select * from event where  to_date(sysdate,'yy/MM/dd') >= to_date(STARTDATE,'yy/MM/dd') AND 
+		to_date(ENDDATE,'yy/MM/dd') >= to_date(sysdate,'yy/MM/dd')
+	</select>
+	
+	<select id="getSeqCurrVal" parameterType="int">
+		select event_seq.currval from dual
+	</select>
+	
+</mapper>

@@ -12,6 +12,7 @@
 		<bean id="sellDAO" class="admin.sell.db.SellDAOImpl"/>
 		<bean id="ticketDAO" class="client.reserve.db.TicketDAOImpl" />
 		<bean id="gmail" class="member.db.Gmail" />
+		<bean id="eventDAO" class="event.db.EventDAOImpl" />
 		
 		<!-- 승주 -->
 		<bean id="qnaBoardDAO" class="qnaboard.db.QNABoardDAOImpl" />
