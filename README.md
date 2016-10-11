@@ -1,34 +1,22 @@
-# FragmentAnimations
+# 영화예매이
 
-[![Platform](https://img.shields.io/badge/platform-android-green.svg)](http://developer.android.com/index.html)
-<img src="https://img.shields.io/badge/license-Apache 2.0-green.svg?style=flat">
-[![API](https://img.shields.io/badge/API-4%2B-yellow.svg?style=flat)](https://android-arsenal.com/api?level=4)
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-FragmentAnimations-green.svg?style=true)](https://android-arsenal.com/details/1/3526)
+Development Infomation.
 
-Animation examples for `support.v4.Fragment` transition.
-
-These animations do not depends on any external libraries.
-
-[<img src="https://dply.me/h7azvd/button/large" alt="Try it on your device via DeployGate">](https://dply.me/h7azvd)
-
-## Usage Example
-
-In your `Fragment`, just code like this.
-
-```java
-@Override
-public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
-    return CubeAnimation.create(CubeAnimation.UP, enter, DURATION);
-}
-```
-
-See more example in [ExampleFragment.java](https://github.com/hhk2745/SpringProject_Movie-Ticketing-Site/blob/master/WebContent/index.jsp)
+<li>java 8
+<li>jsp 2.3
+<li>mybatis 3.2
+<li>Spring 3.8.1
+<li>Apache Tomcat 8.0
+<li>Oracle R11.2
 
 ## Contents
 
-### Cube Animation
 
-[CubeAnimation.java](https://github.com/kakajika/FragmentAnimations/blob/master/fragmentanimations/src/main/java/com/labo/kaji/fragmentanimations/CubeAnimation.java)
+### Title
+
+![logo]
+(https://github.com/hhk2745/SpringProject_Movie-Ticketing-Site/tree/master/WebContent/img/logo.jpg)
+CH OGV Web Application, first spring project.
 
 ![Cube](https://raw.githubusercontent.com/wiki/kakajika/FragmentAnimations/images/cube.gif)
 
