@@ -22,7 +22,7 @@ public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
 }
 ```
 
-See more example in [ExampleFragment.java](https://github.com/kakajika/FragmentAnimations/blob/master/app/src/main/java/com/labo/kaji/fragmentanimations/example/ExampleFragment.java)
+See more example in [ExampleFragment.java](https://github.com/hhk2745/SpringProject_Movie-Ticketing-Site/blob/master/WebContent/index.jsp)
 
 ## Contents
 
