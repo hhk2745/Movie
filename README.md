@@ -1,4 +1,4 @@
-# 영화예매이
+# 영화예매사이
 
 Development Infomation.
 
@@ -14,8 +14,7 @@ Development Infomation.
 
 ### Title
 
-![logo]
-(https://github.com/hhk2745/SpringProject_Movie-Ticketing-Site/tree/master/WebContent/img/logo.jpg)
+![logo](https://github.com/hhk2745/SpringProject_Movie-Ticketing-Site/tree/master/WebContent/img/logo.jpg)
 CH OGV Web Application, first spring project.
 
 ![Cube](https://raw.githubusercontent.com/wiki/kakajika/FragmentAnimations/images/cube.gif)
