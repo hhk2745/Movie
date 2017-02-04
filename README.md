@@ -17,35 +17,34 @@
 ### 고객(Customer)
 영화목록(모든영화, 현재 개봉작, 박스오피스, 개봉 예정작), 한줄평, 예매, 고객센터
 
-<div style="text-align:center">![movie list](https://dl.dropbox.com/s/cuhb0ax6hcir7ry/movies_rank.png)</div>
-<p align="center">그림1. 영화목록</p>
+# 그림1. 영화목록
+![movie list](https://dl.dropbox.com/s/cuhb0ax6hcir7ry/movies_rank.png)
 
+# 그림2. 한줄평 등록
 ![reply](https://dl.dropbox.com/s/xm5mkffl2tcn5ow/movie_detail.png)
-<p align="center">그림2. 한줄평 등록</p>
 
+# 그림3. 예매
 ![reservation](https://dl.dropbox.com/s/mrac540s9g6tffg/movie_seat.png)
-<p align="center">그림3. 예매</p>
 
+# 그림4. 고객센터
 ![customer center](https://dl.dropbox.com/s/mqk6hurt5r8tuj0/customer_center.png)
-<p align="center">그림4. 고객센터</p>
 
 ### 관리자(Admin)
-영화등록,수정,상영스케줄,매출정보,고객센터관리
 
+# 그림5. 영화등록
 ![lobby](https://dl.dropbox.com/s/8xhkgrf53chiyit/insert_movie.png)
-<p align="center">그림5. 영화등록</p>
 
+# 그림6. 영화수정
 ![modify_info](https://dl.dropbox.com/s/q2erjm7pc4hrouo/update_movie.png)
-<p align="center">그림6. 영화수정</p>
 
+# 그림7. 상영스케줄 관리
 ![room](https://dl.dropbox.com/s/sfp22jss5k1q7b4/schedule.png)
-<p align="center">그림7. 상영스케줄 관리</p>
 
+# 그림8. 매출정보
 ![game](https://dl.dropbox.com/s/gdcyw7gn9ew23fp/sell_info.png)
-<p align="center">그림8. 매출정보</p>
 
+# 그림9. 고객센터 관리
 ![game](https://dl.dropbox.com/s/6fvzkxnosj2sc8y/customer_center_mng.png)
-<p align="center">그림9. 고객센터 관리</p>
 
 ### DB
 * 기본키는 시퀀스.nextval로 회원의 고유번호를 부여합니다.
