@@ -40,9 +40,9 @@
 
 ![room](https://dl.dropbox.com/s/sfp22jss5k1q7b4/schedule.png)
 <p align="center">그림7. 상영스케줄 관리</p>
-
+<p align="center">
 ![game](https://dl.dropbox.com/s/gdcyw7gn9ew23fp/sell_info.png)
-<p align="center">그림8. 매출정보</p>
+그림8. 매출정보</p>
 
 ![game](https://dl.dropbox.com/s/6fvzkxnosj2sc8y/customer_center_mng.png)
 <p align="center">그림9. 고객센터 관리</p>
