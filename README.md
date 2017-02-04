@@ -17,7 +17,7 @@
 ### 고객(Customer)
 영화목록(모든영화, 현재 개봉작, 박스오피스, 개봉 예정작), 한줄평, 예매, 고객센터
 
-![movie list](https://dl.dropbox.com/s/cuhb0ax6hcir7ry/movies_rank.png)
+<div style="text-align:center">![movie list](https://dl.dropbox.com/s/cuhb0ax6hcir7ry/movies_rank.png)</div>
 <p align="center">그림1. 영화목록</p>
 
 ![reply](https://dl.dropbox.com/s/xm5mkffl2tcn5ow/movie_detail.png)
@@ -40,9 +40,9 @@
 
 ![room](https://dl.dropbox.com/s/sfp22jss5k1q7b4/schedule.png)
 <p align="center">그림7. 상영스케줄 관리</p>
-<p align="center">
+
 ![game](https://dl.dropbox.com/s/gdcyw7gn9ew23fp/sell_info.png)
-그림8. 매출정보</p>
+<p align="center">그림8. 매출정보</p>
 
 ![game](https://dl.dropbox.com/s/6fvzkxnosj2sc8y/customer_center_mng.png)
 <p align="center">그림9. 고객센터 관리</p>
